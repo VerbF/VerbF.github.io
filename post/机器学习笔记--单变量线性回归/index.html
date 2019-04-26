@@ -16,7 +16,7 @@
 <meta property="og:description" content="机器学习中一种经典的算法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-04-26T14:10:31.626Z">
+<meta property="og:updated_time" content="2019-04-26T14:29:28.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记--单变量线性回归">
 <meta name="twitter:description" content="机器学习中一种经典的算法">
@@ -166,7 +166,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-25T00:16:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-25</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-26T14:10:31.626Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-26</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-26T14:29:28.156Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-26</time>
                 
                 
                 <div class="level-item">
@@ -179,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 分钟 读完 (大约 958 个字)
+                    7 分钟 读完 (大约 994 个字)
                 </span>
                 
                 
@@ -205,7 +205,7 @@
 <p>这里我们选择使用均方误差作为衡量预测结果与真实值的偏差。最前面的 $\frac{1}{2}$ 只是为了计算方便无需在意。</p>
 <p>我们所要做的就是改变$\Theta$的值，使得代价函数J$(\Theta)$的值最小,当找到一个$\Theta$使得代价函数的值最小时，我们就确定了参数$\Theta$。即我们的优化目标：<br>$$minimizeJ(\Theta)$$  </p>
 <p>为什么说我们要找的$\Theta$会使代价函数取得最小值呢？接下来举例说明。  </p>
-<h1 id="代价函数详解"><a href="#代价函数详解" class="headerlink" title="代价函数详解"></a>代价函数详解</h1><h2 id="代价函数与参数-Theta-的关系"><a href="#代价函数与参数-Theta-的关系" class="headerlink" title="代价函数与参数$\Theta$的关系"></a>代价函数与参数$\Theta$的关系</h2><p>假设我们的数据集中有三个样本点 (1,1) , (2,2) , (3,3)<br>我们可以使用无数条直线来拟合这些样本，但很显然只有当 $\Theta = 1$时，即 $y=x$ 这条直线有最好预测效果。<br><img src="../images/ml_1.png" alt="ml_1"><br>然后我们将不同的$\Theta$值带入代价函数，计算其结果：<br><img src="../images/ml_2.png" alt="ml_2">  </p>
+<h1 id="代价函数详解"><a href="#代价函数详解" class="headerlink" title="代价函数详解"></a>代价函数详解</h1><h2 id="代价函数与参数-Theta-的关系"><a href="#代价函数与参数-Theta-的关系" class="headerlink" title="代价函数与参数$\Theta$的关系"></a>代价函数与参数$\Theta$的关系</h2><p>假设我们的数据集中有三个样本点 (1,1) , (2,2) , (3,3)<br>我们可以使用无数条直线来拟合这些样本，但很显然只有当 $\Theta = 1$时，即 $y=x$ 这条直线有最好预测效果。<br><img src="../机器学习笔记--单变量线性回归/ml_1.png" alt="ml_1"><br>然后我们将不同的$\Theta$值带入代价函数，计算其结果：<br><img src="../机器学习笔记--单变量线性回归/ml_2.png" alt="ml_2">  </p>
 <p>从图像上可知，当代价函数的图像在最低点时，对应$\Theta$的值，就是最佳的结果。  </p>
 <p>通过这个例子不难发现，只要我们求出代价函数的最小值，就可找到我们想要的参数$\Theta$的值。  </p>
 <p>那么代价函数的最小值应该怎么求呢？在数学上有许多方法可以解决这个问题，这里我们使用梯度下降法来求代价函数的最小值。</p>
@@ -214,7 +214,7 @@
 <p>其中关键的步骤是对代价函数求$\Theta$的偏导，这里礼仪理解为在求某一点的斜率。  </p>
 <p>当$\Theta$的值大于最终结果时，$\Theta$的取值在最终结果的右边，对应点的斜率大于0，即求出的偏导值大于0，  $\Theta$减去一个大于0的数变小。  </p>
 <p>当$\Theta$的值小于最终结果时，$\Theta$的取值在最终结果的左边，对应点的斜率小于0，即求出的偏导值小于0，  $\Theta$减去一个小于0的数后变大。</p>
-<p>当$\Theta$的值越接近最终结果时，导数越接近0，$\Theta$变化的速度也越慢。<br><img src="../images/ml_3.png" alt="ml_2"> </p>
+<p>当$\Theta$的值越接近最终结果时，导数越接近0，$\Theta$变化的速度也越慢。<br><img src="../机器学习笔记--单变量线性回归/ml_3.png" alt="ml_3">  </p>
 <p>其中 $\alpha$ 是学习率，它的大小会改变$\Theta$的改变速度，但取值不能太大，否则会造成$\Theta$无法收敛。</p>
 
         </div>
