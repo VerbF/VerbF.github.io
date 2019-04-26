@@ -2,24 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Hello World - xxs&#39;s blog</title>
+<title>机器学习笔记--单变量线性回归 - xxs&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="机器学习中一种经典的算法">
+<meta name="keywords" content="机器学习,线性回归">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://VerbF.github.io/post/hello-world/index.html">
+<meta property="og:title" content="机器学习笔记--单变量线性回归">
+<meta property="og:url" content="http://VerbF.github.io/post/机器学习笔记--单变量线性回归/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="机器学习中一种经典的算法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-24T09:40:30.940Z">
+<meta property="og:image" content="http://verbf.github.io/images/ml.png">
+<meta property="og:updated_time" content="2019-04-26T09:51:49.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="twitter:image" content="http://verbf.github.io/images/og_image.png">
+<meta name="twitter:title" content="机器学习笔记--单变量线性回归">
+<meta name="twitter:description" content="机器学习中一种经典的算法">
+<meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
 
 
 
@@ -97,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Hello World" height="28">
+                <img src="/images/logo.png" alt="机器学习笔记--单变量线性回归" height="28">
             
             </a>
         </div>
@@ -129,6 +130,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -144,24 +149,37 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记--单变量线性回归">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>Hello World
+                <i class="fas fa-angle-double-right"></i>机器学习笔记--单变量线性回归
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-24T09:40:30.940Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-24</time>
+                <time class="level-item has-text-grey" datetime="2019-04-25T00:16:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-25</time>
                 
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-26T09:51:49.369Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    1 分钟 读完 (大约 121 个字)
+                    1 分钟 读完 (大约 168 个字)
                 </span>
                 
                 
@@ -174,27 +192,33 @@
         </div>
         
         <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start<a href="post/hello-world#Quick-Start"></a></h2><h3 id="Create-a-new-post">Create a new post<a href="post/hello-world#Create-a-new-post"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server">Run server<a href="post/hello-world#Run-server"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files">Generate static files<a href="post/hello-world#Generate-static-files"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites<a href="post/hello-world#Deploy-to-remote-sites"></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+            <p>机器学习中一种经典的算法<br><a id="more"></a></p>
+<h1 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title=" 单变量线性回归 "></a><center> 单变量线性回归 </center></h1><h2 id="1、场景描述"><a href="#1、场景描述" class="headerlink" title="1、场景描述"></a>1、场景描述</h2><p>我们有关于房屋面积和房屋价格的数据集，现在想拟合<strong>一条直线</strong>通过房屋的面积来预测房屋价格。</p>
+<h2 id="2、概念介绍"><a href="#2、概念介绍" class="headerlink" title="2、概念介绍"></a>2、概念介绍</h2><h3 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h3><p>这里我们简单的假设该直线的方程为  </p>
+<p>$$h(x) = \Theta x$$</p>
+<p>其中x表示房屋的面积，h(x) 表示预测出的房价。有了这个假设函数我们就可以预测房价了。<br>那么参数$\Theta$应该怎么确定呢？这里我们需要用到代价函数。</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3>
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/hello-world/">Hello World</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/机器学习笔记--单变量线性回归/">机器学习笔记--单变量线性回归</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/hello-world/">http://VerbF.github.io/post/hello-world/</a></li>
-            <li><strong>发布时间：</strong>2019-04-24</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/机器学习笔记--单变量线性回归/">http://VerbF.github.io/post/机器学习笔记--单变量线性回归/</a></li>
+            <li><strong>发布时间：</strong>2019-04-25</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
         
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/线性回归/">线性回归</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -234,20 +258,6 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/测试blog/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">机器学习笔记--单变量线性回归</span>
-            </a>
-        </div>
-        
-        
-    </div>
-</div>
-
 
 
 </div>
@@ -265,11 +275,11 @@
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/c4eebc344d0ab7b961b468ae3cddffeb?s=96" alt="XiangShu Xi">
+                        <img class="image is-96x96 has-mb-6" src="https://www.gravatar.com/avatar/c4eebc344d0ab7b961b468ae3cddffeb?s=96" alt="Xi XiangShu">
                     
                     
                     <p class="is-size-4 is-block">
-                        XiangShu Xi
+                        Xi XiangShu
                     </p>
                     
                     
@@ -293,7 +303,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        1
                     </p>
                 </a>
             </div>
@@ -329,6 +339,37 @@
 
     
         
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#单变量线性回归">
+        <span class="has-mr-6">1</span>
+        <span> 单变量线性回归 </span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1、场景描述">
+        <span class="has-mr-6">1.1</span>
+        <span>1、场景描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#2、概念介绍">
+        <span class="has-mr-6">1.2</span>
+        <span>2、概念介绍</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#假设函数">
+        <span class="has-mr-6">1.2.1</span>
+        <span>假设函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#代价函数">
+        <span class="has-mr-6">1.2.2</span>
+        <span>代价函数</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
 
     
     
@@ -348,7 +389,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Hello World" height="28">
+                    <img src="/images/logo.png" alt="机器学习笔记--单变量线性回归" height="28">
                 
                 </a>
                 <p class="is-size-7">
