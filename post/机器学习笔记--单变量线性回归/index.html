@@ -16,7 +16,7 @@
 <meta property="og:description" content="机器学习中一种经典的算法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-04-26T14:35:18.617Z">
+<meta property="og:updated_time" content="2019-04-27T00:28:05.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记--单变量线性回归">
 <meta name="twitter:description" content="机器学习中一种经典的算法">
@@ -166,7 +166,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-25T00:16:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-25</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-26T14:35:18.617Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-26</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-27T00:28:05.701Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-27</time>
                 
                 
                 <div class="level-item">
@@ -179,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 分钟 读完 (大约 958 个字)
+                    6 分钟 读完 (大约 957 个字)
                 </span>
                 
                 
@@ -211,7 +211,7 @@
 <p>那么代价函数的最小值应该怎么求呢？在数学上有许多方法可以解决这个问题，这里我们使用梯度下降法来求代价函数的最小值。</p>
 <h1 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h1><p>下图是使用梯度下降法求解$\Theta$的步骤，开始时我们随机赋给$\Theta$一个初值，重复执行下面的步骤更新$\Theta$的值。执行一定次数，当$\Theta$的值基本不再变化时，我们就求出了$\Theta$的最后结果。</p>
 <p>$$\Theta = \Theta - \alpha\frac{\partial{J(\Theta)}}{\partial\Theta}$$</p>
-<p>其中关键的步骤是对代价函数求$\Theta$的偏导，这里礼仪理解为在求某一点的斜率。  </p>
+<p>其中关键的步骤是对代价函数求$\Theta$的偏导，这可以理解为在求某一点的斜率。  </p>
 <p>当$\Theta$的值大于最终结果时，$\Theta$的取值在最终结果的右边，对应点的斜率大于0，即求出的偏导值大于0，  $\Theta$减去一个大于0的数变小。  </p>
 <p>当$\Theta$的值小于最终结果时，$\Theta$的取值在最终结果的左边，对应点的斜率小于0，即求出的偏导值小于0，  $\Theta$减去一个小于0的数后变大。</p>
 <p>当$\Theta$的值越接近最终结果时，导数越接近0，$\Theta$变化的速度也越慢。<br><img src="/images/ml_3.png" alt="ml_3">  </p>
