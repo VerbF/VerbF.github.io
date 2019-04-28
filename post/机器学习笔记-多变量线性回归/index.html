@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="本篇有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
+    <meta name="description" content="本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
 <meta name="keywords" content="机器学习,线性回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记--多变量线性回归">
 <meta property="og:url" content="http://VerbF.github.io/post/机器学习笔记-多变量线性回归/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="本篇有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
+<meta property="og:description" content="本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-04-28T12:56:04.735Z">
+<meta property="og:updated_time" content="2019-04-28T14:22:12.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记--多变量线性回归">
-<meta name="twitter:description" content="本篇有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
+<meta name="twitter:description" content="本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
 <meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
 
 
@@ -166,7 +166,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-28T10:45:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-28</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-28T12:56:04.735Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-28</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-04-28T14:22:12.081Z"><i class="far fa-calendar-check">&nbsp;</i>2019-04-28</time>
                 
                 
                 <div class="level-item">
@@ -179,7 +179,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 389 个字)
+                    6 分钟 读完 (大约 963 个字)
                 </span>
                 
                 
@@ -192,8 +192,8 @@
         </div>
         
         <div class="content">
-            <p>本篇有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。<br><a id="more"></a></p>
-<h1 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h1><h2 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h2><p>在多数时候我们的特征并不会只有一个。在预测房价的例子中，除了房屋的面积之外，房屋的房间数，楼层，房屋的年龄等也可以用于房价的预测。</p>
+            <p>本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。<br><a id="more"></a></p>
+<h1 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h1><p>在多数时候我们的特征并不会只有一个。在预测房价的例子中，除了房屋的面积之外，房屋的房间数，楼层，房屋的年龄等也可以用于房价的预测。</p>
 <table>
 <thead>
 <tr>
@@ -237,7 +237,7 @@ $$x^{(2)} = \begin{bmatrix}
 40
 \end{bmatrix}  \qquad x_3^{(2)} =1$$
 </p>
-<h2 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h2><p>因为特征的数量增加，假设函数也做出了相应的变化<br>$$h_\Theta(x) = \Theta_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + … + \Theta_nx_n $$<br>为了书写的方便，我们定义一个$\quad x_0=1 \quad$ 即 $(x_0^{(i)}=1)$<br>于是我们有 ：<br>$$h_\Theta(x) = \Theta_0x_1 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + … + \Theta_nx_n $$<br> 为进一步简化这个表达式，我们使用向量的方式来表示 ：<br> 
+<h1 id="假设函数"><a href="#假设函数" class="headerlink" title="假设函数"></a>假设函数</h1><p>因为特征的数量增加，假设函数也做出了相应的变化<br>$$h_\Theta(x) = \Theta_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + … + \Theta_nx_n $$<br>为了书写的方便，我们定义一个$\quad x_0=1 \quad$ 即 $(x_0^{(i)}=1)$<br>于是我们有 ：<br>$$h_\Theta(x) = \Theta_0x_1 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + … + \Theta_nx_n $$<br> 为进一步简化这个表达式，我们使用向量的方式来表示 ：<br> 
  $$X=\begin{bmatrix}
  x_0\\x_1\\x_2\\x_3\\...\\x_n
  \end{bmatrix}
@@ -249,12 +249,49 @@ $$x^{(2)} = \begin{bmatrix}
 <p>$$h_\Theta(x) = \underbrace{ \Theta_0x_1 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3 + … + \Theta_nx_n}_{\Theta^TX}<br> $$</p>
 <p>$$\Huge\Downarrow $$</p>
 <p> $$h_\Theta(x) = \Theta^TX$$  </p>
-<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>$$J(\Theta) = \frac{1}{2m}\sum_{i=1}^m(h_\Theta(x^{(i)}) - y^{(i)})$$</p>
-<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2>
+<h1 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h1><p>$$J(\Theta) = \frac{1}{2m}\sum_{i=1}^m(h_\Theta(x^{(i)}) - y^{(i)})$$</p>
+<h1 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h1>
 $$Repeat\left\{ \Theta_j = \Theta_j - \alpha\frac{\partial}{\partial\Theta_j}J(\Theta_0,...,\Theta_n) \right\} $$
   
-<p>需要注意的是，这里的$\Theta_j$需要同时更新</p>
-
+<p>需要注意的是，这里的$\Theta_j$需要同步更新</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">同步更新</th>
+<th style="text-align:center">异步更新</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">temp0 = $\alpha\frac{\partial}{\partial\Theta_0}J(\Theta_0,…,\Theta_n)$ <br>temp1 =  $\alpha\frac{\partial}{\partial\Theta_1}J(\Theta_0,…,\Theta_n)$ <br>$\Theta_0$ = temp0<br>$\Theta_1$ = temp1</td>
+<td style="text-align:center">temp0 = $\alpha\frac{\partial}{\partial\Theta_0}J(\Theta_0,…,\Theta_n)$ <br>$\Theta_0$ = temp0 <br>temp1 =  $\alpha\frac{\partial}{\partial\Theta_1}J(\Theta_0,…,\Theta_n)$<br>$\Theta_1$ = temp1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="特征缩放-Feature-Scaling"><a href="#特征缩放-Feature-Scaling" class="headerlink" title="特征缩放(Feature Scaling)"></a>特征缩放(Feature Scaling)</h1><p>确保特征的数值大小在相似的规模下，这样梯度下降法可以更快的收敛。<br>在做特征缩放时并不需要太精确，只是为了使梯度下降法更能快的收敛。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">缩放前</th>
+<th style="text-align:center">缩放后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$x_1 = size(0-2000 feet^2)$</td>
+<td style="text-align:center">$x_1 = \frac{size(feet^{2})}{2000} \,(0\leq x_1 \leq 1)$</td>
+</tr>
+<tr>
+<td style="text-align:center">$x_2=number \, of \, bedrooms(1-5)$</td>
+<td style="text-align:center">$x_1 = \frac{num \, of \, bedrooms}{5} \,(0\leq x_2 \leq 1)$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="均值归一化-Mean-normalization"><a href="#均值归一化-Mean-normalization" class="headerlink" title="均值归一化(Mean normalization)"></a>均值归一化(Mean normalization)</h2><p>特征缩放的一种方法<br>$$<br>x_1 \Rightarrow \frac{x_1 - \mu_1}{S_1}<br>$$<br>$\mu_1$ 表示训练集中特征$x_1$的平均值<br>$S_1$ 表示该特征值的范围（max - min）</p>
+<h1 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h1><p>多项式回归就是用线性回归的方式去拟合更复杂的函数，甚至是非线性的函数。</p>
+<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>如图所示，我们有两个特征，房子的临街宽度和垂直深度。但我们通常使用面积来表示房屋的大小。所以我们可以使用房屋的面积（临街宽度 x 垂直深度）作为一个特征。<br><img src="/images/ml_4.png" alt="ml_4"></p>
+<p>##拟合多项式<br>对于下图中的数据集，我们继续使用一次函数来拟合的话，效果并不太好。<br>如果使用二次函数来拟合的话，效果可能也不是特别好，因为我们知道，二次函数的图像（图中蓝色的线）在后面是一个下降的趋势，然而现实中房价并不会随着房屋面积的增加而减少。<br>所以这里我们可以使用三次函数（图中绿色的线）来拟合。<br><img src="/images/ml_5.png" alt="ml_5"><br>我们只要做一些简单的修改就可以将线性回归应用到多项式上。<br>$$h_\Theta(x)=\Theta_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3$$<br>$$\huge\Downarrow$$<br>$$h_\Theta(x)=\Theta_0 + \Theta_1size + \Theta_2(size)^2 + \Theta_3(size)^3\<br>$$<br>我们令<br>$$x_1=(size)\ x_2=(size)^2\ x_3=(size)^3$$<br>即可。<br>需要强调的是，在这种情况下<a href="#特征缩放-Feature-Scaling">特征缩放</a>就显得尤为重要。</p>
+<h1 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h1><h1 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h1>
         </div>
         
             <ul class="post-copyright">
@@ -417,26 +454,46 @@ $$Repeat\left\{ \Theta_j = \Theta_j - \alpha\frac{\partial}{\partial\Theta_j}J(\
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#多变量线性回归">
-        <span class="has-mr-6">1</span>
-        <span>多变量线性回归</span>
-        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#场景描述">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>场景描述</span>
         </a></li><li>
         <a class="is-flex" href="#假设函数">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>假设函数</span>
         </a></li><li>
         <a class="is-flex" href="#代价函数">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">3</span>
         <span>代价函数</span>
         </a></li><li>
         <a class="is-flex" href="#梯度下降">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">4</span>
         <span>梯度下降</span>
-        </a></li></ul></li></ul>
+        </a></li><li>
+        <a class="is-flex" href="#特征缩放-Feature-Scaling">
+        <span class="has-mr-6">5</span>
+        <span>特征缩放(Feature Scaling)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#均值归一化-Mean-normalization">
+        <span class="has-mr-6">5.1</span>
+        <span>均值归一化(Mean normalization)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#多项式回归">
+        <span class="has-mr-6">6</span>
+        <span>多项式回归</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#特征选择">
+        <span class="has-mr-6">6.1</span>
+        <span>特征选择</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#检验方法">
+        <span class="has-mr-6">7</span>
+        <span>检验方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#正规方程">
+        <span class="has-mr-6">8</span>
+        <span>正规方程</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
