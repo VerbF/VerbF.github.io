@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://VerbF.github.io/post/machine-learning-Andrew-Ng-ex1/</loc>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex1/</loc>
     
-    <lastmod>2019-05-01T06:42:08.939Z</lastmod>
+    <lastmod>2019-05-03T08:32:12.258Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/</loc>
+    
+    <lastmod>2019-05-03T08:30:32.425Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-multivariate-linear-regression.md/</loc>
+    
+    <lastmod>2019-05-03T08:30:29.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-univariate-linear-regression/</loc>
+    
+    <lastmod>2019-05-03T08:30:26.097Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://VerbF.github.io/about/index.html</loc>
     
-    <lastmod>2019-05-01T04:03:08.532Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</loc>
-    
-    <lastmod>2019-04-29T06:47:34.001Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</loc>
-    
-    <lastmod>2019-04-29T00:04:09.479Z</lastmod>
+    <lastmod>2019-05-01T04:05:01.298Z</lastmod>
     
   </url>
   

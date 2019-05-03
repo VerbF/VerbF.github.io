@@ -2,26 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>about - xxs&#39;s blog</title>
+<title>机器学习笔记（3）逻辑回归 - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="联系我Email:xixiangshu704@qq.com">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://VerbF.github.io/about/index.html">
+    <meta name="description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
+<meta name="keywords" content="机器学习,逻辑回归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习笔记（3）逻辑回归">
+<meta property="og:url" content="http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="联系我Email:xixiangshu704@qq.com">
+<meta property="og:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-01T04:05:01.298Z">
+<meta property="og:image" content="http://verbf.github.io/images/ml.png">
+<meta property="og:updated_time" content="2019-05-03T08:30:32.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="联系我Email:xixiangshu704@qq.com">
-<meta name="twitter:image" content="http://verbf.github.io/images/og_image.png">
+<meta name="twitter:title" content="机器学习笔记（3）逻辑回归">
+<meta name="twitter:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
+<meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
 
 
 
@@ -99,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="about" height="28">
+                <img src="/images/logo.png" alt="机器学习笔记（3）逻辑回归" height="28">
             
             </a>
         </div>
@@ -115,7 +116,7 @@
                 
                 <a class="navbar-item" href="/tags/">标签</a>
                 
-                <a class="navbar-item is-active" href="/about/">关于</a>
+                <a class="navbar-item" href="/about/">关于</a>
                 
             </div>
             
@@ -131,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -144,20 +149,74 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（3）逻辑回归">
+        </span>
+    </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>about
+                <i class="fas fa-angle-double-right"></i>机器学习笔记（3）逻辑回归
             
         </h1>
         
-        <div class="content">
-            <p><img src="../images/about.jpg" alt="about"><br><strong>联系我</strong><br>Email:<a href="mailto:xixiangshu704@qq.com" target="_blank" rel="noopener">xixiangshu704@qq.com</a></p>
-
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-03T08:20:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-03</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-03T08:30:32.425Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-03</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    几秒 读完 (大约 43 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
         </div>
         
+        <div class="content">
+            <p>在线性回归中我们需要预测的是连续的值，而在<strong>逻辑回归</strong>中我们需要预测的是离散值。<br><a id="more"></a></p>
+<h1 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h1>
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/">机器学习笔记（3）逻辑回归</a></li>
+            <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/">http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/</a></li>
+            <li><strong>发布时间：</strong>2019-05-03</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/逻辑回归/">逻辑回归</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -196,6 +255,20 @@
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-ex1/">
+                <span class="level-item">机器学习（吴恩达）作业（1）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
@@ -278,295 +351,31 @@
 
     
         
-
-    
-        
-
-
-    
-        
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/作业/" style="font-size: 10px;">作业</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/正规方程/" style="font-size: 13.33px;">正规方程</a> <a href="/tags/线性回归/" style="font-size: 16.67px;">线性回归</a> <a href="/tags/逻辑回归/" style="font-size: 10px;">逻辑回归</a>
-    </div>
-</div>
-
-
-    
-        <div class="card widget is-hidden-mobile">
+<div class="card widget column-left is-sticky" id="toc">
     <div class="card-content">
         <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/04/">
-                <span class="level-start">
-                    <span class="level-item">四月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#场景描述">
+        <span class="has-mr-6">1</span>
+        <span>场景描述</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
+
 
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-logistic-regression/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（3）逻辑回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T08:20:18.000Z">2019-05-03</time></div>
-                    <a href="/post/machine-learning-AndrewNg-logistic-regression/" class="has-link-black-ter is-size-6">机器学习笔记（3）逻辑回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-ex1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习（吴恩达）作业（1）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-30T12:59:48.000Z">2019-04-30</time></div>
-                    <a href="/post/machine-learning-AndrewNg-ex1/" class="has-link-black-ter is-size-6">机器学习（吴恩达）作业（1）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-multivariate-linear-regression.md/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（2）多变量线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T10:45:40.000Z">2019-04-28</time></div>
-                    <a href="/post/machine-learning-AndrewNg-multivariate-linear-regression.md/" class="has-link-black-ter is-size-6">机器学习笔记（2）多变量线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-univariate-linear-regression/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（1）单变量线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-25T00:16:19.000Z">2019-04-25</time></div>
-                    <a href="/post/machine-learning-AndrewNg-univariate-linear-regression/" class="has-link-black-ter is-size-6">机器学习笔记（1）单变量线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/学习/">
-            <span class="level-start">
-                <span class="level-item">学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
         
         </div>
     
 </div>
 
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-logistic-regression/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（3）逻辑回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-03T08:20:18.000Z">2019-05-03</time></div>
-                    <a href="/post/machine-learning-AndrewNg-logistic-regression/" class="has-link-black-ter is-size-6">机器学习笔记（3）逻辑回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-ex1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习（吴恩达）作业（1）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-30T12:59:48.000Z">2019-04-30</time></div>
-                    <a href="/post/machine-learning-AndrewNg-ex1/" class="has-link-black-ter is-size-6">机器学习（吴恩达）作业（1）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-multivariate-linear-regression.md/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（2）多变量线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-28T10:45:40.000Z">2019-04-28</time></div>
-                    <a href="/post/machine-learning-AndrewNg-multivariate-linear-regression.md/" class="has-link-black-ter is-size-6">机器学习笔记（2）多变量线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/post/machine-learning-AndrewNg-univariate-linear-regression/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（1）单变量线性回归">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-25T00:16:19.000Z">2019-04-25</time></div>
-                    <a href="/post/machine-learning-AndrewNg-univariate-linear-regression/" class="has-link-black-ter is-size-6">机器学习笔记（1）单变量线性回归</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/学习/">
-            <span class="level-start">
-                <span class="level-item">学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
             </div>
         </div>
     </section>
@@ -576,7 +385,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="about" height="28">
+                    <img src="/images/logo.png" alt="机器学习笔记（3）逻辑回归" height="28">
                 
                 </a>
                 <p class="is-size-7">
