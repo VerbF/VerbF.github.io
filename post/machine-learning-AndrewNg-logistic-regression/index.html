@@ -9,19 +9,19 @@
 
 
 
-    <meta name="description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
+    <meta name="description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。">
 <meta name="keywords" content="机器学习,逻辑回归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习笔记（3）逻辑回归">
 <meta property="og:url" content="http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
+<meta property="og:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-03T08:30:32.425Z">
+<meta property="og:updated_time" content="2019-05-03T12:36:51.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（3）逻辑回归">
-<meta name="twitter:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。">
+<meta name="twitter:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。">
 <meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
 
 
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-03T08:20:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-03</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-03T08:30:32.425Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-03T12:36:51.720Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-03</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    几秒 读完 (大约 43 个字)
+                    4 分钟 读完 (大约 571 个字)
                 </span>
                 
                 
@@ -194,8 +194,11 @@
         </div>
         
         <div class="content">
-            <p>在线性回归中我们需要预测的是连续的值，而在<strong>逻辑回归</strong>中我们需要预测的是离散值。<br><a id="more"></a></p>
-<h1 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h1>
+            <p>在线性回归中我们需要预测的是连续的值，而在<strong>逻辑回归</strong>中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。<br><a id="more"></a></p>
+<h2 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h2><p>线性回归有以下的应用场景，例如邮件的过滤，需要判断一封邮件是否是垃圾邮件。又或是肿瘤的诊断，需要判断肿瘤是良性或是恶性等等。  </p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>应该如何构建一个分类算法呢？<br>先来看看将我们前面所学的<strong>线性回归</strong>直接应用到分类问题中会怎么样。<br>在肿瘤的例子中，我们选择肿瘤的大小这一特征来预测肿瘤是良性还是恶性。  </p>
+<p>我们这里定义 $y\in \left\{ 0,1 \right\}$  ,  0 代表良性肿瘤，1 代表恶性肿瘤。<br>下图中我们有几个正例和反例，且我们已经根据样本拟合出了一条假设函数的直线。我们将输出的阈值设为0.5，当假设函数的输出值大于等于0.5时，我们预测 y = 1  ，当输出值小于0.5时我们预测 y = 0。<br><img src="/images/ml_11.png" alt="ml_11"><br>根据这条直线我们可预测当肿瘤的size大于这一点（y=0.5时，直线上的点）时我们预测 y = 1，小于这一点时我们则预测 y = 0。这样看来这个假设函数可以很好的将正负样本区分开来，线性回归在分类的表现上似乎很不错，但是且慢，让我们看面的例子：<br><img src="/images/ml_12.png" alt="ml_12"><br>这里我们新增加了一个样本点，并且根据这个新的训练集拟合出了一个新的假设函数，该假设函数的图像如上方蓝色直线所示。从这条直线看来，分类的效果并不好，蓝色点左边的预测 y = 0，右边的预测为 y = 1 则它对相当一部分的样本点做出了错误的预测。<br>由此可见线性回归并不适合直接应用到分类的任务中。</p>
+
         </div>
         
             <ul class="post-copyright">
@@ -361,6 +364,10 @@
         <a class="is-flex" href="#场景描述">
         <span class="has-mr-6">1</span>
         <span>场景描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#基本概念">
+        <span class="has-mr-6">2</span>
+        <span>基本概念</span>
         </a></li></ul>
         </div>
     </div>
