@@ -18,7 +18,7 @@
 <meta property="og:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-03T12:36:51.720Z">
+<meta property="og:updated_time" content="2019-05-04T12:39:04.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（3）逻辑回归">
 <meta name="twitter:description" content="在线性回归中我们需要预测的是连续的值，而在逻辑回归中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-03T08:20:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-03</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-03T12:36:51.720Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-04T12:39:04.725Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-04</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    4 分钟 读完 (大约 571 个字)
+                    16 分钟 读完 (大约 2441 个字)
                 </span>
                 
                 
@@ -197,7 +197,53 @@
             <p>在线性回归中我们需要预测的是连续的值，而在<strong>逻辑回归</strong>中我们需要预测的是离散值。虽然该算法中有“回归”二字，但是做的是分类的问题。<br><a id="more"></a></p>
 <h2 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h2><p>线性回归有以下的应用场景，例如邮件的过滤，需要判断一封邮件是否是垃圾邮件。又或是肿瘤的诊断，需要判断肿瘤是良性或是恶性等等。  </p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>应该如何构建一个分类算法呢？<br>先来看看将我们前面所学的<strong>线性回归</strong>直接应用到分类问题中会怎么样。<br>在肿瘤的例子中，我们选择肿瘤的大小这一特征来预测肿瘤是良性还是恶性。  </p>
-<p>我们这里定义 $y\in \left\{ 0,1 \right\}$  ,  0 代表良性肿瘤，1 代表恶性肿瘤。<br>下图中我们有几个正例和反例，且我们已经根据样本拟合出了一条假设函数的直线。我们将输出的阈值设为0.5，当假设函数的输出值大于等于0.5时，我们预测 y = 1  ，当输出值小于0.5时我们预测 y = 0。<br><img src="/images/ml_11.png" alt="ml_11"><br>根据这条直线我们可预测当肿瘤的size大于这一点（y=0.5时，直线上的点）时我们预测 y = 1，小于这一点时我们则预测 y = 0。这样看来这个假设函数可以很好的将正负样本区分开来，线性回归在分类的表现上似乎很不错，但是且慢，让我们看面的例子：<br><img src="/images/ml_12.png" alt="ml_12"><br>这里我们新增加了一个样本点，并且根据这个新的训练集拟合出了一个新的假设函数，该假设函数的图像如上方蓝色直线所示。从这条直线看来，分类的效果并不好，蓝色点左边的预测 y = 0，右边的预测为 y = 1 则它对相当一部分的样本点做出了错误的预测。<br>由此可见线性回归并不适合直接应用到分类的任务中。</p>
+<p>我们这里定义 $y\in \left\{ 0,1 \right\}$  ,  0 代表良性肿瘤，1 代表恶性肿瘤。<br>下图中我们有几个正例和反例，且我们已经根据样本拟合出了一条假设函数的直线。我们将输出的阈值设为0.5，当假设函数的输出值大于等于0.5时，我们预测 y = 1  ，当输出值小于0.5时我们预测 y = 0。<br><img src="/images/ml_11.png" alt="ml_11"><br>根据这条直线我们可预测当肿瘤的size大于这一点（y=0.5时，直线上的点）时我们预测 y = 1，小于这一点时我们则预测 y = 0。这样看来这个假设函数可以很好的将正负样本区分开来，线性回归在分类的表现上似乎很不错，但是且慢，让我们看下面的例子：<br><img src="/images/ml_12.png" alt="ml_12"><br>这里我们新增加了一个样本点，并且根据这个新的训练集拟合出了一个新的假设函数，该假设函数的图像如上方蓝色直线所示。从这条直线看来，分类的效果并不好，蓝色点左边的预测 y = 0，右边的预测为 y = 1 则它对相当一部分的样本点做出了错误的预测。<br>由此可见线性回归并不适合直接应用到分类的任务中。  </p>
+<h2 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h2><p>其实我们稍作修改就可以将线性回归应用到分类问题中。<br>我们需要给定一个新的假设函数，这个新的假设函数输出的值应该在0到1之间（$0\leq h_\theta\leq1$）。下面我们给出新的假设函数的定义：<br>$$h_\theta(x)=g(\Theta^Tx)$$<br>$$\huge\qquad\Downarrow \normalsize Z=\Theta X$$<br>$$h_\theta(x)=g(Z)=\frac{1}{1+e^{-Z}}=\frac{1}{1+e^{-\Theta X}}$$<br>其中$g(Z) = \frac{1}{1+e^{-Z}}$是对数几率函数，它单调可微，是一种“Sigmoid 函数”它将Z值转化为一个接近 0 或 1 的 y 值，并且其输出值在 Z = 0 附近变化很陡。<br>注：Sigmoid 函数即形似 S 的函数，对率函数是 Sigmoid 函数最重要的代表<br><img src="/images/ml_13.png" alt="ml_13"><br>假设函数的解释<br>$h_\theta(x)=$输入一个 x，给出 y = 1 的概率估计。<br>例：当 $x = \begin{bmatrix}x_0\\ x_1\end{bmatrix} = \begin{bmatrix}1\\ tumor\,size\end{bmatrix}$时，$h_\theta(x) =0.7$<br>我们可以说，有70%的概率肿瘤是恶性的。  </p>
+<h2 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h2><p><img src="/images/ml_13.png" alt="ml_13"><br>从上面 Sigmoid 函数的图像可以看出，当我们将假设函数的阈值设为 0.5 时，Z的值在 0 处便成为了一个分界点。<br>当$h_\theta \geq0.5$ , 我们预测 y = 1<br>当$h_\theta &lt;0.5$ , 我们预测 y = 0<br>即<br>当$Z \geq 0$ , 我们预测 y = 1<br>当$Z &lt; 0$ , 我们预测 y = 0  </p>
+<p>假设我们有一个如下图所示的一个训练集  </p>
+  <div align="center"><img src="/images/ml_14.png" alt="ml_14"></div>  
+
+<p>我们有了以下的假设函数，并已经拟合出了参数$\Theta$<br>$$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$$<br>$$\Huge\Downarrow\normalsize \Theta=\begin{bmatrix} -3 \\ 1 \\ 1 \end{bmatrix}$$<br>$$h_\theta(x)=g(-3+x_1+x_2)$$<br>那么，我们可以预测<br>当 $-3+x_1+x_2\geq0$时， y = 1<br>当 $-3+x_1+x_2&lt;0 $时， y = 0<br>这里可以看出$x_1+x_2=3$ 可以作为预测的分界线，接着我们在图中做出关于$x_1,x_2$的图像，即图中红色的线。我们将这个线称为“决策边界”<br>   <div align="center"><img src="/images/ml_15.png" alt="ml_15"></div><br>假设函数的不同，得到的决策边界也不尽相同。当假设函数变得复杂时，我们也可以得到非线性的决策边界。<br>比如下面的例子<br>  <div align="center"><img src="/images/ml_16.png" alt="ml_16"></div><br>$$h_\theta(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$$<br>$$\huge\Downarrow\normalsize \Theta =\begin{bmatrix}-1 \\ 0 \\ 0 \\ 1 \\ 1 \end{bmatrix}$$<br>$$h_\theta(x)=g(-1+x_1^2+x_2^2)$$<br>我们可以得到决策边界 $x_1^2+x_2^2=1$<br>  <div align="center"><img src="/images/ml_17.png" alt="ml_17"></div><br>当假设函数更复杂的话，我们可以得到更加有趣的决策边界：<br>  <div align="center"><img src="/images/ml_18.png" alt="ml_18"></div>  </p>
+<p>需要注意的是，决策边界不是训练集的属性，而是假设函数本身及其参数的属性。只要给定了参数向量$\Theta$，决策边界就决定了。<br>我们不是用训练集来定义决策边界，而是用训练集来拟合参数$\Theta$  </p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>既然我们有了假设函数，那么我们就需要通过代价函数拟合出参数$\Theta$的值。<br>我们再来回顾一下线性回归的大家函数，并对其的表示方法做一些改进：<br>$$\Large J(\Theta)=\frac{1}{2m}\sum_{i=1}^{m}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}$$<br>$$\Huge\Downarrow$$<br>$$\Large J(\Theta)=\frac{1}{m}\sum_{i=1}^{m}\underbrace{\frac{1}{2}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}}$$<br>$$\qquad\qquad\qquad\qquad\Huge\Downarrow$$<br>$$\Large cost(h_\theta(x),y) = \frac{1}{2}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}$$  </p>
+<p>如果直接将假设函数带入到这个代价函数中的话，即令<br>$\Large h_\theta(x)=\frac{1}{1+e^{-\Theta X}}$<br>我们将会得到一个非凸优化问题。而这并不是我们想看到的。<br>所以我们需要一个新的代价函数。  </p>
+<p>逻辑回归的代价函数  </p>
+<p>$$ \Large cost(h_\theta) =\left{<br>\begin{aligned}<br>-log(h_\theta(x)) \qquad y=1 \<br>-log(1-h_\theta(x)) \qquad y=0<br>\end{aligned}<br>\right.<br>$$<br>为了更加直观的了解逻辑回归的代价函数我们将其的图像画出：<br>当 y = 1 时,从下图中可看出，<br>若$h_\theta(x)=1$  , cost = 0<br>若$h_\theta(x)=0$  , cost -&gt; $\infty$<br>也就是说，当真值为 1 时，而我们很肯定的预测它为 0 ，那么我们就使用很大的代价来“惩罚”这个算法</p>
+  <div align="center"> <img src="/images/ml_19.png" alt="ml_19"></div><br>当 y = 0 时,从下图中可看出，<br>若$h_\theta(x)=0$  , cost = 0<br>若$h_\theta(x)=1$  , cost -&gt; $\infty$<br><br>同样的，当真值为 0 时，而我们很肯定的预测它为 1 ，那么我们就使用很大的代价来“惩罚”这个算法<br>  <div align="center"><img src="/images/ml_20.png" alt="ml_20"></div>
+
+<p>这样我们就了解了这个代价函数的作用，当这个表示方法并不方便，我们需要根据 y 的值来决定使用哪个表达式。其实我们将其写进一个表达式中：<br>$$cost(h_\theta(x),y)=-ylog(h_\theta(x))-(1-y)log(1-h_\theta(x))$$<br>可以验证，这个表达式和原来的表达式是等价的。  </p>
+<p>我们写出代价函数的完整表达式<br>$$\Large J(\theta) = \frac{1}{m}cost(h_\theta(x),y)<br>$$<br>$$\Huge \Downarrow$$<br>$$\Large J(\theta) = -\frac{1}{m}y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))<br>$$</p>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>直接给出梯度下降的公式<br>
+$$repeat\left\{\Theta_j = \Theta_j-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)} \right\}$$  
+<br>这里仍需要同时更新所有的$\Theta_j$<br>认真的读者可以发现，这个梯度下降的公式和线性回归的公式是一样的，但实际上它们并不相同，因为此处的假设函数的定义已经改变了。</p>
+<h2 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h2><p>除了梯度下降法之外还需许多别的算法可以用来拟合参数，比如说  </p>
+<ul>
+<li>Conjugate gradient</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+</ul>
+<p>这些算法相比于梯度下降法有如下<strong>优点</strong>：</p>
+<ul>
+<li>无需选择血虚率</li>
+<li>比梯度下降法更快  </li>
+</ul>
+<p>不可避免的也有<strong>缺点</strong>：</p>
+<ul>
+<li>更加复杂难懂  </li>
+</ul>
+<p>这些算法内有一个智能内循环，称之为线搜索算法，它可以自动尝试不同的学习率，并自动选择一个好的学习率，甚至可以为每次迭代选择不同的学习率。  </p>
+<p>因为这些算法较复杂，在不了解其细节的情况下使用，可能会使模型的调试更加不透明一些，但在处理大规模的机器学习问题时，仍倾向于使用这些算法，而不是梯度下降算法。</p>
+<h2 id="多分类问题"><a href="#多分类问题" class="headerlink" title="多分类问题"></a>多分类问题</h2><p>上面我们讲的都是二元分类问题，有时我们还会遇到多分元类的问题。<br>如：</p>
+<ul>
+<li>邮件分类问题，学习，工作，家庭，朋友等等</li>
+<li>病情诊断，健康 感冒 发烧等</li>
+<li><p>天气预测晴天，多云，下雨，下雪等  </p>
+<p><div align="center"><img src="/images/ml_21.png" alt="ml_21">  </div></p>
+</li>
+</ul>
+<p>如图所示，我们的训练集中有三种类别的样本。我们可以为每一种类别构建一个分类器来实现多元分类。  </p>
+<p>首先我们创建一个新的训练集，将三角形设为正类，其它两类设为负类，根据这个训练集构建一个分类器。其余两类如此构建各自的分类器。  </p>
+<p>这样我们对每一种类别都有了各自的分类器，当输入新的 X 时，我们用所有的分类器对其进行预测，输出概率最高的一个（$max\, h(\theta^i(x)$)），便是最终的结果。</p>
 
         </div>
         
@@ -368,6 +414,30 @@
         <a class="is-flex" href="#基本概念">
         <span class="has-mr-6">2</span>
         <span>基本概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#逻辑回归模型">
+        <span class="has-mr-6">3</span>
+        <span>逻辑回归模型</span>
+        </a></li><li>
+        <a class="is-flex" href="#决策边界">
+        <span class="has-mr-6">4</span>
+        <span>决策边界</span>
+        </a></li><li>
+        <a class="is-flex" href="#代价函数">
+        <span class="has-mr-6">5</span>
+        <span>代价函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#梯度下降">
+        <span class="has-mr-6">6</span>
+        <span>梯度下降</span>
+        </a></li><li>
+        <a class="is-flex" href="#优化算法">
+        <span class="has-mr-6">7</span>
+        <span>优化算法</span>
+        </a></li><li>
+        <a class="is-flex" href="#多分类问题">
+        <span class="has-mr-6">8</span>
+        <span>多分类问题</span>
         </a></li></ul>
         </div>
     </div>
