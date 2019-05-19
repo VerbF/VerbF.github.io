@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>机器学习（吴恩达）作业（2） - xxs&#39;s blog</title>
+<meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
+<meta name="baidu-site-verification" content="kiW8mtzpnZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="在这个练习中，我们将实现逻辑回归算法，并将它应用到两个不同的数据集中。">
+<meta name="keywords" content="机器学习,作业,逻辑方程,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习（吴恩达）作业（2）">
+<meta property="og:url" content="http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/index.html">
+<meta property="og:site_name" content="xxs&#39;s blog">
+<meta property="og:description" content="在这个练习中，我们将实现逻辑回归算法，并将它应用到两个不同的数据集中。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://verbf.github.io/images/ml.png">
+<meta property="og:updated_time" content="2019-05-19T12:37:03.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习（吴恩达）作业（2）">
+<meta name="twitter:description" content="在这个练习中，我们将实现逻辑回归算法，并将它应用到两个不同的数据集中。">
+<meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="机器学习（吴恩达）作业（2）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Verb GitHub" href="https://www.github.com/VerbF">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/ml.png" alt="机器学习（吴恩达）作业（2）">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>机器学习（吴恩达）作业（2）
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-17T06:20:58.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-17</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-19T12:37:03.923Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-19</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    13 分钟 读完 (大约 1939 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>在这个练习中，我们将实现逻辑回归算法，并将它应用到两个不同的数据集中。<br><a id="more"></a></p>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><p>在这部分的练习中，你将创建一个逻辑回归的模型去预测某个学生能否进入大学。<br>假定你是大学招生办的主任，你想要通过两次测验的结果来决定申请人是否能获得入学资格。</p>
+<p>你已经有了前面的申请人的历史数据，你可以将它作为逻辑回归的训练集数据。每一个训练样本中包括申请人两次测验的分数和是否获得了入学资格。</p>
+<p>你的任务是建立一个分类模型使用申请人在两次测验的分数给出其能否入学的可能性。</p>
+<h3 id="可视化数据"><a href="#可视化数据" class="headerlink" title="可视化数据"></a>可视化数据</h3><p>如果可以的话，在实现任何学习算法之前先对数据进行可视化。<br>我们需要实现 plotData 函数来载入数据并将其可视化。<br>最后的结果应该如下图所示，两个坐标轴是两次测验的分数，并且正例和反例应该用不同的标记符号。  </p>
+<p><a href="/images/ml_25.png">ml_25</a> </p>
+<p>实现代码</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loadData</span><span class="hljs-params">(file_path)</span>:</span> </span><br><span class="line">    count = len(open(file_path,<span class="hljs-string">'rU'</span>).readlines())</span><br><span class="line">    data = np.zeros(shape=(count,<span class="hljs-number">3</span>),dtype=float) </span><br><span class="line">    index = <span class="hljs-number">0</span>  </span><br><span class="line">    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> open(file_path):</span><br><span class="line">        <span class="hljs-comment"># 根据逗号的位置取出数据</span></span><br><span class="line">        <span class="hljs-comment"># 读出的数据为字符串格式，需要转换为float格式</span></span><br><span class="line">        s1 = float(row[<span class="hljs-number">0</span>:row.index(<span class="hljs-string">','</span>)<span class="hljs-number">-1</span>])</span><br><span class="line">        s2 = float(row[row.index(<span class="hljs-string">','</span>)+<span class="hljs-number">1</span>:len(row)<span class="hljs-number">-3</span>])</span><br><span class="line">        label = int( row[len(row)<span class="hljs-number">-2</span>])</span><br><span class="line">        data[index][<span class="hljs-number">0</span>] = s1</span><br><span class="line">        data[index][<span class="hljs-number">1</span>] = s2</span><br><span class="line">        data[index][<span class="hljs-number">2</span>] = label</span><br><span class="line">        index+=<span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plotData</span><span class="hljs-params">(data,x_label,y_label)</span>:</span></span><br><span class="line">    <span class="hljs-comment"># 根据第三列的数据分为两部分显示</span></span><br><span class="line">    data_0 = data[data[:,<span class="hljs-number">2</span>]==<span class="hljs-number">0</span>]</span><br><span class="line">    data_1 = data[data[:,<span class="hljs-number">2</span>]==<span class="hljs-number">1</span>]</span><br><span class="line"> </span><br><span class="line">    X_0 = data_0[:,<span class="hljs-number">0</span>]</span><br><span class="line">    y_0 = data_0[:,<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">    X_1 = data_1[:,<span class="hljs-number">0</span>]</span><br><span class="line">    y_1 = data_1[:,<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    plt.scatter(X_0,y_0,marker=<span class="hljs-string">'o'</span>)</span><br><span class="line">    plt.scatter(X_1,y_1,marker=<span class="hljs-string">'v'</span>)</span><br><span class="line">    plt.xlabel(x_label)</span><br><span class="line">    plt.ylabel(y_label)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h4><p>当你在开始实现代价函数之前，回忆一下逻辑回归的假设函数：</p>
+<p>$$<br>\large h_\theta(x)=g(\theta^TX)<br>$$<br>其中 g 函数 就是 sigmoid 函数，sigmoid 函数的定义：<br>$$<br>\large g(z) = \frac{1}{1+e^{-z}}<br>$$</p>
+<p>你的第一步是实现 sigmoid 函数，当你完成编码之后，最好测试一下你实现的 sigmoid 函数。当你使用很大的整数来测试时，返回的值应该趋向于 1 ，使用很大的负数时，返回的值应该趋向于 0 。使用 0 来测试时，得到的值应该是 0.5 。你实现的函数应该也可以适用于向量和矩阵。对于矩阵类型的参数，你的函数应该对矩阵中的每一个值进行计算。</p>
+<h3 id="代价函数和梯度"><a href="#代价函数和梯度" class="headerlink" title="代价函数和梯度"></a>代价函数和梯度</h3><p>现在你将实现代价函数和梯度的计算。<br>逻辑回归中的代价函数：</p>
+
+$$
+\Large J(\theta) = -\frac{1}{m}y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))
+$$
+
+<p>代价的梯度是一个与参数 $\theta$ 有着同样长度的向量，第 j 个元素的定义如下：<br>$$<br>\large<br>\frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m}\sum_{i=1}^{m}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}x_j^{(i)}<br>$$</p>
+<p>需要注意的是，梯度的公式看起来与线性回归的公式是相同的，但因为假设函数的不同其实质是不同的。<br>当你实现 costFunction 函数之后使用初值为0的参数$\theta$计算初始的代价值,得到的结果应该是 0.693</p>
+<h3 id="优化参数"><a href="#优化参数" class="headerlink" title="优化参数"></a>优化参数</h3><p>原作业中使用 octave 的 fminunc 函数来优化参数 $\theta$ , 这里我们使用 python scipy 库中的 optimize 函数来优化。</p>
+<p>在这个函数中会调用你写好的 costFunction 函数来优化参数，optimize 函数给出的最后结果应该是：cost 约等于 0.203。<br>最后得到的 $\theta$ 值将会用来绘制决策边界，如下图所示：<br><a href="../images/ml_26.png">ml_26</a></p>
+<h3 id="评估逻辑回归"><a href="#评估逻辑回归" class="headerlink" title="评估逻辑回归"></a>评估逻辑回归</h3><p>在学习参数之后，你可以使用这个模型去预测一个学生能否获得入学资格。<br>如果一个学生测试1的分数为45，而测试而的分数为85，那么他获得入学资格的可能性应该为 0.776。<br>另一个评估我们得到的参数的方式是模型在训练集上预测的结果如何。这里我们需要实现 predict 函数。<br>如果一切正常的话，我们得到的在训练集上的准确率是0.89。</p>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 预测函数</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">predict</span><span class="hljs-params">(theta,X)</span>:</span></span><br><span class="line">    p = sigmoid(X.dot(theta))</span><br><span class="line">    p = np.where(p &gt; <span class="hljs-number">0.5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)</span><br><span class="line">    p = p.reshape(len(p),<span class="hljs-number">1</span>)</span><br><span class="line">    <span class="hljs-keyword">return</span> p</span><br><span class="line"><span class="hljs-comment"># Compute accuracy on our training set</span></span><br><span class="line">p = predict(theta, X) </span><br><span class="line"></span><br><span class="line">print(<span class="hljs-string">'Train Accuracy: '</span>, np.mean(p == y) * <span class="hljs-number">100</span>)</span><br><span class="line">print(<span class="hljs-string">'Expected accuracy (approx): 89.0'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="正则化逻辑回归"><a href="#正则化逻辑回归" class="headerlink" title="正则化逻辑回归"></a>正则化逻辑回归</h2><p>在这部分的练习中，你将实现正则化的逻辑回归算法，并用它去预测制造工厂生产的芯片能否通过质量保证（QA）。在 QA 中，一块芯片需要通过多个测试以确保它能够正常工作。<br>假设你是工厂的产品经理，并且你有了一些芯片在两种不同测试中的结果。你将根据测试的结果来判断是否应该接受这批产品。为了帮助你做出决定，你可以使用过去的芯片的测试结果来建立一个逻辑回归模型。</p>
+<h3 id="可视化数据-1"><a href="#可视化数据-1" class="headerlink" title="可视化数据"></a>可视化数据</h3><p>与前面的练习相似，使用 plotdata 函数是数据可视化，如下图所示，坐标轴是两次测试的分数，正例（y = 1 ， 接受），反例（y = 0，拒绝）样本使用不同的符号显示。</p>
+<p>从上图中我们可以知道，我们的数据集中的正例和反例不能使用直线来分割。直接将逻辑回归应用在这个数据集中效果可能并不好，因为常规的逻辑回归只能得到线性的决策边界。</p>
+<h3 id="特征映射"><a href="#特征映射" class="headerlink" title="特征映射"></a>特征映射</h3><p>通过每个数据点来创造更多的特征可以更好的适应数据。在函数 mapFeature 中，我们将 x1 和 x2 映射到所有的 6 次多项式。</p>
+<p>$$<br>mapFeature(x) = \begin{bmatrix}<br>x_1 \ x_2 \ x_1^2 \ x_1x_2 \ x_2^2 \ x_1^3 \…\ x_1x_2^5 \x_2^6<br>\end{bmatrix}<br>$$</p>
+<p>我们将两个特征（在两个 QA 测试中的分数）转换成了 28 维的向量。一个逻辑回归的分类器在这样的高维向量上训练会得到更复杂的决策边界，当在 2 维的图像上绘制时，会呈现出非线性。<br>尽管特征映射可以使我们构建出更有表现力的分类器，但同时它也更容易过拟合。<br>在下一部分的联系中你将实现正则化的逻辑回归，同时你也可以看到正则化是如何作用在过拟合问题上的。</p>
+<h3 id="代价函数和梯度-1"><a href="#代价函数和梯度-1" class="headerlink" title="代价函数和梯度"></a>代价函数和梯度</h3><p>现在你将编码实现计算正则化逻辑回归的代价函数和梯度。<br>回忆一下逻辑回归中正则化的代价函数。<br>
+$$
+\large
+ J(\theta) = 
+ \Huge[ \large -\frac{1}{m}\sum_{i=1}^m  y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)})) \Huge]\large
+ + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2
+$$
+</p>
+<p>注意你无需正则化参数 $\theta_0$。<br>代价函数的梯度是一个向量，定义如下：<br>
+$$
+\large
+\frac{\partial J(\theta)}{\partial \theta_0} = -\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)} 
+\qquad \qquad for  \qquad j = 0\\
+\frac{\partial J(\theta)}{\partial \theta_j} = (\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)})
++\frac{\lambda}{m}\theta_j
+\qquad \qquad for \qquad j\not ={0}
+
+$$
+</p>
+<p>当你完成函数 costFunctionReg 时，使用初始化为 0 的参数 $\theta$ 得到的结果应该是0.693。</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/">机器学习（吴恩达）作业（2）</a></li>
+            <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/">http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/</a></li>
+            <li><strong>发布时间：</strong>2019-05-17</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/python/">python</a>,&nbsp;<a class="has-link-grey -link" href="/tags/作业/">作业</a>,&nbsp;<a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/逻辑方程/">逻辑方程</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-regularization/">
+                <span class="level-item">机器学习笔记（4）正则化</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="Xi XiangShu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Xi XiangShu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        翩若惊鸿，婉若游龙
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/VerbF" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#逻辑回归">
+        <span class="has-mr-6">1</span>
+        <span>逻辑回归</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#可视化数据">
+        <span class="has-mr-6">1.1</span>
+        <span>可视化数据</span>
+        </a></li><li>
+        <a class="is-flex" href="#实现">
+        <span class="has-mr-6">1.2</span>
+        <span>实现</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#sigmoid函数">
+        <span class="has-mr-6">1.2.1</span>
+        <span>sigmoid函数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#代价函数和梯度">
+        <span class="has-mr-6">1.3</span>
+        <span>代价函数和梯度</span>
+        </a></li><li>
+        <a class="is-flex" href="#优化参数">
+        <span class="has-mr-6">1.4</span>
+        <span>优化参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#评估逻辑回归">
+        <span class="has-mr-6">1.5</span>
+        <span>评估逻辑回归</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#正则化逻辑回归">
+        <span class="has-mr-6">2</span>
+        <span>正则化逻辑回归</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#可视化数据-1">
+        <span class="has-mr-6">2.1</span>
+        <span>可视化数据</span>
+        </a></li><li>
+        <a class="is-flex" href="#特征映射">
+        <span class="has-mr-6">2.2</span>
+        <span>特征映射</span>
+        </a></li><li>
+        <a class="is-flex" href="#代价函数和梯度-1">
+        <span class="has-mr-6">2.3</span>
+        <span>代价函数和梯度</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="机器学习（吴恩达）作业（2）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Xi XiangShu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="VerbF GitHub" href="https://www.github.com/VerbF">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

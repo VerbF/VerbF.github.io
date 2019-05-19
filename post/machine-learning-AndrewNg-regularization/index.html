@@ -18,7 +18,7 @@
 <meta property="og:description" content="正则化是解决过拟合问题的一种有效手段。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-05T07:21:22.752Z">
+<meta property="og:updated_time" content="2019-05-19T12:23:12.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（4）正则化">
 <meta name="twitter:description" content="正则化是解决过拟合问题的一种有效手段。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-05T02:28:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-05T07:21:22.752Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-05</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-19T12:23:12.691Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-19</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 758 个字)
+                    5 分钟 读完 (大约 765 个字)
                 </span>
                 
                 
@@ -244,10 +244,12 @@ $$
   
 <p>这时原来的方程<br>$$\large\Theta = (X^TX)^{-1}X^Ty$$<br>我们为其添加新的一项<br>$$\large \Theta = (X^TX \qquad<br>\underbrace{\lambda\begin{bmatrix}<br>0 &amp; … &amp; 0 \<br>… &amp; 1 &amp; … \<br>0 &amp; … &amp; 1 \<br>\end{bmatrix}}_{(n+1)*(n+1)})^{-1}X^Ty$$<br>这样就实现了正规方程的正则化。<br>By the way，当 $\lambda$ 大于0时，括号内的矩阵肯定是可逆的。</p>
 <h2 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h2><h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>在逻辑回归中代价函数也做了相应的变化<br>
-$$\large
- J(\theta) = -\frac{1}{m}y^{(i)}log(h_\theta(x^{(i)}))-(1-y^{(i)})log(1-h_\theta(x^{(i)}))
- + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2  
-$$  
+$$
+\large
+ J(\theta) = 
+ \Huge[ \large -\frac{1}{m}\sum_{i=1}^m  y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)})) \Huge]\large
+ + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2
+$$
 </p>
 <h3 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h3>
 $$ \Large repeat\left\{
@@ -323,6 +325,13 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/post/machine-learning-AndrewNg-ex2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">机器学习（吴恩达）作业（2）</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-logistic-regression/">
@@ -379,7 +388,7 @@ $$
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        5
+                        6
                     </p>
                 </a>
             </div>
@@ -399,7 +408,7 @@ $$
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        8
                     </p>
                 </a>
             </div>
