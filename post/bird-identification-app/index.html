@@ -2,27 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>机器学习笔记（4）正则化 - xxs&#39;s blog</title>
+<title>基于 Mask R-CNN 的鸟类识别 app - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="正则化是解决过拟合问题的一种有效手段。">
-<meta name="keywords" content="机器学习,正则化">
+    <meta name="description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
+<meta name="keywords" content="深度学习,Mask R-CNN,鸟类识别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习笔记（4）正则化">
-<meta property="og:url" content="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/index.html">
+<meta property="og:title" content="基于 Mask R-CNN 的鸟类识别 app">
+<meta property="og:url" content="http://VerbF.github.io/post/bird-identification-app/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="正则化是解决过拟合问题的一种有效手段。">
+<meta property="og:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-19T12:23:12.691Z">
+<meta property="og:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
+<meta property="og:updated_time" content="2019-05-21T13:04:57.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习笔记（4）正则化">
-<meta name="twitter:description" content="正则化是解决过拟合问题的一种有效手段。">
-<meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
+<meta name="twitter:title" content="基于 Mask R-CNN 的鸟类识别 app">
+<meta name="twitter:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
+<meta name="twitter:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
 
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="机器学习笔记（4）正则化" height="28">
+                <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（4）正则化">
+            <img class="thumbnail" src="/images/bird_identification_app/thumbnail.jpg" alt="基于 Mask R-CNN 的鸟类识别 app">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>机器学习笔记（4）正则化
+                <i class="fas fa-angle-double-right"></i>基于 Mask R-CNN 的鸟类识别 app
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-05T02:28:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-05</time>
+                <time class="level-item has-text-grey" datetime="2019-05-21T03:04:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-21</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-19T12:23:12.691Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-19</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-21T13:04:57.643Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-21</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 765 个字)
+                    3 分钟 读完 (大约 481 个字)
                 </span>
                 
                 
@@ -194,81 +194,30 @@
         </div>
         
         <div class="content">
-            <p>正则化是解决过拟合问题的一种有效手段。<br><a id="more"></a></p>
-<h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p>定义：如果我们有太多的特征，这时训练出的假设能很好地拟合训练集（代价函数的值约等于0），当不能很好地泛化到新的样本中。泛化是指一个假设模型应用到新样本的能力。  </p>
-<p>  <img src="/images/ml_22.png" alt="图一是欠拟合，图三是过拟合"></p>
-<p>解决过拟合</p>
-<ol>
-<li>减少特征的数量<ul>
-<li>人工选择需要保留的特征</li>
-<li>模型选择算法</li>
-</ul>
-</li>
-<li>正则化<ul>
-<li>保留所有特征，减小参数$\theta$的值</li>
-<li>当我们有很多特征，且或多或少都对预测 y 有影响，正则化也可以工作的很好  </li>
-</ul>
-</li>
-</ol>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>  <img src="/images/ml_23.png" alt="ml_23.png"></p>
-<p>我们给代价函数新增了两项，并给 $\theta_3$ 和 $\theta_4$加上很大的系数，这样为了让代价函数的值最小，$\theta_3$ 和 $\theta_4$的值就会趋近与 0。最后的效果就好像我们在假设函数中直接去掉了这两项一样。  </p>
-<p>$$\Large Features:x_1,x_2,…,x_{100} $$<br>$$\Large Parameters:\theta_0,\theta_1,\theta_2,…,\theta_{100}$$<br>事实上，我们的问题中可能会有很多特征，但事先我们不知道该选择哪一个来缩小它们的值，所以我们需要缩小所有的值。<br>如此，代价函数需要作出这样的修改：<br>$$<br>\Large J(\Theta)=\frac{1}{2m}<br>\Huge[<br>\Large\sum_{i=1}^{m}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}+<br>\lambda\sum_{i=2}^m\theta_j^2<br>\Huge]<br>$$<br>其中 $\lambda\sum_{i=2}^m\theta_j^2$ 是正则项，$\lambda$ 是正则化参数。  </p>
-<p>当我们的正则化参数 $\lambda$ 设置的过大时，可能会造成欠拟合的情况。因为此时的参数 $\theta_j$ 都已经趋近于 0。  </p>
-<p>  <img src="/images/ml_24.png" alt="ml_24"></p>
-<h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3>
-$$ \Large repeat\left\{
-\begin{aligned}
-\Theta_0 = \Theta_0-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)} \qquad \qquad\\
-\Theta_j = \Theta_j-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}
-+\frac{\lambda}{m}\theta_j
-, j\not ={0}
-\end{aligned}
-\right\}
-$$  
- 
-<p>这里我们的 $\theta_0$ 并不需要正则化。</p>
-<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3>
-$$\large
-X = \underbrace{\begin{bmatrix}
-(x^{(1)})^T\\
-(x^{(2)})^T\\
-(x^{(3)})^T\\
-....\\
-(x^{(m)})^T\\
-\end{bmatrix}}_{m * (n+1)}
-\qquad
-y = \begin{bmatrix}
-y^{(0)} \\ y^{(1)} \\ y^{(2)} \\ ... \\ y^{(3)}
-\end{bmatrix} \qquad
-$$
-  
-<p>这时原来的方程<br>$$\large\Theta = (X^TX)^{-1}X^Ty$$<br>我们为其添加新的一项<br>$$\large \Theta = (X^TX \qquad<br>\underbrace{\lambda\begin{bmatrix}<br>0 &amp; … &amp; 0 \<br>… &amp; 1 &amp; … \<br>0 &amp; … &amp; 1 \<br>\end{bmatrix}}_{(n+1)*(n+1)})^{-1}X^Ty$$<br>这样就实现了正规方程的正则化。<br>By the way，当 $\lambda$ 大于0时，括号内的矩阵肯定是可逆的。</p>
-<h2 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h2><h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>在逻辑回归中代价函数也做了相应的变化<br>
-$$
-\large
- J(\theta) = 
- \Huge[ \large -\frac{1}{m}\sum_{i=1}^m  y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)})) \Huge]\large
- + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2
-$$
-</p>
-<h3 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h3>
-$$ \Large repeat\left\{
-\begin{aligned}
-\Theta_0 = \Theta_0-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)} \qquad \qquad\\
-\Theta_j = \Theta_j-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}
-+\frac{\lambda}{m}\theta_j
-, j\not ={0}
-\end{aligned}
-\right\}
-$$  
+            <p>一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。<br><a id="more"></a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这时博主的毕设的课题，时间紧迫加上自身能力所限，最后的作品还有很多不足，还望各位不吝指正。<br>代码已经上传到了 <a href="https://github.com/VerbF/Bird_Identification_App" target="_blank" rel="noopener">github</a>,并附上了详细的使用说明。<br>先放一下效果图  </p>
+<p><img src="/images/bird_identification_app/1.png" alt="1.png"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>整个系统包括用户端和服务端两部分。用户端通过 http 协议将待识别的鸟类图片上传到服务端，服务端再将识别后的图片和鸟类信息返回给用户端。</p>
+<p>鸟类识别由 Mask R-CNN 框架训练出的模型完成。  </p>
+<p><img src="/images/bird_identification_app/3.png" alt="系统流程图"></p>
+<h2 id="鸟类识别"><a href="#鸟类识别" class="headerlink" title="鸟类识别"></a>鸟类识别</h2><p>博主标注了 5 类，共 300 张鸟类图片，使用 Mask R-CNN 框架进行训练，得到了识别鸟类的模型。</p>
+<p>5 种鸟类的图片  </p>
+<p><img src="/images/bird_identification_app/6.png" alt="6.png"></p>
+<p>平均准确率的统计图  </p>
+<p><img src="/images/bird_identification_app/2.png" alt="2.png"></p>
+<h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><p>用户端运行在安卓系统上，包括图片的选择，图片的裁剪，图片的上传，以及识别结果的显示等功能。  </p>
+<p><img src="/images/bird_identification_app/4.png" alt="用户端流程图"></p>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端采用Python编程语言进行编写，服务端完成了接收用户端上传图片，识别图片，从数据库中查询鸟类的信息，将识别的结果回传到用户端等功能。  </p>
+<p>服务端使用了 flask web 应用框架。<br>执行 server.py 脚本后服务启动，当服务端接收到用户端上传的鸟类图片时将会调用 detect.py 脚本，脚本调用模型对鸟类进行识别。</p>
+<p><img src="/images/bird_identification_app/5.png" alt="服务端流程图"></p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/">机器学习笔记（4）正则化</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">基于 Mask R-CNN 的鸟类识别 app</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/">http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/</a></li>
-            <li><strong>发布时间：</strong>2019-05-05</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">http://VerbF.github.io/post/bird-identification-app/</a></li>
+            <li><strong>发布时间：</strong>2019-05-21</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -279,7 +228,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/正则化/">正则化</a>
+                    <a class="has-link-grey -link" href="/tags/Mask-R-CNN/">Mask R-CNN</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/鸟类识别/">鸟类识别</a>
                 </div>
             </div>
         </div>
@@ -325,17 +274,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/machine-learning-AndrewNg-ex2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">机器学习（吴恩达）作业（2）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-logistic-regression/">
-                <span class="level-item">机器学习笔记（3）逻辑回归</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-ex2/">
+                <span class="level-item">机器学习（吴恩达）作业（2）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -431,38 +373,26 @@ $$
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#过拟合">
+        <a class="is-flex" href="#前言">
         <span class="has-mr-6">1</span>
-        <span>过拟合</span>
+        <span>前言</span>
         </a></li><li>
-        <a class="is-flex" href="#正则化">
+        <a class="is-flex" href="#概述">
         <span class="has-mr-6">2</span>
-        <span>正则化</span>
+        <span>概述</span>
         </a></li><li>
-        <a class="is-flex" href="#线性回归的正则化">
+        <a class="is-flex" href="#鸟类识别">
         <span class="has-mr-6">3</span>
-        <span>线性回归的正则化</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#梯度下降">
-        <span class="has-mr-6">3.1</span>
-        <span>梯度下降</span>
+        <span>鸟类识别</span>
         </a></li><li>
-        <a class="is-flex" href="#正规方程">
-        <span class="has-mr-6">3.2</span>
-        <span>正规方程</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#逻辑回归的正则化">
+        <a class="is-flex" href="#用户端">
         <span class="has-mr-6">4</span>
-        <span>逻辑回归的正则化</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#代价函数">
-        <span class="has-mr-6">4.1</span>
-        <span>代价函数</span>
+        <span>用户端</span>
         </a></li><li>
-        <a class="is-flex" href="#梯度下降-1">
-        <span class="has-mr-6">4.2</span>
-        <span>梯度下降</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#服务端">
+        <span class="has-mr-6">5</span>
+        <span>服务端</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -486,7 +416,7 @@ $$
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="机器学习笔记（4）正则化" height="28">
+                    <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
                 
                 </a>
                 <p class="is-size-7">
