@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-univariate-linear-regression/</loc>
+    
+    <lastmod>2019-05-22T11:58:15.275Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/</loc>
+    
+    <lastmod>2019-05-22T11:58:12.608Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/</loc>
+    
+    <lastmod>2019-05-22T11:58:05.972Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-multivariate-linear-regression.md/</loc>
+    
+    <lastmod>2019-05-22T11:58:03.830Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/</loc>
+    
+    <lastmod>2019-05-22T11:58:01.490Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex1/</loc>
     
-    <lastmod>2019-05-22T11:49:53.677Z</lastmod>
+    <lastmod>2019-05-22T11:57:58.944Z</lastmod>
     
   </url>
   
@@ -19,41 +54,6 @@
     <loc>http://VerbF.github.io/post/bird-identification-app/</loc>
     
     <lastmod>2019-05-21T13:04:57.643Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex2/</loc>
-    
-    <lastmod>2019-05-20T06:54:06.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/</loc>
-    
-    <lastmod>2019-05-19T12:23:12.691Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-logistic-regression/</loc>
-    
-    <lastmod>2019-05-05T07:02:14.937Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-multivariate-linear-regression.md/</loc>
-    
-    <lastmod>2019-05-05T06:22:04.694Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-univariate-linear-regression/</loc>
-    
-    <lastmod>2019-05-05T06:12:16.153Z</lastmod>
     
   </url>
   

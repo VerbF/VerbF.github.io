@@ -18,7 +18,7 @@
 <meta property="og:description" content="正则化是解决过拟合问题的一种有效手段。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-19T12:23:12.691Z">
+<meta property="og:updated_time" content="2019-05-22T11:58:05.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（4）正则化">
 <meta name="twitter:description" content="正则化是解决过拟合问题的一种有效手段。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-05T02:28:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-19T12:23:12.691Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-19</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-22T11:58:05.972Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-22</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 765 个字)
+                    5 分钟 读完 (大约 768 个字)
                 </span>
                 
                 
@@ -196,7 +196,7 @@
         <div class="content">
             <p>正则化是解决过拟合问题的一种有效手段。<br><a id="more"></a></p>
 <h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p>定义：如果我们有太多的特征，这时训练出的假设能很好地拟合训练集（代价函数的值约等于0），当不能很好地泛化到新的样本中。泛化是指一个假设模型应用到新样本的能力。  </p>
-<p>  <img src="/images/ml_22.png" alt="图一是欠拟合，图三是过拟合"></p>
+<p>  <img src="/images/ml/ml_22.png" alt="图一是欠拟合，图三是过拟合"></p>
 <p>解决过拟合</p>
 <ol>
 <li>减少特征的数量<ul>
@@ -210,11 +210,11 @@
 </ul>
 </li>
 </ol>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>  <img src="/images/ml_23.png" alt="ml_23.png"></p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>  <img src="/images/ml/ml_23.png" alt="ml_23.png"></p>
 <p>我们给代价函数新增了两项，并给 $\theta_3$ 和 $\theta_4$加上很大的系数，这样为了让代价函数的值最小，$\theta_3$ 和 $\theta_4$的值就会趋近与 0。最后的效果就好像我们在假设函数中直接去掉了这两项一样。  </p>
 <p>$$\Large Features:x_1,x_2,…,x_{100} $$<br>$$\Large Parameters:\theta_0,\theta_1,\theta_2,…,\theta_{100}$$<br>事实上，我们的问题中可能会有很多特征，但事先我们不知道该选择哪一个来缩小它们的值，所以我们需要缩小所有的值。<br>如此，代价函数需要作出这样的修改：<br>$$<br>\Large J(\Theta)=\frac{1}{2m}<br>\Huge[<br>\Large\sum_{i=1}^{m}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}+<br>\lambda\sum_{i=2}^m\theta_j^2<br>\Huge]<br>$$<br>其中 $\lambda\sum_{i=2}^m\theta_j^2$ 是正则项，$\lambda$ 是正则化参数。  </p>
 <p>当我们的正则化参数 $\lambda$ 设置的过大时，可能会造成欠拟合的情况。因为此时的参数 $\theta_j$ 都已经趋近于 0。  </p>
-<p>  <img src="/images/ml_24.png" alt="ml_24"></p>
+<p>  <img src="/images/ml/ml_24.png" alt="ml_24"></p>
 <h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3>
 $$ \Large repeat\left\{
 \begin{aligned}

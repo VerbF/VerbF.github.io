@@ -18,7 +18,7 @@
 <meta property="og:description" content="本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-05T06:22:04.694Z">
+<meta property="og:updated_time" content="2019-05-22T11:58:03.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习笔记（2）多变量线性回归">
 <meta name="twitter:description" content="本篇介绍了有关在多特征的情况下如何使用线性回归，以及一些相关的技巧。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-04-28T10:45:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-04-28</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-05T06:22:04.694Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-05</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-22T11:58:03.830Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-22</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    12 分钟 读完 (大约 1744 个字)
+                    12 分钟 读完 (大约 1748 个字)
                 </span>
                 
                 
@@ -291,9 +291,9 @@ $$Repeat\left\{ \Theta_j = \Theta_j - \alpha\frac{\partial}{\partial\Theta_j}J(\
 </table>
 <h3 id="均值归一化-Mean-normalization"><a href="#均值归一化-Mean-normalization" class="headerlink" title="均值归一化(Mean normalization)"></a>均值归一化(Mean normalization)</h3><p>特征缩放的一种方法<br>$$<br>x_1 \Rightarrow \frac{x_1 - \mu_1}{S_1}<br>$$<br>$\mu_1$ 表示训练集中特征$x_1$的平均值<br>$S_1$ 表示该特征值的范围（max - min）</p>
 <h2 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h2><p>多项式回归就是用线性回归的方式去拟合更复杂的函数，甚至是非线性的函数。</p>
-<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>如图所示，我们有两个特征，房子的临街宽度和垂直深度。但我们通常使用面积来表示房屋的大小。所以我们可以使用房屋的面积（临街宽度 x 垂直深度）作为一个特征。<br><img src="/images/ml_4.png" alt="ml_4"></p>
-<h3 id="拟合多项式"><a href="#拟合多项式" class="headerlink" title="拟合多项式"></a>拟合多项式</h3><p>对于下图中的数据集，我们继续使用一次函数来拟合的话，效果并不太好。<br>如果使用二次函数来拟合的话，效果可能也不是特别好，因为我们知道，二次函数的图像（图中蓝色的线）在后面是一个下降的趋势，然而现实中房价并不会随着房屋面积的增加而减少。<br>所以这里我们可以使用三次函数（图中绿色的线）来拟合。<br><img src="/images/ml_5.png" alt="ml_5"><br>我们只要做一些简单的修改就可以将线性回归应用到多项式上。<br>$$h_\Theta(x)=\Theta_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3$$<br>$$\huge\Downarrow$$<br>$$h_\Theta(x)=\Theta_0 + \Theta_1size + \Theta_2(size)^2 + \Theta_3(size)^3\<br>$$<br>我们令<br>$$x_1=(size)\ x_2=(size)^2\ x_3=(size)^3$$<br>即可。<br>需要强调的是，在这种情况下<a href="#特征缩放-Feature-Scaling">特征缩放</a>就显得尤为重要。</p>
-<h2 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h2><p>我们如何判断梯度下降法是否正常工作呢？<br>通常可以观察代价函数的值与迭代次数的关系来判断。<br>当梯度下降法正常运行时，如下图所示，随着迭代次数的增加，代价函数的值越来越小，当梯度下降算法迭代60次左右时，代价函数的值几乎不再变化，说明此时算法已经收敛。<br><img src="/images/ml_6.png" alt="ml_6"><br>当出现以下两种情况时，代价函数的值上下震荡，或是逐渐变大，这都说明梯度下降法并没有正常工作。<br>通常出现这两种情况的原因都是学习率 $\alpha$ 过大。<br><img src="/images/ml_7.png" alt="ml_7"></p>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>如图所示，我们有两个特征，房子的临街宽度和垂直深度。但我们通常使用面积来表示房屋的大小。所以我们可以使用房屋的面积（临街宽度 x 垂直深度）作为一个特征。<br><img src="/images/ml/ml_4.png" alt="ml_4"></p>
+<h3 id="拟合多项式"><a href="#拟合多项式" class="headerlink" title="拟合多项式"></a>拟合多项式</h3><p>对于下图中的数据集，我们继续使用一次函数来拟合的话，效果并不太好。<br>如果使用二次函数来拟合的话，效果可能也不是特别好，因为我们知道，二次函数的图像（图中蓝色的线）在后面是一个下降的趋势，然而现实中房价并不会随着房屋面积的增加而减少。<br>所以这里我们可以使用三次函数（图中绿色的线）来拟合。<br><img src="/images/ml/ml_5.png" alt="ml_5"><br>我们只要做一些简单的修改就可以将线性回归应用到多项式上。<br>$$h_\Theta(x)=\Theta_0 + \Theta_1x_1 + \Theta_2x_2 + \Theta_3x_3$$<br>$$\huge\Downarrow$$<br>$$h_\Theta(x)=\Theta_0 + \Theta_1size + \Theta_2(size)^2 + \Theta_3(size)^3\<br>$$<br>我们令<br>$$x_1=(size)\ x_2=(size)^2\ x_3=(size)^3$$<br>即可。<br>需要强调的是，在这种情况下<a href="#特征缩放-Feature-Scaling">特征缩放</a>就显得尤为重要。</p>
+<h2 id="检验方法"><a href="#检验方法" class="headerlink" title="检验方法"></a>检验方法</h2><p>我们如何判断梯度下降法是否正常工作呢？<br>通常可以观察代价函数的值与迭代次数的关系来判断。<br>当梯度下降法正常运行时，如下图所示，随着迭代次数的增加，代价函数的值越来越小，当梯度下降算法迭代60次左右时，代价函数的值几乎不再变化，说明此时算法已经收敛。<br><img src="/images/ml/ml_6.png" alt="ml_6"><br>当出现以下两种情况时，代价函数的值上下震荡，或是逐渐变大，这都说明梯度下降法并没有正常工作。<br>通常出现这两种情况的原因都是学习率 $\alpha$ 过大。<br><img src="/images/ml/ml_7.png" alt="ml_7"></p>
 <h2 id="学习率选择"><a href="#学习率选择" class="headerlink" title="学习率选择"></a>学习率选择</h2><p>总的来说学习率过小的话，会导致收敛过慢<br>而学习率过大的话，可能导致无法收敛，代价函数 $J(\Theta)$ 并不会在每次迭代之后都下降。<br>我们可以通过多次试验的方式找出合适的学习率值的大小。<br>另：按照吴恩达老师的推荐，我们可以如下依次选择学习率的大小。<br>… 0.001，0.03，0.1，0.3 …</p>
 <h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p>正规方程可以让我们再某些情况下，更快的求解出参数 $\Theta$。<br>假设我们有m个样本，$(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),…,(x^{(n)},y^{(n)})$ ,n 个特征。<br>我们将单个样本的特征写成向量形式，再将所有的向量转置后，写成矩阵形式。<br>
 $$
