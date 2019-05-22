@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex1/</loc>
+    
+    <lastmod>2019-05-22T11:49:53.677Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://VerbF.github.io/post/deeplearning-ai-week-1/</loc>
+    
+    <lastmod>2019-05-22T11:36:39.462Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://VerbF.github.io/post/bird-identification-app/</loc>
     
     <lastmod>2019-05-21T13:04:57.643Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-univariate-linear-regression/</loc>
     
     <lastmod>2019-05-05T06:12:16.153Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://VerbF.github.io/post/machine-learning-AndrewNg-ex1/</loc>
-    
-    <lastmod>2019-05-03T08:32:12.258Z</lastmod>
     
   </url>
   
