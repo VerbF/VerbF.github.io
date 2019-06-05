@@ -2,27 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>基于 Mask R-CNN 的鸟类识别 app - xxs&#39;s blog</title>
+<title>深度学习专项课程（第三周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
-<meta name="keywords" content="深度学习,Mask R-CNN,鸟类识别">
+    <meta name="description" content="本周课程介绍了浅层神经网络的相关知识">
+<meta name="keywords" content="深度学习,神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于 Mask R-CNN 的鸟类识别 app">
-<meta property="og:url" content="http://VerbF.github.io/post/bird-identification-app/index.html">
+<meta property="og:title" content="深度学习专项课程（第三周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-week-3/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
+<meta property="og:description" content="本周课程介绍了浅层神经网络的相关知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
-<meta property="og:updated_time" content="2019-05-21T13:04:57.643Z">
+<meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
+<meta property="og:updated_time" content="2019-06-05T13:58:05.959Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于 Mask R-CNN 的鸟类识别 app">
-<meta name="twitter:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
-<meta name="twitter:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
+<meta name="twitter:title" content="深度学习专项课程（第三周）">
+<meta name="twitter:description" content="本周课程介绍了浅层神经网络的相关知识">
+<meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（第三周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/bird_identification_app/thumbnail.jpg" alt="基于 Mask R-CNN 的鸟类识别 app">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（第三周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>基于 Mask R-CNN 的鸟类识别 app
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（第三周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-21T03:04:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-21</time>
+                <time class="level-item has-text-grey" datetime="2019-06-05T12:09:03.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-21T13:04:57.643Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-21</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-05T13:58:05.959Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-05</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 481 个字)
+                    3 分钟 读完 (大约 432 个字)
                 </span>
                 
                 
@@ -194,30 +194,24 @@
         </div>
         
         <div class="content">
-            <p>一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。<br><a id="more"></a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这时博主的毕设的课题，时间紧迫加上自身能力所限，最后的作品还有很多不足，还望各位不吝指正。<br>代码已经上传到了 <a href="https://github.com/VerbF/Bird_Identification_App" target="_blank" rel="noopener">github</a>,并附上了详细的使用说明。<br>先放一下效果图  </p>
-<p><img src="/images/bird_identification_app/1.png" alt="1.png"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>整个系统包括用户端和服务端两部分。用户端通过 http 协议将待识别的鸟类图片上传到服务端，服务端再将识别后的图片和鸟类信息返回给用户端。</p>
-<p>鸟类识别由 Mask R-CNN 框架训练出的模型完成。  </p>
-<p><img src="/images/bird_identification_app/3.png" alt="系统流程图"></p>
-<h2 id="鸟类识别"><a href="#鸟类识别" class="headerlink" title="鸟类识别"></a>鸟类识别</h2><p>博主标注了 5 类，共 300 张鸟类图片，使用 Mask R-CNN 框架进行训练，得到了识别鸟类的模型。</p>
-<p>5 种鸟类的图片  </p>
-<p><img src="/images/bird_identification_app/6.png" alt="6.png"></p>
-<p>平均准确率的统计图  </p>
-<p><img src="/images/bird_identification_app/2.png" alt="2.png"></p>
-<h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><p>用户端运行在安卓系统上，包括图片的选择，图片的裁剪，图片的上传，以及识别结果的显示等功能。  </p>
-<p><img src="/images/bird_identification_app/4.png" alt="用户端流程图"></p>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端采用Python编程语言进行编写，服务端完成了接收用户端上传图片，识别图片，从数据库中查询鸟类的信息，将识别的结果回传到用户端等功能。  </p>
-<p>服务端使用了 flask web 应用框架。<br>执行 server.py 脚本后服务启动，当服务端接收到用户端上传的鸟类图片时将会调用 detect.py 脚本，脚本调用模型对鸟类进行识别。</p>
-<p><img src="/images/bird_identification_app/5.png" alt="服务端流程图"></p>
+            <p>本周课程介绍了浅层神经网络的相关知识</p>
+<a id="more"></a>
+<h2 id="神经网络概览"><a href="#神经网络概览" class="headerlink" title="神经网络概览"></a>神经网络概览</h2><p>下图中是一个只有一个神经元和三个输入的简单神经网络。  </p>
+<p><img src="/images/dl/dl_8.png" alt="dl_8.png">  </p>
+<p>神经元的任务与我们前面所讲的逻辑回归的任务相同，先将输入的特征值加权求和，再加上常数项，在使用 sigmoid 函数（激活函数）求出最后的结果。  </p>
+<p><img src="/images/dl/dl_9.png" alt="dl_9.png">  </p>
+<p>我们将多个这样的神经元进行堆叠，这样就得到了一个简单地浅层神经网络。这个神经网络有两层，也就是说要进行两次逻辑回归的运算。  </p>
+<p><img src="/images/dl/dl_10.png" alt="dl_10.png">  </p>
+<h2 id="神经网络表示"><a href="#神经网络表示" class="headerlink" title="神经网络表示"></a>神经网络表示</h2><p><img src="/images/dl/dl_11.png" alt="dl_11.png">  </p>
+<p>如图所示，这是一个简单的神经网络，它拥有三层结构。左边的输入特征 x 所在的层我们称之为输入层，中间节点所在的层称之为隐藏层，最右边的叫作输出层。中间层之所以被叫做隐藏层是因为在训练集中，这些中间结点的真正数值我们是不知道的。<br>输入特征本来是用 x 来表示，这里我们用 $a^{[0]}$ 来表示，其中 a 表示 “激活”，它意味着网络中不同层的值将会传递到下一层。右上角的方括号表示这些值来自神经网络的哪一层。<br>有趣的是，在约定俗成的符号约定中，这是一个<strong>两层</strong>的神经网络,输入层并不计算在内。</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">基于 Mask R-CNN 的鸟类识别 app</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-3/">深度学习专项课程（第三周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">http://VerbF.github.io/post/bird-identification-app/</a></li>
-            <li><strong>发布时间：</strong>2019-05-21</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-3/">http://VerbF.github.io/post/deeplearning-ai-week-3/</a></li>
+            <li><strong>发布时间：</strong>2019-06-05</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -228,7 +222,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Mask-R-CNN/">Mask R-CNN</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/鸟类识别/">鸟类识别</a>
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
                 </div>
             </div>
         </div>
@@ -274,17 +268,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-week-1/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（第一周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-ex2/">
-                <span class="level-item">机器学习（吴恩达）作业（2）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-week-1/">
+                <span class="level-item">深度学习专项课程（第一周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -380,25 +367,13 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#前言">
+        <a class="is-flex" href="#神经网络概览">
         <span class="has-mr-6">1</span>
-        <span>前言</span>
+        <span>神经网络概览</span>
         </a></li><li>
-        <a class="is-flex" href="#概述">
+        <a class="is-flex" href="#神经网络表示">
         <span class="has-mr-6">2</span>
-        <span>概述</span>
-        </a></li><li>
-        <a class="is-flex" href="#鸟类识别">
-        <span class="has-mr-6">3</span>
-        <span>鸟类识别</span>
-        </a></li><li>
-        <a class="is-flex" href="#用户端">
-        <span class="has-mr-6">4</span>
-        <span>用户端</span>
-        </a></li><li>
-        <a class="is-flex" href="#服务端">
-        <span class="has-mr-6">5</span>
-        <span>服务端</span>
+        <span>神经网络表示</span>
         </a></li></ul>
         </div>
     </div>
@@ -423,7 +398,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（第三周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
