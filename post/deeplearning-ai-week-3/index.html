@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周课程介绍了浅层神经网络的相关知识">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-05T13:58:05.959Z">
+<meta property="og:updated_time" content="2019-06-07T02:42:33.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（第三周）">
 <meta name="twitter:description" content="本周课程介绍了浅层神经网络的相关知识">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-05T12:09:03.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-05T13:58:05.959Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-05</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-07T02:42:33.193Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-07</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 432 个字)
+                    7 分钟 读完 (大约 982 个字)
                 </span>
                 
                 
@@ -204,6 +204,52 @@
 <p><img src="/images/dl/dl_10.png" alt="dl_10.png">  </p>
 <h2 id="神经网络表示"><a href="#神经网络表示" class="headerlink" title="神经网络表示"></a>神经网络表示</h2><p><img src="/images/dl/dl_11.png" alt="dl_11.png">  </p>
 <p>如图所示，这是一个简单的神经网络，它拥有三层结构。左边的输入特征 x 所在的层我们称之为输入层，中间节点所在的层称之为隐藏层，最右边的叫作输出层。中间层之所以被叫做隐藏层是因为在训练集中，这些中间结点的真正数值我们是不知道的。<br>输入特征本来是用 x 来表示，这里我们用 $a^{[0]}$ 来表示，其中 a 表示 “激活”，它意味着网络中不同层的值将会传递到下一层。右上角的方括号表示这些值来自神经网络的哪一层。<br>有趣的是，在约定俗成的符号约定中，这是一个<strong>两层</strong>的神经网络,输入层并不计算在内。</p>
+<h2 id="计算神经网络的输出"><a href="#计算神经网络的输出" class="headerlink" title="计算神经网络的输出"></a>计算神经网络的输出</h2><p><img src="/images/dl/dl_12.png" alt="dl_12.png">  </p>
+<p>这是单个神经元所进行的计算，与逻辑回归相似。  </p>
+<p><img src="/images/dl/dl_13.png" alt="dl_13.png">  </p>
+<p>这是单隐层神经网络中第 [1] 层 4 个节点的计算公式。我们将这些公式以向量化的方式详细的表示出来：<br>
+$$
+\large
+z^{[1]}
+=
+\begin{bmatrix}
+-w_1^{[1]T}- \\\ -w_2^{[1]T}- \\\ -w_3^{[1]T}- \\\ -w_4^{[1]T}-
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\\ x_2 \\\ x_3
+\end{bmatrix}
++
+\begin{bmatrix}
+b_1 \\\ b_2 \\\ b_3 \\\ b_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+w_1^{[1]T}x  +b_1 \\\ w_2^{[1]T}x  +b_2\\\ w_3^{[1]T}x +b_3\\\ w_4^{[1]T}x +b_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+ z_1^{[1]}  \\\  z_2^{[1]} \\\  z_3^{[1]} \\\ z_4^{[1]}
+\end{bmatrix}
+\\
+a^{[1]}
+=
+\begin{bmatrix}
+ a_1^{[1]} \\\  a_2^{[1]}\\\  a_3^{[1]}\\\  a_4^{[1]}
+\end{bmatrix}
+=\sigma(z^{[1]})
+$$
+</p>
+<p>下图给出了，第 [1] 层 和第 [2] 层 向量化的计算公式</p>
+<p><img src="/images/dl/dl_14.png" alt="dl_14.png">  </p>
+<h2 id="多个样本的向量化"><a href="#多个样本的向量化" class="headerlink" title="多个样本的向量化"></a>多个样本的向量化</h2><p>上面一节讲述了单个样本的向量化，这一小节解释了多个样本的向量化。</p>
+<p>如果我们使用 for 循环来处理多个训练样本，则速度会非常慢。所以我们需要使用向量化的方法来进行计算。</p>
+<p><img src="/images/dl/dl_15.png" alt="dl_15.png">  </p>
+<p>下面是向量化的表示：我们将所有训练样本 $x^{(i)}$ 进行横向的叠加，同时 $z^{[1] (i)}$ 和 $a^{[1] (i)}$ 也进行横向的叠加。那么在这些矩阵中，横向指标对应了不同的样本，而纵向指标则对应了不同的节点。</p>
+<p><img src="/images/dl/dl_16.png" alt="dl_16.png">  </p>
+<p>下面给出了向量化的计算公式，对于本例中的神经网络，$W^{[1]}$ 是 4x3 的矩阵。</p>
+<p>$$<br>\large<br>Z^{[1]} = W^{[1]}X + b^{[1]} \<br>A^{[1]} = \sigma(Z^{[1]}) \<br>Z^{[2]} = W^{[1]}X + b^{[2]} \<br>A^{[2]} = \sigma(Z^{[2]})<br>$$</p>
+<p>为什么这样的向量化是正确的呢？下图给出了解释，如果你了解线性代数，那么你可以看出这张图片中的解释是正确的，我们用矩阵 $W^{[1]}$ 与各个样本向量相乘，就得到了矩阵 $Z^{[1]}$，为了方便起见，这里省略了 $b^{[1]}$ 这一项。这里只解释了 $Z^{[1]} = W^{[1]}X + b^{[1]}$ 为什么成立，参考这一解释，你可以推导出其他几个式子也是正确的。</p>
+<p><img src="/images/dl/dl_17.png" alt="dl_17.png">  </p>
 
         </div>
         
@@ -374,6 +420,14 @@
         <a class="is-flex" href="#神经网络表示">
         <span class="has-mr-6">2</span>
         <span>神经网络表示</span>
+        </a></li><li>
+        <a class="is-flex" href="#计算神经网络的输出">
+        <span class="has-mr-6">3</span>
+        <span>计算神经网络的输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#多个样本的向量化">
+        <span class="has-mr-6">4</span>
+        <span>多个样本的向量化</span>
         </a></li></ul>
         </div>
     </div>
