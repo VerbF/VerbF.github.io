@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周课程介绍了浅层神经网络的相关知识">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-08T12:49:38.570Z">
+<meta property="og:updated_time" content="2019-06-08T12:52:52.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（第三周）">
 <meta name="twitter:description" content="本周课程介绍了浅层神经网络的相关知识">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-05T12:09:03.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-08T12:49:38.570Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-08</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-08T12:52:52.194Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-08</time>
                 
                 
                 <div class="level-item">
@@ -252,7 +252,38 @@ $$
 <p><img src="/images/dl/dl_17.png" alt="dl_17.png">  </p>
 <h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>除了常见的 sigmoid 函数以外，激活函数还有其它的几种选择。</p>
 <p><img src="/images/dl/dl_18.png" alt="dl_18.png">  </p>
-<p>上图中第一个就是我们熟悉的 sigmoid 函数，除非在二分类的输出层，不然绝对不要用它作为激活函数。<br>这是因为，tanh 函数，上图右上角所示，几乎在所有场合都更优越。<br>最常用的默认激活函数是 ReLU（修正线性单元）。当你不确定时，最好选择 ReLU。<br>图中最后一个函数我们称为 “带泄露的ReLU”<br>|名称|公式|特点|<br>|:-:|:-:|:-:|<br>|sigmoid|$\large g(z) = \frac{1}{1+e^{-z}}$|除了二分类的输出层，几乎不用|<br>|tanh|$\large g(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$|几乎在所有场合都优于 sigmoid|<br>|ReLU|$\large g(z) = max(0,z)$|当 z 很大时导数不会趋于0而导致速度过慢|<br>|带泄露的 ReLU|$\large g(z) = max(0.01z,z)$|当 z 小于 0 时，导数不是0|</p>
+<p>上图中第一个就是我们熟悉的 sigmoid 函数，除非在二分类的输出层，不然绝对不要用它作为激活函数。<br>这是因为，tanh 函数，上图右上角所示，几乎在所有场合都更优越。<br>最常用的默认激活函数是 ReLU（修正线性单元）。当你不确定时，最好选择 ReLU。<br>图中最后一个函数我们称为 “带泄露的ReLU”  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">公式</th>
+<th style="text-align:center">特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sigmoid</td>
+<td style="text-align:center">$\large g(z) = \frac{1}{1+e^{-z}}$</td>
+<td style="text-align:center">除了二分类的输出层，几乎不用</td>
+</tr>
+<tr>
+<td style="text-align:center">tanh</td>
+<td style="text-align:center">$\large g(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$</td>
+<td style="text-align:center">几乎在所有场合都优于 sigmoid</td>
+</tr>
+<tr>
+<td style="text-align:center">ReLU</td>
+<td style="text-align:center">$\large g(z) = max(0,z)$</td>
+<td style="text-align:center">当 z 很大时导数不会趋于0而导致速度过慢</td>
+</tr>
+<tr>
+<td style="text-align:center">带泄露的 ReLU</td>
+<td style="text-align:center">$\large g(z) = max(0.01z,z)$</td>
+<td style="text-align:center">当 z 小于 0 时，导数不是0</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <p><strong>为什么一定要用非线性的激活函数呢？</strong><br>如果不使用非线性的激活函数，那么神经网络的运算就只有线性运算。神经网络最后的输出结果只是输入特征的线性组合。这和没有任何隐藏层的标准逻辑回归是一样的，这样就无法学习到更复杂的函数。</p>
 <h2 id="激活函数的导数"><a href="#激活函数的导数" class="headerlink" title="激活函数的导数"></a>激活函数的导数</h2><table>
