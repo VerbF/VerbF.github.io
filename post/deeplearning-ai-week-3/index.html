@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周课程介绍了浅层神经网络的相关知识">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-08T12:52:52.194Z">
+<meta property="og:updated_time" content="2019-06-09T01:57:19.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（第三周）">
 <meta name="twitter:description" content="本周课程介绍了浅层神经网络的相关知识">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-05T12:09:03.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-05</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-08T12:52:52.194Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-08</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-09T01:57:19.243Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-09</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    10 分钟 读完 (大约 1449 个字)
+                    11 分钟 读完 (大约 1671 个字)
                 </span>
                 
                 
@@ -317,7 +317,11 @@ $$
 </tr>
 </tbody>
 </table>
-<h2 id="神经网络的梯度下经法"><a href="#神经网络的梯度下经法" class="headerlink" title="神经网络的梯度下经法"></a>神经网络的梯度下经法</h2>
+<h2 id="神经网络的梯度下降法"><a href="#神经网络的梯度下降法" class="headerlink" title="神经网络的梯度下降法"></a>神经网络的梯度下降法</h2><p>这里只给出神经网络梯度下降的公式，省略了推导过程。  </p>
+<h3 id="Forward-Propagation"><a href="#Forward-Propagation" class="headerlink" title="Forward Propagation"></a>Forward Propagation</h3><p>$$<br>\large<br>Z^{[1]} = W^{[1]}X+b^{[1]} \\<br>A^{[1]} = g^{[1]}(Z^{[1]}) \\<br>Z^{[2]} = W^{[2]}A^{[1]} + b^{[2]} \\<br>A^{[2]}  = g^{[2]}(Z^{[2]})<br>$$</p>
+<h3 id="Back-Propagation"><a href="#Back-Propagation" class="headerlink" title="Back Propagation"></a>Back Propagation</h3><p>$$<br>\large<br>dZ^{[2]} = A^{[2]} - Y \\<br>dW^{[2]} = \frac{1}{m}dZ^{[2]}A^{[1]T} \\<br>db^{[2]} = \frac{1}{m}np.sum(dZ^{[2]},axis=1,keepdims=True)\\<br>dZ^{[1]} = W^{[2]T}dZ^{[2]}*g’^{[1]}(Z^{[1]}) \\<br>dW^{[1]} = \frac{1}{m}dZ^{[1]}X^{T}\\<br>db^{[1]} = \frac{1}{m}np.sum(dZ^{[1]},axis=1,keepdims=True)<br>$$</p>
+<h2 id="随机初始化"><a href="#随机初始化" class="headerlink" title="随机初始化"></a>随机初始化</h2><p>在逻辑回归中我们可以初始化参数为 0 ，但在神经网路中我们不这样做。如果我们将神将网络中的节点的参数都初始化为 0， 那么每一个节点都在做同样的运算，它们对下一层的影响也是相同的，所以这样的神经网络是没有意义的。<br>正确的做法是对参数随机初始化，这样可以使每个节点学习到不同的参数。</p>
+
         </div>
         
             <ul class="post-copyright">
@@ -504,9 +508,21 @@ $$
         <span class="has-mr-6">6</span>
         <span>激活函数的导数</span>
         </a></li><li>
-        <a class="is-flex" href="#神经网络的梯度下经法">
+        <a class="is-flex" href="#神经网络的梯度下降法">
         <span class="has-mr-6">7</span>
-        <span>神经网络的梯度下经法</span>
+        <span>神经网络的梯度下降法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Forward-Propagation">
+        <span class="has-mr-6">7.1</span>
+        <span>Forward Propagation</span>
+        </a></li><li>
+        <a class="is-flex" href="#Back-Propagation">
+        <span class="has-mr-6">7.2</span>
+        <span>Back Propagation</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#随机初始化">
+        <span class="has-mr-6">8</span>
+        <span>随机初始化</span>
         </a></li></ul>
         </div>
     </div>
