@@ -2,27 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>机器学习笔记（4）正则化 - xxs&#39;s blog</title>
+<title>深度学习专项课程（第四周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="正则化是解决过拟合问题的一种有效手段。">
-<meta name="keywords" content="机器学习,正则化">
+    <meta name="description" content="本周内容很大一部分与前一周内容重合，重复内容此处不再赘述，这里简单记录新的内容。">
+<meta name="keywords" content="深度学习,神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习笔记（4）正则化">
-<meta property="og:url" content="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/index.html">
+<meta property="og:title" content="深度学习专项课程（第四周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-week-4/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="正则化是解决过拟合问题的一种有效手段。">
+<meta property="og:description" content="本周内容很大一部分与前一周内容重合，重复内容此处不再赘述，这里简单记录新的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/ml.png">
-<meta property="og:updated_time" content="2019-05-22T11:58:05.972Z">
+<meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
+<meta property="og:updated_time" content="2019-06-12T02:29:47.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习笔记（4）正则化">
-<meta name="twitter:description" content="正则化是解决过拟合问题的一种有效手段。">
-<meta name="twitter:image" content="http://verbf.github.io/images/ml.png">
+<meta name="twitter:title" content="深度学习专项课程（第四周）">
+<meta name="twitter:description" content="本周内容很大一部分与前一周内容重合，重复内容此处不再赘述，这里简单记录新的内容。">
+<meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="机器学习笔记（4）正则化" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（第四周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/ml.png" alt="机器学习笔记（4）正则化">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（第四周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>机器学习笔记（4）正则化
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（第四周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-05T02:28:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-05</time>
+                <time class="level-item has-text-grey" datetime="2019-06-12T01:33:31.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-12</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-22T11:58:05.972Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-12T02:29:47.951Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-12</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 768 个字)
+                    2 分钟 读完 (大约 352 个字)
                 </span>
                 
                 
@@ -194,81 +194,27 @@
         </div>
         
         <div class="content">
-            <p>正则化是解决过拟合问题的一种有效手段。<br><a id="more"></a></p>
-<h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p>定义：如果我们有太多的特征，这时训练出的假设能很好地拟合训练集（代价函数的值约等于0），当不能很好地泛化到新的样本中。泛化是指一个假设模型应用到新样本的能力。  </p>
-<p>  <img src="/images/ml/ml_22.png" alt="图一是欠拟合，图三是过拟合"></p>
-<p>解决过拟合</p>
-<ol>
-<li>减少特征的数量<ul>
-<li>人工选择需要保留的特征</li>
-<li>模型选择算法</li>
+            <p>本周内容很大一部分与前一周内容重合，重复内容此处不再赘述，这里简单记录新的内容。</p>
+<a id="more"></a>
+<h2 id="为什么使用深层神经网络"><a href="#为什么使用深层神经网络" class="headerlink" title="为什么使用深层神经网络"></a>为什么使用深层神经网络</h2><p>深度神经网络可以解决很多问题，其实并不需要很大的神经网络，但是需要有深度。深度的神经网络可以学习更复杂的函数。<br>Andrew Ng 在课程中列举了两个例子来解释为什么使用深层神经网络，有兴趣的同学可以参考。</p>
+<h2 id="参数与超参数"><a href="#参数与超参数" class="headerlink" title="参数与超参数"></a>参数与超参数</h2><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>$W^{[1]},b^{[1]},W^{[2]},b^{[2]},W^{[3]},b^{[3]}……$</p>
+<h3 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h3><p>超参数中的数值需要我们自己设置，而参数 W ，b 的数值将由这些超参数来决定,所以被称为超参数。</p>
+<ul>
+<li>学习率</li>
+<li>梯度下降法循环的次数</li>
+<li>隐层数</li>
+<li>隐层节点数</li>
+<li>激活函数 ReLU 或 sigmoid</li>
 </ul>
-</li>
-<li>正则化<ul>
-<li>保留所有特征，减小参数$\theta$的值</li>
-<li>当我们有很多特征，且或多或少都对预测 y 有影响，正则化也可以工作的很好  </li>
-</ul>
-</li>
-</ol>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>  <img src="/images/ml/ml_23.png" alt="ml_23.png"></p>
-<p>我们给代价函数新增了两项，并给 $\theta_3$ 和 $\theta_4$加上很大的系数，这样为了让代价函数的值最小，$\theta_3$ 和 $\theta_4$的值就会趋近与 0。最后的效果就好像我们在假设函数中直接去掉了这两项一样。  </p>
-<p>$$\Large Features:x_1,x_2,…,x_{100} $$<br>$$\Large Parameters:\theta_0,\theta_1,\theta_2,…,\theta_{100}$$<br>事实上，我们的问题中可能会有很多特征，但事先我们不知道该选择哪一个来缩小它们的值，所以我们需要缩小所有的值。<br>如此，代价函数需要作出这样的修改：<br>$$<br>\Large J(\Theta)=\frac{1}{2m}<br>\Huge[<br>\Large\sum_{i=1}^{m}{({h_\Theta}({x}^{(i)})-{y}^{(i)})}^{2}+<br>\lambda\sum_{i=2}^m\theta_j^2<br>\Huge]<br>$$<br>其中 $\lambda\sum_{i=2}^m\theta_j^2$ 是正则项，$\lambda$ 是正则化参数。  </p>
-<p>当我们的正则化参数 $\lambda$ 设置的过大时，可能会造成欠拟合的情况。因为此时的参数 $\theta_j$ 都已经趋近于 0。  </p>
-<p>  <img src="/images/ml/ml_24.png" alt="ml_24"></p>
-<h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3>
-$$ \Large repeat\left\{
-\begin{aligned}
-\Theta_0 = \Theta_0-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)} \qquad \qquad\\
-\Theta_j = \Theta_j-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}
-+\frac{\lambda}{m}\theta_j
-, j\not ={0}
-\end{aligned}
-\right\}
-$$  
- 
-<p>这里我们的 $\theta_0$ 并不需要正则化。</p>
-<h3 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h3>
-$$\large
-X = \underbrace{\begin{bmatrix}
-(x^{(1)})^T\\
-(x^{(2)})^T\\
-(x^{(3)})^T\\
-....\\
-(x^{(m)})^T\\
-\end{bmatrix}}_{m * (n+1)}
-\qquad
-y = \begin{bmatrix}
-y^{(0)} \\ y^{(1)} \\ y^{(2)} \\ ... \\ y^{(3)}
-\end{bmatrix} \qquad
-$$
-  
-<p>这时原来的方程<br>$$\large\Theta = (X^TX)^{-1}X^Ty$$<br>我们为其添加新的一项<br>$$\large \Theta = (X^TX \qquad<br>\underbrace{\lambda\begin{bmatrix}<br>0 &amp; … &amp; 0 \<br>… &amp; 1 &amp; … \<br>0 &amp; … &amp; 1 \<br>\end{bmatrix}}_{(n+1)*(n+1)})^{-1}X^Ty$$<br>这样就实现了正规方程的正则化。<br>By the way，当 $\lambda$ 大于0时，括号内的矩阵肯定是可逆的。</p>
-<h2 id="逻辑回归的正则化"><a href="#逻辑回归的正则化" class="headerlink" title="逻辑回归的正则化"></a>逻辑回归的正则化</h2><h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>在逻辑回归中代价函数也做了相应的变化<br>
-$$
-\large
- J(\theta) = 
- \Huge[ \large -\frac{1}{m}\sum_{i=1}^m  y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)})) \Huge]\large
- + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2
-$$
-</p>
-<h3 id="梯度下降-1"><a href="#梯度下降-1" class="headerlink" title="梯度下降"></a>梯度下降</h3>
-$$ \Large repeat\left\{
-\begin{aligned}
-\Theta_0 = \Theta_0-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)} \qquad \qquad\\
-\Theta_j = \Theta_j-\alpha\sum_{i=1}^m(h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}
-+\frac{\lambda}{m}\theta_j
-, j\not ={0}
-\end{aligned}
-\right\}
-$$  
+<h2 id="这与大脑有什么关系"><a href="#这与大脑有什么关系" class="headerlink" title="这与大脑有什么关系"></a>这与大脑有什么关系</h2><p>深度学习和大脑有什么关联性呢？ Andrew Ng 认为关系不大。<br>有时会把深度学习中的神经元和生物中的神经元进行类比，但生物中的神经元到底是如何进行工作的，至今为止神经科学家们都很难解释。所以，目前人们在减少神经网络与人类大脑的对比。</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/">机器学习笔记（4）正则化</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-4/">深度学习专项课程（第四周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/">http://VerbF.github.io/post/machine-learning-AndrewNg-regularization/</a></li>
-            <li><strong>发布时间：</strong>2019-05-05</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-4/">http://VerbF.github.io/post/deeplearning-ai-week-4/</a></li>
+            <li><strong>发布时间：</strong>2019-06-12</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -279,7 +225,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/正则化/">正则化</a>
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
                 </div>
             </div>
         </div>
@@ -325,17 +271,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/machine-learning-AndrewNg-ex2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">机器学习（吴恩达）作业（2）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-logistic-regression/">
-                <span class="level-item">机器学习笔记（3）逻辑回归</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-week-3/">
+                <span class="level-item">深度学习专项课程（第三周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -431,38 +370,26 @@ $$
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#过拟合">
+        <a class="is-flex" href="#为什么使用深层神经网络">
         <span class="has-mr-6">1</span>
-        <span>过拟合</span>
+        <span>为什么使用深层神经网络</span>
         </a></li><li>
-        <a class="is-flex" href="#正则化">
+        <a class="is-flex" href="#参数与超参数">
         <span class="has-mr-6">2</span>
-        <span>正则化</span>
-        </a></li><li>
-        <a class="is-flex" href="#线性回归的正则化">
-        <span class="has-mr-6">3</span>
-        <span>线性回归的正则化</span>
+        <span>参数与超参数</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#梯度下降">
-        <span class="has-mr-6">3.1</span>
-        <span>梯度下降</span>
+        <a class="is-flex" href="#参数">
+        <span class="has-mr-6">2.1</span>
+        <span>参数</span>
         </a></li><li>
-        <a class="is-flex" href="#正规方程">
-        <span class="has-mr-6">3.2</span>
-        <span>正规方程</span>
+        <a class="is-flex" href="#超参数">
+        <span class="has-mr-6">2.2</span>
+        <span>超参数</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#逻辑回归的正则化">
-        <span class="has-mr-6">4</span>
-        <span>逻辑回归的正则化</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#代价函数">
-        <span class="has-mr-6">4.1</span>
-        <span>代价函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#梯度下降-1">
-        <span class="has-mr-6">4.2</span>
-        <span>梯度下降</span>
-        </a></li></ul></li></ul>
+        <a class="is-flex" href="#这与大脑有什么关系">
+        <span class="has-mr-6">3</span>
+        <span>这与大脑有什么关系</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -486,7 +413,7 @@ $$
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="机器学习笔记（4）正则化" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（第四周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
