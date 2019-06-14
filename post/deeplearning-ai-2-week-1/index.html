@@ -18,7 +18,7 @@
 <meta property="og:description" content="这是 DeepLearning.ai 微专业的第二门课《改善深层神经网络：超参数调试、正则化以及优化》第一周的课程。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-13T11:55:29.466Z">
+<meta property="og:updated_time" content="2019-06-14T13:49:51.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（2）（第一周）">
 <meta name="twitter:description" content="这是 DeepLearning.ai 微专业的第二门课《改善深层神经网络：超参数调试、正则化以及优化》第一周的课程。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-13T05:27:25.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-13</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-13T11:55:29.466Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-13</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-14T13:49:51.212Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-14</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    8 分钟 读完 (大约 1175 个字)
+                    12 分钟 读完 (大约 1761 个字)
                 </span>
                 
                 
@@ -256,7 +256,35 @@ $$
 <h3 id="early-stopping"><a href="#early-stopping" class="headerlink" title="early stopping"></a>early stopping</h3><p>从下图中我们可以看到，随着迭代次数的增加训练集的误差逐渐减少，而测试集的误差在开始时下降，随后开始增加。我们只要在测试集的误差开始增加之前停止训练，就可以防止出现过拟合的情况。  </p>
 <p><img src="/images/dl/dl_22.png" alt="dl_22.png"></p>
 <p>但这个方法也有缺点，即训练集的误差无法降到最小。</p>
-<p>。。。待续</p>
+<h2 id="归一化输入"><a href="#归一化输入" class="headerlink" title="归一化输入"></a>归一化输入</h2><p>归一化输入是加速训练神经网络的一种方法。</p>
+<p>归一化输入需要两个步骤，第一步是 <strong>零均值化</strong>。</p>
+<p>$$<br>\mu = \frac{1}{m}\sum_{i=1}^m \<br>x = x - \mu<br>$$</p>
+<p>这一步相当于对数据集做了移动</p>
+<p><img src="/images/dl/dl_23.png" alt="dl_23.png"></p>
+<p>第二步是<strong>归一化方差</strong>。<br>从上面的图中可以看出，特征 x1 的方差比特征 x2的方差要大很多</p>
+<p>$$<br>\sigma^2 = \frac{1}{m}\sum_{i=1}^mx^{(i)}**2 \<br>x \quad/= \sigma^2<br>$$</p>
+<p>最后的结果如图所示</p>
+<p><img src="/images/dl/dl_24.png" alt="dl_24.png"></p>
+<p>注意，应该用同一组 $\mu$ 和 $\sigma^2$来调整 训练集和测试集。</p>
+<p>经过归一化的数据，在执行梯度下降时速度更快。</p>
+<p><img src="/images/dl/dl_25.png" alt="dl_25.png"></p>
+<h2 id="梯度消失与梯度爆炸"><a href="#梯度消失与梯度爆炸" class="headerlink" title="梯度消失与梯度爆炸"></a>梯度消失与梯度爆炸</h2><p>梯度消失与梯度爆炸是指当训练神经网络时，梯度或坡度会变得很大，或非常小，甚至以指数的形式变小。<br>如下图，当网络的层数很深时，梯度层层相乘，如果梯度比 1 大一点点，最后也会变得非常大。相反，如果梯度比 1 小一点点，最后也会变得非常小。</p>
+<p><img src="/images/dl/dl_26.png" alt="dl_26.png"></p>
+<h2 id="权重初始化"><a href="#权重初始化" class="headerlink" title="权重初始化"></a>权重初始化</h2><p>虽然不能从根本上解决梯度消失和梯度爆炸的问题，但以合适的方法初始化权重可以减少其影响。<br>假设某层输入特征数量为 n，我们可以将权值矩阵初值设置为 随机值* $\sqrt{\frac{1}{n}}$<br>
+$$
+\large 
+W^{[l]} = np.random.radn(shape) * np.sqrt(\frac{1}{n^{[l-1]}})
+$$
+</p>
+<h2 id="梯度检验"><a href="#梯度检验" class="headerlink" title="梯度检验"></a>梯度检验</h2><p>如何判断反向传播正确的工作了呢？可以使用下面的方法对其进行检验。<br>核心思想是使用一个导数计算的近似公式求出导数，并与反向传播算法得出的结果进行比较，在一定的误差范围内，我们就可以认为反向传播算法正常工作。</p>
+<p><img src="/images/dl/dl_28.png" alt="dl_28.png"></p>
+<h3 id="实施注意事项"><a href="#实施注意事项" class="headerlink" title="实施注意事项"></a>实施注意事项</h3><ul>
+<li>不要用在训练中，仅仅在调试时使用。</li>
+<li>如果梯度检验失败，需要详细检查相关项</li>
+<li>注意正则化</li>
+<li>不能与 dropout 同时使用</li>
+<li>如果效果不理想，可以尝试重新训练</li>
+</ul>
 
         </div>
         
@@ -451,6 +479,26 @@ $$
         <a class="is-flex" href="#early-stopping">
         <span class="has-mr-6">3.5</span>
         <span>early stopping</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#归一化输入">
+        <span class="has-mr-6">4</span>
+        <span>归一化输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#梯度消失与梯度爆炸">
+        <span class="has-mr-6">5</span>
+        <span>梯度消失与梯度爆炸</span>
+        </a></li><li>
+        <a class="is-flex" href="#权重初始化">
+        <span class="has-mr-6">6</span>
+        <span>权重初始化</span>
+        </a></li><li>
+        <a class="is-flex" href="#梯度检验">
+        <span class="has-mr-6">7</span>
+        <span>梯度检验</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实施注意事项">
+        <span class="has-mr-6">7.1</span>
+        <span>实施注意事项</span>
         </a></li></ul></li></ul>
         </div>
     </div>
