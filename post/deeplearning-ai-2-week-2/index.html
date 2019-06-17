@@ -2,26 +2,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>深度学习专项课程（第一周） - xxs&#39;s blog</title>
+<title>深度学习专项课程（2）（第二周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="“深度学习”指的是训练神经网络，那么神经网络到底是什么呢？">
-<meta name="keywords" content="深度学习,神经网络">
+    <meta name="description" content="本周主要讲解了一些优化的算法。">
+<meta name="keywords" content="深度学习,优化算法,神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习专项课程（第一周）">
-<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-week-1/index.html">
+<meta property="og:title" content="深度学习专项课程（2）（第二周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-2-week-2/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="“深度学习”指的是训练神经网络，那么神经网络到底是什么呢？">
+<meta property="og:description" content="本周主要讲解了一些优化的算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-05-22T11:36:39.462Z">
+<meta property="og:updated_time" content="2019-06-17T12:37:03.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习专项课程（第一周）">
-<meta name="twitter:description" content="“深度学习”指的是训练神经网络，那么神经网络到底是什么呢？">
+<meta name="twitter:title" content="深度学习专项课程（2）（第二周）">
+<meta name="twitter:description" content="本周主要讲解了一些优化的算法。">
 <meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="深度学习专项课程（第一周）" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（第一周）">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（2）（第二周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>深度学习专项课程（第一周）
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（2）（第二周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-22T06:25:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-22</time>
+                <time class="level-item has-text-grey" datetime="2019-06-17T01:58:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-17</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-22T11:36:39.462Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-17T12:37:03.258Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-17</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    7 分钟 读完 (大约 1011 个字)
+                    5 分钟 读完 (大约 761 个字)
                 </span>
                 
                 
@@ -194,76 +194,26 @@
         </div>
         
         <div class="content">
-            <p>“深度学习”指的是训练神经网络，那么神经网络到底是什么呢？</p>
+            <p>本周主要讲解了一些优化的算法。</p>
 <a id="more"></a>
-<h2 id="什么是神经网络"><a href="#什么是神经网络" class="headerlink" title="什么是神经网络"></a>什么是神经网络</h2><p>我们还是从一个预测的例子开始。<br>我们有关于房屋尺寸和价格的样本集，我们想要通过这个样本来预测房屋的价格。我们可以通过线性回归来解决这个问题。<br>但我们知道房屋的价格不可能为负数，所以我们对这个函数稍作修改，使其不为负数，如下图所示。<br>这个函数我们称为 ReLU（线性整流函数，Rectified Linear Unit, ReLU） 函数</p>
-<p><img src="/images/dl/dl_1.png" alt="dl_1">  </p>
-<p>这就可以看做是一个几乎是最简单的神经网络了。  </p>
-<p>我们把它换一个形式画出来，如下图所示。<br>我们把 房屋面积 size 作为神经网络的输入，中间的圆圈我们将它称为一个独立的神经元，房屋的价格为神经网络的输出。这个神经网络完成了上面图中的功能，神经元的作用就是输入面积，完成线性运算，取不小于 0 的值，最后输出房屋的预测价格。  </p>
-<p><img src="/images/dl/dl_2.png" alt="dl_2">  </p>
-<p>我们可以将神经元想象成乐高积木，我们将神经元堆叠起来可以形成更大的神经网络。我们来可一个例子。</p>
-<p>如下图所示，决定房屋价格的有很多因素，我们将其进行组合，例如房屋大小和房间数量可以组成 可容纳的家庭人数，邮政编码决定了一个房屋高度步行化的程度，还有地区的富裕程度一起决定了学校的质量，而这些综合起来影响了房屋的价格。</p>
-<p>注：高度步行化是指可通过步行在较短的时间内到达目的地，如车站，商场，学校，医院等地。</p>
-<p><img src="/images/dl/dl_3.png" alt="dl_3">  </p>
-<p>这样我们就有了一个四个输入的神经网络。</p>
-<p><img src="/images/dl/dl_4.png" alt="dl_4">  </p>
-<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><p>到目前为止，几乎所有由神经网络创造的经济价值都基于一种机器学习，我们称之为监督学习。<br>这里是监督学习的一些例子。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入(x)</th>
-<th style="text-align:center">输出(y)</th>
-<th style="text-align:center">应用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">房屋特征</td>
-<td style="text-align:center">价格</td>
-<td style="text-align:center">房地产</td>
-</tr>
-<tr>
-<td style="text-align:center">广告，用户信息</td>
-<td style="text-align:center">是否点击广告（0/1）</td>
-<td style="text-align:center">在线广告</td>
-</tr>
-<tr>
-<td style="text-align:center">图像</td>
-<td style="text-align:center">类别（1–1000）</td>
-<td style="text-align:center">图形分类</td>
-</tr>
-<tr>
-<td style="text-align:center">音频</td>
-<td style="text-align:center">文本描述</td>
-<td style="text-align:center">语音识别</td>
-</tr>
-<tr>
-<td style="text-align:center">英文</td>
-<td style="text-align:center">中文</td>
-<td style="text-align:center">机器翻译</td>
-</tr>
-<tr>
-<td style="text-align:center">图像，雷达信息</td>
-<td style="text-align:center">其它车的位置</td>
-<td style="text-align:center">自动驾驶</td>
-</tr>
-</tbody>
-</table>
-<p>神经网络可以处理结构性数据和非结构性数据，下面是一些例子。</p>
-<p><img src="/images/dl/dl_5.png" alt="dl_5">  </p>
-<h2 id="为什么深度学习会兴起？"><a href="#为什么深度学习会兴起？" class="headerlink" title="为什么深度学习会兴起？"></a>为什么深度学习会兴起？</h2><p>深度学习的兴起很大程度上可以说是由规模驱动的。</p>
-<p><img src="/images/dl/dl_6.png" alt="dl_6">  </p>
-<p>从上图中可以看出，当数据规模逐渐增大时，传统的机器学习算法的表现保持不变，而神经网络随着规模的增大效果越来越好。<br>在上图的左边，即数据量过小时，此处机器学习算法的优劣很难明确，算法的好坏更取决于手工设计组件的技能，以及算法处理的细节。  </p>
-<p>神经网络的发展初期是由数据和算力驱动的，但渐渐的，在算法上也出现了很大的创新（很大一部分是加速了计算）。比如说，激活函数 由 sigmoid 函数变成了  ReLU 函数。在 sigmoid 函数的两端，导数趋近于零。如果应用梯度下降算法那么速度将非常慢，而 ReLU 函数就解决了这一问题。</p>
-<p><img src="/images/dl/dl_7.png" alt="dl_7">  </p>
+<h2 id="Mini-batch-梯度下降法"><a href="#Mini-batch-梯度下降法" class="headerlink" title="Mini-batch 梯度下降法"></a>Mini-batch 梯度下降法</h2><p>我们在执行梯度下降法时，会使用向量化的方法来加速计算。但如果训练集的数量很大时，速度仍然很慢。Mini-batch 梯度下降法可以加快训练的速度。使用传统的梯度下降法训练一次会处理所有的样本，而 Mini-btach 梯度下降法每次只处理部分的样本。<br>Mini-batch 梯度下降法每次处理样本的数量需要我们自己选择，设定的数量过大或过小都不合适。在极端情况下，设定数量为 1 （即随机梯度下降法，每次只处理一个样本），这样将失去向量化带来的加速效果，这样效率过于低下。设定数量为样本的总数时（即batch梯度下降法），单次迭代的速度会过慢。所以应将数量设置在中间的位置。</p>
+<h2 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h2><p>后面将讲到一些高级的优化算法，在这之前需要了解“指数加权平均”的概念。</p>
+<p><img src="/images/dl/dl_30.png" alt="dl_30.png"></p>
+<p>上图中蓝色的点表示伦敦在一年中每天的温度。<br>如果我们要计算趋势的话，也就是温度的局部平均值，我们可以这样做：<br>$\theta_i$ 表示第 i 天的温度。</p>
+<p>$$<br>\large<br>v_0 = 0 \\<br>v_1 = 0.9v_0 + 0.1\theta_1 \\<br>v_1 = 0.9v_1 + 0.1\theta_2 \\<br>v_1 = 0.9v_2 + 0.1\theta_3 \\<br>v_1 = 0.9v_3 + 0.1\theta_4 \\<br>v_1 = 0.9v_4 + 0.1\theta_5 \\<br>…<br>$$</p>
+<p>公式就是：$v_t = \beta v_{t-1} + (1-\beta)\theta_t$  </p>
+<p>下图中红色的线时 $\beta=0.9$ 的图像，绿色的线是$\beta=0.98$的图像。 $\beta$ 的值越大，曲线就越平缓，因为此时平均的天数更多，但也因为这样曲线进一步右移。可以看出绿色的线对于蓝色的点的趋势有一定的延迟。</p>
+<p><img src="/images/dl/dl_29.png" alt="dl_29.png"></p>
+<p>事实上，上面的图并不是实际的情况。如果我们设定$\beta = 0.98$ 我们得到的并不是绿色的线，而是下图中紫色的线。两条线相比，紫色线的起点更低，这是因为我们设置了 $v_0=0$，显然这与实际的数据是由出入的，即有偏差。<br>如果想修正偏差，可以将公式中的$v_t$换成$\frac{v_t}{1-\beta_t}$。其中 t 表示天数。当 t 很小时（且 $\beta &lt; 0$），$v_t$ 除以一个小于 1 的数字将变大，当 $v_t$ 变得很大时，$\beta^t$ 约等于 0 ，$v_t$ 的值基本不变。<br>这样就实现了修正偏差。<br>然而在机器学习中人们并不在意修正偏差，而更愿意熬过初期获得更精确的预测值。如果你想在初期获得较精确的预测值，可以使用修正偏差。  </p>
+<p>。。。 待续</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-1/">深度学习专项课程（第一周）</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">深度学习专项课程（2）（第二周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-week-1/">http://VerbF.github.io/post/deeplearning-ai-week-1/</a></li>
-            <li><strong>发布时间：</strong>2019-05-22</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">http://VerbF.github.io/post/deeplearning-ai-2-week-2/</a></li>
+            <li><strong>发布时间：</strong>2019-06-17</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -274,7 +224,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
+                    <a class="has-link-grey -link" href="/tags/优化算法/">优化算法</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
                 </div>
             </div>
         </div>
@@ -320,17 +270,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-week-3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（第三周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/bird-identification-app/">
-                <span class="level-item">基于 Mask R-CNN 的鸟类识别 app</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-2-week-1/">
+                <span class="level-item">深度学习专项课程（2）（第一周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -426,17 +369,13 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是神经网络">
+        <a class="is-flex" href="#Mini-batch-梯度下降法">
         <span class="has-mr-6">1</span>
-        <span>什么是神经网络</span>
+        <span>Mini-batch 梯度下降法</span>
         </a></li><li>
-        <a class="is-flex" href="#监督学习">
+        <a class="is-flex" href="#指数加权平均">
         <span class="has-mr-6">2</span>
-        <span>监督学习</span>
-        </a></li><li>
-        <a class="is-flex" href="#为什么深度学习会兴起？">
-        <span class="has-mr-6">3</span>
-        <span>为什么深度学习会兴起？</span>
+        <span>指数加权平均</span>
         </a></li></ul>
         </div>
     </div>
@@ -461,7 +400,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="深度学习专项课程（第一周）" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
