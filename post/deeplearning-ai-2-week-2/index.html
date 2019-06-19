@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周主要讲解了一些优化的算法。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-17T12:37:03.258Z">
+<meta property="og:updated_time" content="2019-06-19T07:19:11.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（2）（第二周）">
 <meta name="twitter:description" content="本周主要讲解了一些优化的算法。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-17T01:58:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-17</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-17T12:37:03.258Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-17</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-19T07:19:11.896Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-19</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 761 个字)
+                    9 分钟 读完 (大约 1414 个字)
                 </span>
                 
                 
@@ -205,7 +205,21 @@
 <p>下图中红色的线时 $\beta=0.9$ 的图像，绿色的线是$\beta=0.98$的图像。 $\beta$ 的值越大，曲线就越平缓，因为此时平均的天数更多，但也因为这样曲线进一步右移。可以看出绿色的线对于蓝色的点的趋势有一定的延迟。</p>
 <p><img src="/images/dl/dl_29.png" alt="dl_29.png"></p>
 <p>事实上，上面的图并不是实际的情况。如果我们设定$\beta = 0.98$ 我们得到的并不是绿色的线，而是下图中紫色的线。两条线相比，紫色线的起点更低，这是因为我们设置了 $v_0=0$，显然这与实际的数据是由出入的，即有偏差。<br>如果想修正偏差，可以将公式中的$v_t$换成$\frac{v_t}{1-\beta_t}$。其中 t 表示天数。当 t 很小时（且 $\beta &lt; 0$），$v_t$ 除以一个小于 1 的数字将变大，当 $v_t$ 变得很大时，$\beta^t$ 约等于 0 ，$v_t$ 的值基本不变。<br>这样就实现了修正偏差。<br>然而在机器学习中人们并不在意修正偏差，而更愿意熬过初期获得更精确的预测值。如果你想在初期获得较精确的预测值，可以使用修正偏差。  </p>
-<p>。。。 待续</p>
+<h2 id="动量梯度下降法"><a href="#动量梯度下降法" class="headerlink" title="动量梯度下降法"></a>动量梯度下降法</h2><p>momentum 梯度下降法运行速度几乎总是快于标准的梯度下降法，其基本思想计算梯度的指数加权平均数，并利用该梯度更新权重。  </p>
+<p><img src="/images/dl/dl_34.png" alt="dl_34.png">  </p>
+<p>上面是一个梯度下降的例子，因为样本中存在噪声，所以每一次梯度下降的方向并不是严格的指向最优点。这样在上下的方向上存在一个速度分量，我们看作是纵轴，左右方向上存在一个速度分量，我们看作是横轴。我们希望加快在横轴上的速度，而减缓在纵轴上的速度，这样可以更快的完成训练。</p>
+<p>我们修改一下参数更新的公式，将上一节讲到的指数加权平均加入其中：</p>
+<p>$$<br>V_{dw} = \beta V_{dw} + (1-\beta)dw \\<br>V_{db} = \beta V_{db} + (1-\beta)db \\<br>w = w -\alpha V_{dw} \\<br>b = b -\alpha V_{db}<br>$$</p>
+<p><img src="/images/dl/dl_35.png" alt="dl_35.png">  </p>
+<p>上图中红色的线代表<strong>动量梯度下降法</strong>的轨迹，可以看到它在纵轴上的震荡变缓了。但是动量梯度下降法并不是在所有情况下都有效，它只对于碗装的函数有效。</p>
+<h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>。。。待续</p>
+<h2 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h2><h2 id="局部最优的问题"><a href="#局部最优的问题" class="headerlink" title="局部最优的问题"></a>局部最优的问题</h2><p>过去研究人员会担心某些算法会陷入局部最优点，无法到达全局最优点。然而随着研究的深入，人们并不把这当作一个问题。  </p>
+<p>对于低维的数据在我们的脑海中往往出现这样一幅图像：</p>
+<p><img src="/images/dl/dl_32.png" alt="dl_32.png"></p>
+<p>可以看到，在这幅图像中存在着许多局部最优点，可能会对算法造成影响。这样的想法影响了我们对高维数据的理解。在高维数据中我们通常不会遇到局部最优点，而是鞍点。</p>
+<p><img src="/images/dl/dl_33.png" alt="dl_33.png"></p>
+<p>可以看到鞍点并不是在所有维度上的梯度都为 0 ，所以算法可以逃离鞍点。事实上，在高维的局部最优点很难遇到，它需要在各个维度上的梯度都为 0 才能满足，而这样点出现的概率非常低。所以说这并不是一个问题。  </p>
+<p>然而在算法达到鞍点时，训练的速度将变的十分缓慢，如何加速训练的速度这才是我们需要关注的问题。</p>
 
         </div>
         
@@ -376,6 +390,22 @@
         <a class="is-flex" href="#指数加权平均">
         <span class="has-mr-6">2</span>
         <span>指数加权平均</span>
+        </a></li><li>
+        <a class="is-flex" href="#动量梯度下降法">
+        <span class="has-mr-6">3</span>
+        <span>动量梯度下降法</span>
+        </a></li><li>
+        <a class="is-flex" href="#RMSprop">
+        <span class="has-mr-6">4</span>
+        <span>RMSprop</span>
+        </a></li><li>
+        <a class="is-flex" href="#学习率衰减">
+        <span class="has-mr-6">5</span>
+        <span>学习率衰减</span>
+        </a></li><li>
+        <a class="is-flex" href="#局部最优的问题">
+        <span class="has-mr-6">6</span>
+        <span>局部最优的问题</span>
         </a></li></ul>
         </div>
     </div>
