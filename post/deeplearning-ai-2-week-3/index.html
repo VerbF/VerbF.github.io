@@ -2,27 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>基于 Mask R-CNN 的鸟类识别 app - xxs&#39;s blog</title>
+<title>深度学习专项课程（2）（第三周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
-<meta name="keywords" content="深度学习,Mask R-CNN,鸟类识别">
+    <meta name="description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
+<meta name="keywords" content="深度学习,优化算法,神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于 Mask R-CNN 的鸟类识别 app">
-<meta property="og:url" content="http://VerbF.github.io/post/bird-identification-app/index.html">
+<meta property="og:title" content="深度学习专项课程（2）（第三周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-2-week-3/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
+<meta property="og:description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
-<meta property="og:updated_time" content="2019-05-21T13:04:57.643Z">
+<meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
+<meta property="og:updated_time" content="2019-06-24T13:41:11.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于 Mask R-CNN 的鸟类识别 app">
-<meta name="twitter:description" content="一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。">
-<meta name="twitter:image" content="http://verbf.github.io/images/bird_identification_app/thumbnail.jpg">
+<meta name="twitter:title" content="深度学习专项课程（2）（第三周）">
+<meta name="twitter:description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
+<meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（2）（第三周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/bird_identification_app/thumbnail.jpg" alt="基于 Mask R-CNN 的鸟类识别 app">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（2）（第三周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>基于 Mask R-CNN 的鸟类识别 app
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（2）（第三周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-21T03:04:10.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-05-21</time>
+                <time class="level-item has-text-grey" datetime="2019-06-24T01:10:55.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-24</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-05-21T13:04:57.643Z"><i class="far fa-calendar-check">&nbsp;</i>2019-05-21</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-24T13:41:11.567Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-24</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    3 分钟 读完 (大约 481 个字)
+                    9 分钟 读完 (大约 1314 个字)
                 </span>
                 
                 
@@ -194,30 +194,43 @@
         </div>
         
         <div class="content">
-            <p>一个基于 Mask R-CNN 的鸟类识别 APP，可以识别五种鸟类，mAP 83%。<br><a id="more"></a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这时博主的毕设的课题，时间紧迫加上自身能力所限，最后的作品还有很多不足，还望各位不吝指正。<br>代码已经上传到了 <a href="https://github.com/VerbF/Bird_Identification_App" target="_blank" rel="noopener">github</a>,并附上了详细的使用说明。<br>先放一下效果图  </p>
-<p><img src="/images/bird_identification_app/1.png" alt="1.png"></p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>整个系统包括用户端和服务端两部分。用户端通过 http 协议将待识别的鸟类图片上传到服务端，服务端再将识别后的图片和鸟类信息返回给用户端。</p>
-<p>鸟类识别由 Mask R-CNN 框架训练出的模型完成。  </p>
-<p><img src="/images/bird_identification_app/3.png" alt="系统流程图"></p>
-<h2 id="鸟类识别"><a href="#鸟类识别" class="headerlink" title="鸟类识别"></a>鸟类识别</h2><p>博主标注了 5 类，共 300 张鸟类图片，使用 Mask R-CNN 框架进行训练，得到了识别鸟类的模型。</p>
-<p>5 种鸟类的图片  </p>
-<p><img src="/images/bird_identification_app/6.png" alt="6.png"></p>
-<p>平均准确率的统计图  </p>
-<p><img src="/images/bird_identification_app/2.png" alt="2.png"></p>
-<h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><p>用户端运行在安卓系统上，包括图片的选择，图片的裁剪，图片的上传，以及识别结果的显示等功能。  </p>
-<p><img src="/images/bird_identification_app/4.png" alt="用户端流程图"></p>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>服务端采用Python编程语言进行编写，服务端完成了接收用户端上传图片，识别图片，从数据库中查询鸟类的信息，将识别的结果回传到用户端等功能。  </p>
-<p>服务端使用了 flask web 应用框架。<br>执行 server.py 脚本后服务启动，当服务端接收到用户端上传的鸟类图片时将会调用 detect.py 脚本，脚本调用模型对鸟类进行识别。</p>
-<p><img src="/images/bird_identification_app/5.png" alt="服务端流程图"></p>
+            <p>本周介绍了超参数调整，bath归一化以及程序框架的相关内容。</p>
+<a id="more"></a>
+<h2 id="超参数调试"><a href="#超参数调试" class="headerlink" title="超参数调试"></a>超参数调试</h2><p>神经网络的改变会涉及到许多超参数的设置，这一节我们将介绍一些超参数调整的指导性原则。<br>虽然超参数的数量很多，但它们的重要性却不相同。例如超参数学习率 $\alpha$ 的重要性通常要高于其他的超参数。<br>在涉及多个超参数的调整时，我们可以根据下面的方法来处理：</p>
+<p><img src="/images/dl/dl_37.png" alt="dl_37.png"></p>
+<p>我们假设有两个超参数$\alpha$和$\epsilon$，如上图的左边，我们在网格中均匀的选取采样点进行测试。但因为超参数的重要性不同，$\epsilon$ 值的改变可能对结果没有影响，而$\alpha$的在这里只使用了 5 个值进行测试。<br>如果我们采用上图右边的方式，随机选取值来进行测试，这样就可使超参数的取值个数变多。<br>如果有三个超参数，那值的选取将在三维的立方体中进行。</p>
+<p>另一个调整超参数的方法是”粗糙到精细” ，如果我们再网格中发现某一区域内的值较好，我们可以将此区域放大，进行更精细的取值。</p>
+<p><img src="/images/dl/dl_38.png" alt="dl_38.png"></p>
+<h2 id="超参数范围选取"><a href="#超参数范围选取" class="headerlink" title="超参数范围选取"></a>超参数范围选取</h2><p>上一节中说到，随机取值可以提升你的搜索效率，但随机取值并不是在有效值范围内的随机均匀取值，而是选择合适的标尺用于探究这些超参数。  </p>
+<p>这里简单的说明随机均匀取值会有什么样的影响。假设参数 $\alpha$ 的取值范围是 0.0001 到 1 ，如果我们随机均匀取值的话，0.1 到 1 将需要 90% 的搜索资源，而 0.0001 到 0.1 只分到了 10% 的搜索资源，显然这并不是一个好的方法。  </p>
+<p><img src="/images/dl/dl_39.png" alt="dl_39.png"></p>
+<p>所以我们采用对数坐标轴来解决这个问题。我们在对数坐标轴上随机均匀取点，这样在 0.0001 到 0.001 之间就会有更多的搜索资源可用。</p>
+<p><img src="/images/dl/dl_40.png" alt="dl_40.png"></p>
+<p>如果我们想将 $\alpha$ 的范围设置在 [0.0001,1] 之间,在 python 中 我们可以这样设置范围：</p>
+<p>$$<br>\large<br>r = -4*np.random.rand() \leftarrow r \in [-4,0] \\<br>\alpha = 10^r \leftarrow \alpha \in [0.0001,1]<br>$$</p>
+<h2 id="Pandas-VS-Caviar"><a href="#Pandas-VS-Caviar" class="headerlink" title="Pandas VS Caviar"></a>Pandas VS Caviar</h2><p>这里再给出一些设置超参数的方法。  </p>
+<ul>
+<li>当我们的机器只能负担起实验一个模型或一小批模型时，我们通常采用这个方法。即每次实验一个模型，根据实验的结果修改超参数。然后再使用修改后的超参数训练模型，再根据此次实验的结果改进超参数，如此迭代。这种方法 AndrewNg 比喻为 pandas。</li>
+<li>如果机器可以负担起多次平行实验，那就可以同时训练有不同超参数的模型，再根据实验的结果取得超参数的最优值。这种方法与鱼类生殖的方式相似，故比喻为 caviar（鱼子酱）。</li>
+</ul>
+<p><img src="/images/dl/dl_41.png" alt="dl_41.png"></p>
+<h2 id="batch-归一化"><a href="#batch-归一化" class="headerlink" title="batch 归一化"></a>batch 归一化</h2><p>在前面的课程中我们提到过，归一化输入特征可以加速学习过程。<br>归一化的步骤如下：</p>
+<p>$$<br>\large<br>\mu = \frac{1}{m}\sum x^{(i)} \\<br>x = x - \mu \\<br>\sigma^2 = \frac{1}{m} \sum (x^{(i)})^2 \\<br>x = x/ \sigma^2<br>$$</p>
+<p>在神经网络中隐藏层的神经单元是没有输入特征的，所以我们要做的是对上一层传递过来的激活值进行归一化处理。<br>我们知道一个神经元计算过程可分为两步，第一步是加权求和得到 z 值，第二步是将 z 放入激活函数中求出激活值。 归一化的对象就是 z 。  </p>
+<p>下面是具体的步骤：  </p>
+<p>$$<br>\large<br>\mu = \frac{1}{m} \sum z^{(i)} \\<br>\sigma^2 = \frac{1}{m} \sum (z_i - \mu)^2 \\<br>z_{norm}^{(i)} = \frac{z^{(i)} - \mu}{\sqrt{\sigma^2 + \epsilon}} \\<br>\widetilde{z}^{(i)} = \gamma z_{norm}^{(i)}  + \beta<br>$$</p>
+<p>这里 $\gamma$ 和 $\beta$ 的作用是可以随意设置 $\widetilde{z}$ 的平均值。如果不加入这两个参数，仅使用 $z_{norm}^{(i)}$ 作为最后的值，那么的平均值和方差是固定的。但我们并不想所有的隐藏单元都有同样的分布，这样才能学到有趣的特征，所以需要加入这两个参数。<br><strong>需要注意的是，这两个参数也是需要学习的</strong></p>
+<p>下图展示了如何在深层神经网络中实现 batch 归一化。</p>
+<p><img src="/images/dl/dl_42.png" alt="dl_42.png">  </p>
+<p><strong>那么 batch 归一化 为什么有用呢？</strong> 可以这样理解，它减弱了前层参数的作用与后层参数的作用之间的联系，它使得每层网络可以自己学习，稍稍独立于其他层，这有助于加速整个网络的学习。<br>事实上，batch 归一化 还有一点<em>轻微的</em>正则化作用。</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">基于 Mask R-CNN 的鸟类识别 app</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-3/">深度学习专项课程（2）（第三周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/bird-identification-app/">http://VerbF.github.io/post/bird-identification-app/</a></li>
-            <li><strong>发布时间：</strong>2019-05-21</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-3/">http://VerbF.github.io/post/deeplearning-ai-2-week-3/</a></li>
+            <li><strong>发布时间：</strong>2019-06-24</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -228,7 +241,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Mask-R-CNN/">Mask R-CNN</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/鸟类识别/">鸟类识别</a>
+                    <a class="has-link-grey -link" href="/tags/优化算法/">优化算法</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
                 </div>
             </div>
         </div>
@@ -274,17 +287,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-week-1/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（第一周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/machine-learning-AndrewNg-ex2/">
-                <span class="level-item">机器学习（吴恩达）作业（2）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-2-week-2/">
+                <span class="level-item">深度学习专项课程（2）（第二周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -380,25 +386,21 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#前言">
+        <a class="is-flex" href="#超参数调试">
         <span class="has-mr-6">1</span>
-        <span>前言</span>
+        <span>超参数调试</span>
         </a></li><li>
-        <a class="is-flex" href="#概述">
+        <a class="is-flex" href="#超参数范围选取">
         <span class="has-mr-6">2</span>
-        <span>概述</span>
+        <span>超参数范围选取</span>
         </a></li><li>
-        <a class="is-flex" href="#鸟类识别">
+        <a class="is-flex" href="#Pandas-VS-Caviar">
         <span class="has-mr-6">3</span>
-        <span>鸟类识别</span>
+        <span>Pandas VS Caviar</span>
         </a></li><li>
-        <a class="is-flex" href="#用户端">
+        <a class="is-flex" href="#batch-归一化">
         <span class="has-mr-6">4</span>
-        <span>用户端</span>
-        </a></li><li>
-        <a class="is-flex" href="#服务端">
-        <span class="has-mr-6">5</span>
-        <span>服务端</span>
+        <span>batch 归一化</span>
         </a></li></ul>
         </div>
     </div>
@@ -423,7 +425,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="基于 Mask R-CNN 的鸟类识别 app" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（2）（第三周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
