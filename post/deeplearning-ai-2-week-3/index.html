@@ -10,7 +10,7 @@
 
 
     <meta name="description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
-<meta name="keywords" content="深度学习,优化算法,神经网络">
+<meta name="keywords" content="深度学习,神经网络,优化算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习专项课程（2）（第三周）">
 <meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-2-week-3/index.html">
@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-24T13:41:11.567Z">
+<meta property="og:updated_time" content="2019-06-25T10:47:35.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（2）（第三周）">
 <meta name="twitter:description" content="本周介绍了超参数调整，bath归一化以及程序框架的相关内容。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-24T01:10:55.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-24</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-24T13:41:11.567Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-24</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-25T10:47:35.439Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-25</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    9 分钟 读完 (大约 1314 个字)
+                    12 分钟 读完 (大约 1749 个字)
                 </span>
                 
                 
@@ -223,6 +223,15 @@
 <p>下图展示了如何在深层神经网络中实现 batch 归一化。</p>
 <p><img src="/images/dl/dl_42.png" alt="dl_42.png">  </p>
 <p><strong>那么 batch 归一化 为什么有用呢？</strong> 可以这样理解，它减弱了前层参数的作用与后层参数的作用之间的联系，它使得每层网络可以自己学习，稍稍独立于其他层，这有助于加速整个网络的学习。<br>事实上，batch 归一化 还有一点<em>轻微的</em>正则化作用。</p>
+<p>batch 归一化 常和 mini-batch 的方法一起使用。考虑这样一个问题，在测试时如何计算$\mu$ 和 $\sigma^2$的值呢？可以这样解决，在训练时可以记录下不同 mini-batch 下对应的 $\mu$ 和 $\sigma^2$。在测试时，使用指数加权平均的方法来估计两个参数的值。  </p>
+<h2 id="softmax-回归"><a href="#softmax-回归" class="headerlink" title="softmax 回归"></a>softmax 回归</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>到目前为止，所提到的分类例子都用了二分类，如果有多种分类的话可以使用 softmax 回归。我们来看看 softmax 的原理是什么：</p>
+<p><img src="/images/dl/dl_43.png" alt="dl_43.png">  </p>
+<p>在神经网络的最后一层，先计算出 $z^{[l]}$ 的值，在将其输入到激活函数中。这里的激活函数输入值是一个向量，输出值也是一个同样维度的向量。思想就是将向量中的每个元素取幂，这样每个元素都为正数。再将每个元素除以所有元素之和，这样之后，所有元素均小于 1，大于 0 ，且所有元素之和为 0。最后向量的值可以看作是对应的概率。</p>
+<p>$$<br>\large<br>z^{[l]} = w^{[l]}a^{[l-1]} + b^{[l]} \\<br>activation\quad function: \\<br>t = e^{(z^{[l]})} \\<br>a^{[l]} = \frac{e^{z^{[l]}}}{\sum^4_{j=1} t_i} \quad ,\quad a^{[i]}_i = \frac{t_i}{\sum^4_{j=1} t_i}  \\<br>$$</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>$$<br>\large<br>l(\hat{y},y) = -\sum^4_{j=1}y_j log\hat{y}_j<br>$$</p>
+<p>其中 y 代表真实值， $\hat{y}$ 代表预测值。</p>
+<p>$$<br>y^{(i)} = \begin{bmatrix}<br>0 \\ 1 \\ 0 \\ 0<br>\end{bmatrix} ,<br>\hat{y}^{(i)} = \begin{bmatrix}<br>0.3 \\ 0.2 \\ 0.1 \\ 0.4<br>\end{bmatrix}<br>$$</p>
+<p>我们将对应的 y 值带入到代价函数中发现，如果对应真值的概率越高则代价越小，若概率越低则代价越大。</p>
 
         </div>
         
@@ -401,7 +410,19 @@
         <a class="is-flex" href="#batch-归一化">
         <span class="has-mr-6">4</span>
         <span>batch 归一化</span>
-        </a></li></ul>
+        </a></li><li>
+        <a class="is-flex" href="#softmax-回归">
+        <span class="has-mr-6">5</span>
+        <span>softmax 回归</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#原理">
+        <span class="has-mr-6">5.1</span>
+        <span>原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#代价函数">
+        <span class="has-mr-6">5.2</span>
+        <span>代价函数</span>
+        </a></li></ul></li></ul>
         </div>
     </div>
 </div>
