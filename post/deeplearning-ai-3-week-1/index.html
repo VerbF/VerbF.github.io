@@ -18,7 +18,7 @@
 <meta property="og:description" content="本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。 这门课的内容与如何更快速高效地优化机器学习系统有关。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-07-01T02:48:30.964Z">
+<meta property="og:updated_time" content="2019-07-01T07:18:31.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（3）（第一周）">
 <meta name="twitter:description" content="本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。 这门课的内容与如何更快速高效地优化机器学习系统有关。">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-01T01:08:14.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-01</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-01T02:48:30.964Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-01</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-01T07:18:31.833Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-01</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    5 分钟 读完 (大约 763 个字)
+                    8 分钟 读完 (大约 1256 个字)
                 </span>
                 
                 
@@ -232,6 +232,34 @@
 </tbody>
 </table>
 <p>假设我们决定很看重分类器的 accuracy 和 runtime 两个指标，我们可以把这两个指标以某种方式结合成单一数字评估指标。但是这样并不是最好的方法，因为就 runtime 这一指标而言，只要其值小于 100ms，那么 80ms 和 95ms 对用户来说并没有太大的差别，但用户对 accuracy 的要求更高。所以我们可以将 runtime 设置为满足指标，而将 accuracy 设置为优化指标。</p>
+<h2 id="人的表现"><a href="#人的表现" class="headerlink" title="人的表现"></a>人的表现</h2><p>我们在评估一个机器学习系统的性能时，常常会将其与人类的表现进行对比。这是为什么呢？</p>
+<p>这里需要提到<strong>贝叶斯最优错误率</strong>，贝叶斯最优错误率一般认为时理论上可能达到的最优错误率。也就是说没有任何办法可以设计出一个 x 到 y 的函数可以使它的准确度能够超过一定的标准。而人类在某些方面十分擅长，几乎接近了贝叶斯最优错误率。所以在某些时候可以用人类的表现来估计贝叶斯最优错误率。</p>
+<p>另一个方面是当机器学习系统准确率在超过人类的表现之后，想要在提升准确率就会变得非常缓慢。这有两个原因，第一个就是上面提到的人类的表现已经很接近贝叶斯最优错误率了。第二个原因是当机器的准确率未达到人类的表现时有很多工具可以帮助机器提升准确率，例如可以让人类对数据进行标注等。而当机器的准确率超过人类的表现后则没有相应的工具了。</p>
+<h2 id="可避免偏差"><a href="#可避免偏差" class="headerlink" title="可避免偏差"></a>可避免偏差</h2><table>
+<thead>
+<tr>
+<th>Humans（$\approx$ Bayes）</th>
+<th>1%</th>
+<th>7.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training error</td>
+<td>8%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Dev error</td>
+<td>10%</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p>我们将贝叶斯错误率和训练集上的错误率之差称为可避免偏差。</p>
+<p>在上面左边的例子中可避免偏差为7%，而训练集与开发集的方差为 2%，在这样的时候我们应考虑减少可避免方差。</p>
+<p>在右边的例子中可避免偏差为 0.5%，而训练集与开发集的方差仍为 2%，所以我们应该将精力放到减少方差上。</p>
+<h2 id="改善你的模型表现"><a href="#改善你的模型表现" class="headerlink" title="改善你的模型表现"></a>改善你的模型表现</h2><p><img src="/images/dl/dl_46.png" alt="dl_46.png"></p>
 
         </div>
         
@@ -406,6 +434,18 @@
         <a class="is-flex" href="#满足和优化指标">
         <span class="has-mr-6">3</span>
         <span>满足和优化指标</span>
+        </a></li><li>
+        <a class="is-flex" href="#人的表现">
+        <span class="has-mr-6">4</span>
+        <span>人的表现</span>
+        </a></li><li>
+        <a class="is-flex" href="#可避免偏差">
+        <span class="has-mr-6">5</span>
+        <span>可避免偏差</span>
+        </a></li><li>
+        <a class="is-flex" href="#改善你的模型表现">
+        <span class="has-mr-6">6</span>
+        <span>改善你的模型表现</span>
         </a></li></ul>
         </div>
     </div>
