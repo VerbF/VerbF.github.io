@@ -2,26 +2,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>深度学习专项课程（2）（第二周） - xxs&#39;s blog</title>
+<title>深度学习专项课程（3）（第一周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="本周主要讲解了一些优化的算法。">
-<meta name="keywords" content="深度学习,神经网络,优化算法">
+    <meta name="description" content="本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。 这门课的内容与如何更快速高效地优化机器学习系统有关。">
+<meta name="keywords" content="深度学习,机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习专项课程（2）（第二周）">
-<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-2-week-2/index.html">
+<meta property="og:title" content="深度学习专项课程（3）（第一周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-3-week-1/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="本周主要讲解了一些优化的算法。">
+<meta property="og:description" content="本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。 这门课的内容与如何更快速高效地优化机器学习系统有关。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-20T01:31:27.082Z">
+<meta property="og:updated_time" content="2019-07-01T02:48:30.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习专项课程（2）（第二周）">
-<meta name="twitter:description" content="本周主要讲解了一些优化的算法。">
+<meta name="twitter:title" content="深度学习专项课程（3）（第一周）">
+<meta name="twitter:description" content="本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。 这门课的内容与如何更快速高效地优化机器学习系统有关。">
 <meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（3）（第一周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（2）（第二周）">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（3）（第一周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>深度学习专项课程（2）（第二周）
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（3）（第一周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-17T01:58:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-17</time>
+                <time class="level-item has-text-grey" datetime="2019-07-01T01:08:14.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-01</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-20T01:31:27.082Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-20</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-01T02:48:30.964Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-01</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    13 分钟 读完 (大约 2005 个字)
+                    5 分钟 读完 (大约 763 个字)
                 </span>
                 
                 
@@ -194,72 +194,52 @@
         </div>
         
         <div class="content">
-            <p>本周主要讲解了一些优化的算法。</p>
+            <p>本文内容是 deep_learning.ai 微专业的第三门 《构建机器学习项目》第一周的课程。</p>
+<p>这门课的内容与如何更快速高效地优化机器学习系统有关。</p>
 <a id="more"></a>
-<h2 id="Mini-batch-梯度下降法"><a href="#Mini-batch-梯度下降法" class="headerlink" title="Mini-batch 梯度下降法"></a>Mini-batch 梯度下降法</h2><p>我们在执行梯度下降法时，会使用向量化的方法来加速计算。但如果训练集的数量很大时，速度仍然很慢。Mini-batch 梯度下降法可以加快训练的速度。使用传统的梯度下降法训练一次会处理所有的样本，而 Mini-btach 梯度下降法每次只处理部分的样本。<br>Mini-batch 梯度下降法每次处理样本的数量需要我们自己选择，设定的数量过大或过小都不合适。在极端情况下，设定数量为 1 （即随机梯度下降法，每次只处理一个样本），这样将失去向量化带来的加速效果，这样效率过于低下。设定数量为样本的总数时（即batch梯度下降法），单次迭代的速度会过慢。所以应将数量设置在中间的位置。</p>
-<h2 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h2><p>后面将讲到一些高级的优化算法，在这之前需要了解“指数加权平均”的概念。</p>
-<p><img src="/images/dl/dl_30.png" alt="dl_30.png"></p>
-<p>上图中蓝色的点表示伦敦在一年中每天的温度。<br>如果我们要计算趋势的话，也就是温度的局部平均值，我们可以这样做：<br>$\theta_i$ 表示第 i 天的温度。</p>
-<p>$$<br>\large<br>v_0 = 0 \\<br>v_1 = 0.9v_0 + 0.1\theta_1 \\<br>v_1 = 0.9v_1 + 0.1\theta_2 \\<br>v_1 = 0.9v_2 + 0.1\theta_3 \\<br>v_1 = 0.9v_3 + 0.1\theta_4 \\<br>v_1 = 0.9v_4 + 0.1\theta_5 \\<br>…<br>$$</p>
-<p>公式就是：$v_t = \beta v_{t-1} + (1-\beta)\theta_t$  </p>
-<p>下图中红色的线时 $\beta=0.9$ 的图像，绿色的线是$\beta=0.98$的图像。 $\beta$ 的值越大，曲线就越平缓，因为此时平均的天数更多，但也因为这样曲线进一步右移。可以看出绿色的线对于蓝色的点的趋势有一定的延迟。</p>
-<p><img src="/images/dl/dl_29.png" alt="dl_29.png"></p>
-<p>事实上，上面的图并不是实际的情况。如果我们设定$\beta = 0.98$ 我们得到的并不是绿色的线，而是下图中紫色的线。两条线相比，紫色线的起点更低，这是因为我们设置了 $v_0=0$，显然这与实际的数据是由出入的，即有偏差。<br>如果想修正偏差，可以将公式中的$v_t$换成$\frac{v_t}{1-\beta_t}$。其中 t 表示天数。当 t 很小时（且 $\beta &lt; 0$），$v_t$ 除以一个小于 1 的数字将变大，当 $v_t$ 变得很大时，$\beta^t$ 约等于 0 ，$v_t$ 的值基本不变。<br>这样就实现了修正偏差。<br>然而在机器学习中人们并不在意修正偏差，而更愿意熬过初期获得更精确的预测值。如果你想在初期获得较精确的预测值，可以使用修正偏差。  </p>
-<h2 id="动量梯度下降法"><a href="#动量梯度下降法" class="headerlink" title="动量梯度下降法"></a>动量梯度下降法</h2><p>momentum 梯度下降法运行速度几乎总是快于标准的梯度下降法，其基本思想计算梯度的指数加权平均数，并利用该梯度更新权重。  </p>
-<p><img src="/images/dl/dl_34.png" alt="dl_34.png">  </p>
-<p>上面是一个梯度下降的例子，因为样本中存在噪声，所以每一次梯度下降的方向并不是严格的指向最优点。这样在上下的方向上存在一个速度分量，我们看作是纵轴，左右方向上存在一个速度分量，我们看作是横轴。我们希望加快在横轴上的速度，而减缓在纵轴上的速度，这样可以更快的完成训练。</p>
-<p>我们修改一下参数更新的公式，将上一节讲到的指数加权平均加入其中：</p>
-<p>$$<br>\large<br>V_{dw} = \beta V_{dw} + (1-\beta)dw \\<br>V_{db} = \beta V_{db} + (1-\beta)db \\<br>w = w -\alpha V_{dw} \\<br>b = b -\alpha V_{db}<br>$$</p>
-<p><img src="/images/dl/dl_35.png" alt="dl_35.png">  </p>
-<p>上图中红色的线代表<strong>动量梯度下降法</strong>的轨迹，可以看到它在纵轴上的震荡变缓了。但是动量梯度下降法并不是在所有情况下都有效，它只对于碗状的函数有效。</p>
-<h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>RMSprop(root mean square prop)算法亦可以加速梯度下降，让我们来看看它是如何运行的。</p>
-<p><img src="/images/dl/dl_36.png" alt="dl_36.png">  </p>
-<p>同样的，我们希望可以加快在横轴上的学习，而减缓在纵轴上的学习。为了方便起见，将横轴上的参数记为 w ，纵轴上的参数记为 b ，我们将公式更新如下：</p>
-<p>$$<br>\large<br>S_{dw} = \beta S_{dw} + (1-\beta)(dw)^2 \\<br>S_{db} = \beta S_{db} + (1-\beta)(db)^2 \\<br>w = w - \alpha \frac{dw}{\sqrt{S_{dw}}} \\<br>b = b - \alpha \frac{db}{\sqrt{S_{db}}}<br>$$</p>
-<p>由图可知，在纵轴上的斜率较大，横轴上的斜率较小，即 $S_{db} &gt; S_{dw}$ 。从公式中可以看到 dw 除以了一个较小的值，那么 w 的变化将变快。 db 除以一个较大的值 ，则 b 的变化将变小。<br>这就是 RMSprop 算法的思想。  </p>
-<p>需要注意的是，这里的 w 和 b 在实际的应用中可能是高维的向量。<br>为了防止发生除 0 的错误，我们做如下改动($\epsilon$ 是极小的值)：</p>
-<p>$$<br>\large<br>w = w - \alpha \frac{dw}{\sqrt{S_{dw}}+\epsilon} \\<br>b = b - \alpha \frac{db}{\sqrt{S_{db}}+\epsilon}<br>$$</p>
-<h2 id="Adam-优化算法"><a href="#Adam-优化算法" class="headerlink" title="Adam 优化算法"></a>Adam 优化算法</h2><p>Adam（Adaptive Moment Estimation） 算法可以看作是 <strong>动量梯度下降算法</strong> 和 <strong>RMSprop算法</strong> 的结合。<br>这里直接给出公式，这里我们使用了修正偏差：<br>
-$$
-\large
-V_{dw} = \beta_1 V_{dw} + (1-\beta_1)dw ,
-V_{db} = \beta_1 V_{db} + (1-\beta_1)db
-\quad \leftarrow'momentun' \quad  \beta_1
-\\\
-S_{dw} = \beta_2 S_{dw} + (1-\beta_2)(dw)^2 ,
-S_{db} = \beta_2 S_{db} + (1-\beta_2)(db)^2  
-\quad \leftarrow 'RMSprop'\quad  \beta_2 
-\\\
-V_{dw}^{corrected} = V_{dw}/(1-\beta_1^t) ,
-V_{db}^{corrected} = V_{db}/(1-\beta_1^t)
-\\\
-S_{dw}^{corrected} = S_{dw}/(1-\beta_2^t) ,
-S_{db}^{corrected} = S_{db}/(1-\beta_2^t)
-\\\
-w = w - \alpha \frac{V_{dw}^{corrected} }{\sqrt{S_{dw}^{corrected}}+\epsilon} \\\
-b = b - \alpha \frac{V_{db}^{corrected}}{\sqrt{S_{db}^{corrected}}+\epsilon}
-$$
-</p>
-<p>这样就将两个算法结合起来了。</p>
-<h2 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h2><p>加快学习算法的另一个方法就是随时间慢慢减少学习率，我们将它称为学习率衰减。  </p>
-<p>在训练的过程中，第一次遍历数据集我们记作 epoch 1，第二次记作 epoch 2 。。。 以此类推。<br>我们将学习率设为:</p>
-<p>$$<br>\alpha = \frac{1}{1 + decay-rate * epoch-num}\alpha_0<br>$$</p>
-<p>这样学习率就会随着迭代次数的增加而递减。<br>除此之外，还有多种方法进行学习率衰减，此处不一一列举。</p>
-<h2 id="局部最优的问题"><a href="#局部最优的问题" class="headerlink" title="局部最优的问题"></a>局部最优的问题</h2><p>过去研究人员会担心某些算法会陷入局部最优点，无法到达全局最优点。然而随着研究的深入，人们并不把这当作一个问题。  </p>
-<p>对于低维的数据在我们的脑海中往往出现这样一幅图像：</p>
-<p><img src="/images/dl/dl_32.png" alt="dl_32.png"></p>
-<p>可以看到，在这幅图像中存在着许多局部最优点，可能会对算法造成影响。这样的想法影响了我们对高维数据的理解。在高维数据中我们通常不会遇到局部最优点，而是鞍点。</p>
-<p><img src="/images/dl/dl_33.png" alt="dl_33.png"></p>
-<p>可以看到鞍点并不是在所有维度上的梯度都为 0 ，所以算法可以逃离鞍点。事实上，在高维的局部最优点很难遇到，它需要在各个维度上的梯度都为 0 才能满足，而这样点出现的概率非常低。所以说这并不是一个问题。  </p>
-<p>然而在算法达到鞍点时，训练的速度将变的十分缓慢，如何加速训练的速度这才是我们需要关注的问题。</p>
+<h2 id="正交化"><a href="#正交化" class="headerlink" title="正交化"></a>正交化</h2><p>搭建机器学习系统的挑战之一是我们可以尝试和修改的东西太多了，比如说有许多的超参数可以调整。<br>许多高效的机器学习专家非常清楚要达到某种效果需要调整那些参数，这个过程我们称为正交化。  </p>
+<p>看下面的例子：  </p>
+<p><img src="/images/dl/dl_44.png" alt="dl_44.png"></p>
+<p>在老式的电视中有许多旋钮可以调整电视的画面，如有些旋钮可以调节画面的横向宽度，有的可以调节纵向的宽度等等。这些旋钮都独立的负责某一功能，这样我们就可以通过调节不同的旋钮达到自己想要的效果。但如果某个旋钮同时具备了两个功能，那么我们在调节的时候可能并不会那么容易。<br>这就是正交化的一个简单的例子。</p>
+<p>同样的，在机器学习系统中我们也可以设置类似的“旋钮”来实现不同的独立的功能。例如可以设置某个“旋钮”可以调节训练集的大小，或是切换不同的优化算法等等。  </p>
+<h2 id="单一数字评估指标"><a href="#单一数字评估指标" class="headerlink" title="单一数字评估指标"></a>单一数字评估指标</h2><p>在前面提到过的猫分类器，我们可以通过 precision 和 recall 这两个指标来评价一个🐱分类器的好坏。<br>但如果我们有多个🐱分类器的话如何来评价它们的优劣呢？我们需要一个单一数字评估指标，在这里我们将 precision 和 recall 两个指标结合起来得到一个新的指标 F1 Score（可以理解为 precision 和 recall 的某种平均值） , 这样我们就可以通过 F1 Score 这个指标来快速的比较不同分类器之间的好坏了。  </p>
+<p><img src="/images/dl/dl_45.png" alt="dl_45.png"></p>
+<h2 id="满足和优化指标"><a href="#满足和优化指标" class="headerlink" title="满足和优化指标"></a>满足和优化指标</h2><p>有时候要把我们所有顾及的事情结合成单一数字评估指标是不容易的，在这样的情况下，设置满足和优化指标是很有用的。</p>
+<table>
+<thead>
+<tr>
+<th>classifier</th>
+<th>accuracy</th>
+<th>runtime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90%</td>
+<td>80ms</td>
+</tr>
+<tr>
+<td>B</td>
+<td>92%</td>
+<td>95ms</td>
+</tr>
+<tr>
+<td>C</td>
+<td>95%</td>
+<td>1500ms</td>
+</tr>
+</tbody>
+</table>
+<p>假设我们决定很看重分类器的 accuracy 和 runtime 两个指标，我们可以把这两个指标以某种方式结合成单一数字评估指标。但是这样并不是最好的方法，因为就 runtime 这一指标而言，只要其值小于 100ms，那么 80ms 和 95ms 对用户来说并没有太大的差别，但用户对 accuracy 的要求更高。所以我们可以将 runtime 设置为满足指标，而将 accuracy 设置为优化指标。</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">深度学习专项课程（2）（第二周）</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-3-week-1/">深度学习专项课程（3）（第一周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">http://VerbF.github.io/post/deeplearning-ai-2-week-2/</a></li>
-            <li><strong>发布时间：</strong>2019-06-17</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-3-week-1/">http://VerbF.github.io/post/deeplearning-ai-3-week-1/</a></li>
+            <li><strong>发布时间：</strong>2019-07-01</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -270,7 +250,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/优化算法/">优化算法</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
+                    <a class="has-link-grey -link" href="/tags/机器学习/">机器学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
                 </div>
             </div>
         </div>
@@ -316,17 +296,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-2-week-3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（2）（第三周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-2-week-1/">
-                <span class="level-item">深度学习专项课程（2）（第一周）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-2-week-3/">
+                <span class="level-item">深度学习专项课程（2）（第三周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -422,33 +395,17 @@ $$
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Mini-batch-梯度下降法">
+        <a class="is-flex" href="#正交化">
         <span class="has-mr-6">1</span>
-        <span>Mini-batch 梯度下降法</span>
+        <span>正交化</span>
         </a></li><li>
-        <a class="is-flex" href="#指数加权平均">
+        <a class="is-flex" href="#单一数字评估指标">
         <span class="has-mr-6">2</span>
-        <span>指数加权平均</span>
+        <span>单一数字评估指标</span>
         </a></li><li>
-        <a class="is-flex" href="#动量梯度下降法">
+        <a class="is-flex" href="#满足和优化指标">
         <span class="has-mr-6">3</span>
-        <span>动量梯度下降法</span>
-        </a></li><li>
-        <a class="is-flex" href="#RMSprop">
-        <span class="has-mr-6">4</span>
-        <span>RMSprop</span>
-        </a></li><li>
-        <a class="is-flex" href="#Adam-优化算法">
-        <span class="has-mr-6">5</span>
-        <span>Adam 优化算法</span>
-        </a></li><li>
-        <a class="is-flex" href="#学习率衰减">
-        <span class="has-mr-6">6</span>
-        <span>学习率衰减</span>
-        </a></li><li>
-        <a class="is-flex" href="#局部最优的问题">
-        <span class="has-mr-6">7</span>
-        <span>局部最优的问题</span>
+        <span>满足和优化指标</span>
         </a></li></ul>
         </div>
     </div>
@@ -473,7 +430,7 @@ $$
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（3）（第一周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
