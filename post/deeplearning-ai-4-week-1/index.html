@@ -18,7 +18,7 @@
 <meta property="og:description" content="本周介绍了卷积神经网络的基本概念">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-07-09T13:36:10.326Z">
+<meta property="og:updated_time" content="2019-07-10T07:00:52.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习专项课程（4）（第一周）">
 <meta name="twitter:description" content="本周介绍了卷积神经网络的基本概念">
@@ -168,7 +168,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-09T06:14:05.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-09</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-09T13:36:10.326Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-09</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-10T07:00:52.042Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-10</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 分钟 读完 (大约 896 个字)
+                    12 分钟 读完 (大约 1788 个字)
                 </span>
                 
                 
@@ -214,7 +214,87 @@
 <p><strong>对维度的总结</strong></p>
 <p>下图中上面是输入的参数，下面是卷积操作后输出的参数。</p>
 <p><img src="/images/dl/dl_54.png" alt="dl_54.png">  </p>
-<h2 id="三维卷积"><a href="#三维卷积" class="headerlink" title="三维卷积"></a>三维卷积</h2>
+<h2 id="三维卷积"><a href="#三维卷积" class="headerlink" title="三维卷积"></a>三维卷积</h2><p>灰度图像只有两个维度，而我们常见的RGB图像有三个维度，这时我们需要进行三维卷积。</p>
+<p>随着图像维度的增加，相应的，过滤器的维度也增加，并且过滤器第三个维度的值应与图像第三个维度的值相等。</p>
+<p>卷积的方法与在二维的情况下类似，我们将过滤器不同的通道与图像不同的通道（第三维称之为通道）对应，再相乘求和得到一个值，再使用过滤器依次扫描整个图像便可得到最终的结果。</p>
+<p>如果只使用一个过滤器，卷积后的结果仍是一个二维的矩阵。如果使用两个过滤器将得到两个二维的矩阵，将其叠加起来就能得到一个三维的结果。使用多个过滤器的目的是为了提取多个不同的特征。</p>
+<p><img src="/images/dl/dl_55.png" alt="dl_55.png">  </p>
+<h2 id="单层卷积网络"><a href="#单层卷积网络" class="headerlink" title="单层卷积网络"></a>单层卷积网络</h2><p>如图所示，这是一个卷积层。这里使用了两个过滤器。我们将过滤器卷积之后的矩阵用类似 python 广播的方式加上偏置值 b ，再将矩阵放入 ReLU 激活函数中，最后输出一个 4 x 4 的矩阵。因为使用了两个滤波器，把这两个滤波器最后输出的矩阵堆叠起来就得到了一个 4 x 4 x 2 的矩阵，这也是这个卷积层输出的最后结果。</p>
+<p><img src="/images/dl/dl_56.png" alt="dl_56.png">  </p>
+<p>这里用到了很多的符号，我们来总结一下这些符号的含义：</p>
+<p><img src="/images/dl/dl_57.png" alt="dl_57.png">  </p>
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>除了使用卷积层，卷积网络也经常使用池化层来缩减模型的大小，提高计算速度同时提高所提取特征的鲁棒性。</p>
+<p>如下图，池化的操作是将图像按照给定的矩阵分割成不同的区域，再取每个区域中最大的值填入给定的矩阵。这里执行的是<strong>最大池化</strong>，所以取最大值。相对的，还有<strong>平均池化</strong>，顾名思义，就是取区域内所有值的平均值填入其中。<br>这里的池化参数：过滤器 f 大小是 2 ， 步长 s = 2。这样设置的参数效果相当于将输入的高度和宽度减少一半。</p>
+<p><img src="/images/dl/dl_58.png" alt="dl_58.png">  </p>
+<h2 id="卷积神经网络实例"><a href="#卷积神经网络实例" class="headerlink" title="卷积神经网络实例"></a>卷积神经网络实例</h2><p><img src="/images/dl/dl_59.png" alt="dl_59.png">  </p>
+<p>上图是一个卷积神经网络的实例，其目的是去识别手写数字。  </p>
+<p>网络的输入是 32 x 32 x 3 的 RGB 图像，经过两个卷积层（每一层包括卷积和池化两个操作，因为只有卷积操作才有权重参数，故我们将两个操作合起来称为一层），再经过两个全连接层，一个 softmax 层，最后的输出为 0-9 10个数字。  </p>
+<p>网络中的参数变化：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">activation shape</th>
+<th style="text-align:center">activation size</th>
+<th style="text-align:center"># parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">input</td>
+<td style="text-align:center">(32,32,3)</td>
+<td style="text-align:center">3072</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">CONV1(f=5,s=1)</td>
+<td style="text-align:center">(28,28,8)</td>
+<td style="text-align:center">6272</td>
+<td style="text-align:center">208</td>
+</tr>
+<tr>
+<td style="text-align:center">POOL1</td>
+<td style="text-align:center">(14,14,8)</td>
+<td style="text-align:center">1568</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">CONV2(f=2,s=1)</td>
+<td style="text-align:center">(10,10,16)</td>
+<td style="text-align:center">1600</td>
+<td style="text-align:center">416</td>
+</tr>
+<tr>
+<td style="text-align:center">POOL2</td>
+<td style="text-align:center">(5,5,16)</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">FC3</td>
+<td style="text-align:center">(120,1)</td>
+<td style="text-align:center">120</td>
+<td style="text-align:center">48001</td>
+</tr>
+<tr>
+<td style="text-align:center">FC4</td>
+<td style="text-align:center">(84,1)</td>
+<td style="text-align:center">84</td>
+<td style="text-align:center">10081</td>
+</tr>
+<tr>
+<td style="text-align:center">Sofmax</td>
+<td style="text-align:center">(10,1)</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">841</td>
+</tr>
+</tbody>
+</table>
+<h2 id="为什么使用卷积"><a href="#为什么使用卷积" class="headerlink" title="为什么使用卷积"></a>为什么使用卷积</h2><ul>
+<li><strong>参数共享</strong> 一个特征检测器（如垂直边缘检测器）如果在图片的一部分区域有用，那么大概率在其他部分也是有用的。</li>
+<li><strong>稀疏连接</strong> 每一层中的输出值的数量只占了输入的一小部分。</li>
+</ul>
+
         </div>
         
             <ul class="post-copyright">
@@ -388,6 +468,22 @@
         <a class="is-flex" href="#三维卷积">
         <span class="has-mr-6">3</span>
         <span>三维卷积</span>
+        </a></li><li>
+        <a class="is-flex" href="#单层卷积网络">
+        <span class="has-mr-6">4</span>
+        <span>单层卷积网络</span>
+        </a></li><li>
+        <a class="is-flex" href="#池化层">
+        <span class="has-mr-6">5</span>
+        <span>池化层</span>
+        </a></li><li>
+        <a class="is-flex" href="#卷积神经网络实例">
+        <span class="has-mr-6">6</span>
+        <span>卷积神经网络实例</span>
+        </a></li><li>
+        <a class="is-flex" href="#为什么使用卷积">
+        <span class="has-mr-6">7</span>
+        <span>为什么使用卷积</span>
         </a></li></ul>
         </div>
     </div>

@@ -171,7 +171,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-09T06:14:05.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-09</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-09T13:36:10.326Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-09</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-10T07:00:52.042Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-10</time>
                 
                 
                 <div class="level-item">
@@ -184,7 +184,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    6 分钟 读完 (大约 896 个字)
+                    12 分钟 读完 (大约 1788 个字)
                 </span>
                 
                 
@@ -245,7 +245,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-02T07:46:42.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-02</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-03T02:35:40.974Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-03</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-10T02:14:33.527Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-10</time>
                 
                 
                 <div class="level-item">
@@ -267,35 +267,26 @@
         
         <div class="content">
             <p>本周介绍了有关数据不匹配，迁移学习，多任务学习等相关的概念。</p>
-<p>more</p>
-<h2 id="数据不匹配"><a href="#数据不匹配" class="headerlink" title="数据不匹配"></a>数据不匹配</h2><p>数据不匹配问题是指算法擅长处理的数据和你所关心的数据分布不相同的一种情况。比如说，在🐱分类的例子中，你训练所使用的数据是专业的清晰度较高的数据，而在测试时算法所要面对的是用户上传的清晰度并不是很高的图片。</p>
-<h2 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h2><p>神经网络可以从一个任务中习得知识，并将这些知识应用到另一个独立的任务中。举例来说，如果已经训练好了一个网络，可以识别猫这样的对象，然后用习得的知识或部分知识来帮助更好的阅读 x 射线扫描图。这就是所谓的迁移学习。</p>
-<p>在下图中，上面部分是识别🐱的神经网络，我们将它的输出层替换掉而前面的隐藏层保留起来，这样就将其应用在了识别 x 射线的扫描图中。</p>
-<p><img src="/images/dl/dl_47.png" alt="dl_47.png"></p>
-<p>在什么样的条件下应用迁移学习才有意义？</p>
-<ul>
-<li>任务 A 和 B 有相同的输入</li>
-<li>任务 A 比 任务 B 有更多的数据</li>
-<li>A 的低层的特征可以帮助 学习 B</li>
-</ul>
-<p>对于上面的例子来说，识别🐱和识别 x 射线扫描图的输入都是图像，猫的图像数据要远远多于 x 射线扫描图，且识别猫的网络的底层特征有助于识别 x 射线扫描图。</p>
-<h2 id="多任务学习"><a href="#多任务学习" class="headerlink" title="多任务学习"></a>多任务学习</h2><p>多任务学习是指在一个神经网络中我们试图让它同时做几件事。</p>
-<p>例如在自动驾驶的场景当中，我们输入一张图片，希望神经网络可以同时识别出行人，红绿灯，指示牌，其他车辆等目标物体。</p>
-<p>该例中的神经网络结构如下，前面共用特征，在输出层得出对不同目标的预测。</p>
-<p><img src="/images/dl/dl_48.png" alt="dl_48.png"></p>
-<p>在什么样的条件下应用多任务学习才有意义？</p>
-<ul>
-<li><p>底层的共享特征均有助于训练多个任务</p>
-</li>
-<li><p>通常来说，对于这多个任务它们的数据应该大致相同</p>
-</li>
-<li><p>训练一个足够大的神经网络能够在所有任务中表现良好</p>
-</li>
-</ul>
-
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/迁移学习/">迁移学习</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/post/deeplearning-ai-3-week-2/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
