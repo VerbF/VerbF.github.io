@@ -2,26 +2,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>深度学习专项课程（2）（第二周） - xxs&#39;s blog</title>
+<title>深度学习专项课程（4）（第二周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="本周主要讲解了一些优化的算法。">
-<meta name="keywords" content="深度学习,神经网络,优化算法">
+    <meta name="description" content="本周介绍了一些经典的网络结构。">
+<meta name="keywords" content="深度学习,卷积神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习专项课程（2）（第二周）">
-<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-2-week-2/index.html">
+<meta property="og:title" content="深度学习专项课程（4）（第二周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-4-week-2/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="本周主要讲解了一些优化的算法。">
+<meta property="og:description" content="本周介绍了一些经典的网络结构。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-06-20T01:31:27.082Z">
+<meta property="og:updated_time" content="2019-07-15T05:34:38.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习专项课程（2）（第二周）">
-<meta name="twitter:description" content="本周主要讲解了一些优化的算法。">
+<meta name="twitter:title" content="深度学习专项课程（4）（第二周）">
+<meta name="twitter:description" content="本周介绍了一些经典的网络结构。">
 <meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（4）（第二周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（2）（第二周）">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（4）（第二周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>深度学习专项课程（2）（第二周）
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（4）（第二周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-17T01:58:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-06-17</time>
+                <time class="level-item has-text-grey" datetime="2019-07-15T00:05:30.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-15</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-06-20T01:31:27.082Z"><i class="far fa-calendar-check">&nbsp;</i>2019-06-20</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-15T05:34:38.624Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-15</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    13 分钟 读完 (大约 2005 个字)
+                    8 分钟 读完 (大约 1217 个字)
                 </span>
                 
                 
@@ -194,72 +194,49 @@
         </div>
         
         <div class="content">
-            <p>本周主要讲解了一些优化的算法。</p>
+            <p>本周介绍了一些经典的网络结构。</p>
 <a id="more"></a>
-<h2 id="Mini-batch-梯度下降法"><a href="#Mini-batch-梯度下降法" class="headerlink" title="Mini-batch 梯度下降法"></a>Mini-batch 梯度下降法</h2><p>我们在执行梯度下降法时，会使用向量化的方法来加速计算。但如果训练集的数量很大时，速度仍然很慢。Mini-batch 梯度下降法可以加快训练的速度。使用传统的梯度下降法训练一次会处理所有的样本，而 Mini-btach 梯度下降法每次只处理部分的样本。<br>Mini-batch 梯度下降法每次处理样本的数量需要我们自己选择，设定的数量过大或过小都不合适。在极端情况下，设定数量为 1 （即随机梯度下降法，每次只处理一个样本），这样将失去向量化带来的加速效果，这样效率过于低下。设定数量为样本的总数时（即batch梯度下降法），单次迭代的速度会过慢。所以应将数量设置在中间的位置。</p>
-<h2 id="指数加权平均"><a href="#指数加权平均" class="headerlink" title="指数加权平均"></a>指数加权平均</h2><p>后面将讲到一些高级的优化算法，在这之前需要了解“指数加权平均”的概念。</p>
-<p><img src="/images/dl/dl_30.png" alt="dl_30.png"></p>
-<p>上图中蓝色的点表示伦敦在一年中每天的温度。<br>如果我们要计算趋势的话，也就是温度的局部平均值，我们可以这样做：<br>$\theta_i$ 表示第 i 天的温度。</p>
-<p>$$<br>\large<br>v_0 = 0 \\<br>v_1 = 0.9v_0 + 0.1\theta_1 \\<br>v_1 = 0.9v_1 + 0.1\theta_2 \\<br>v_1 = 0.9v_2 + 0.1\theta_3 \\<br>v_1 = 0.9v_3 + 0.1\theta_4 \\<br>v_1 = 0.9v_4 + 0.1\theta_5 \\<br>…<br>$$</p>
-<p>公式就是：$v_t = \beta v_{t-1} + (1-\beta)\theta_t$  </p>
-<p>下图中红色的线时 $\beta=0.9$ 的图像，绿色的线是$\beta=0.98$的图像。 $\beta$ 的值越大，曲线就越平缓，因为此时平均的天数更多，但也因为这样曲线进一步右移。可以看出绿色的线对于蓝色的点的趋势有一定的延迟。</p>
-<p><img src="/images/dl/dl_29.png" alt="dl_29.png"></p>
-<p>事实上，上面的图并不是实际的情况。如果我们设定$\beta = 0.98$ 我们得到的并不是绿色的线，而是下图中紫色的线。两条线相比，紫色线的起点更低，这是因为我们设置了 $v_0=0$，显然这与实际的数据是由出入的，即有偏差。<br>如果想修正偏差，可以将公式中的$v_t$换成$\frac{v_t}{1-\beta_t}$。其中 t 表示天数。当 t 很小时（且 $\beta &lt; 0$），$v_t$ 除以一个小于 1 的数字将变大，当 $v_t$ 变得很大时，$\beta^t$ 约等于 0 ，$v_t$ 的值基本不变。<br>这样就实现了修正偏差。<br>然而在机器学习中人们并不在意修正偏差，而更愿意熬过初期获得更精确的预测值。如果你想在初期获得较精确的预测值，可以使用修正偏差。  </p>
-<h2 id="动量梯度下降法"><a href="#动量梯度下降法" class="headerlink" title="动量梯度下降法"></a>动量梯度下降法</h2><p>momentum 梯度下降法运行速度几乎总是快于标准的梯度下降法，其基本思想计算梯度的指数加权平均数，并利用该梯度更新权重。  </p>
-<p><img src="/images/dl/dl_34.png" alt="dl_34.png">  </p>
-<p>上面是一个梯度下降的例子，因为样本中存在噪声，所以每一次梯度下降的方向并不是严格的指向最优点。这样在上下的方向上存在一个速度分量，我们看作是纵轴，左右方向上存在一个速度分量，我们看作是横轴。我们希望加快在横轴上的速度，而减缓在纵轴上的速度，这样可以更快的完成训练。</p>
-<p>我们修改一下参数更新的公式，将上一节讲到的指数加权平均加入其中：</p>
-<p>$$<br>\large<br>V_{dw} = \beta V_{dw} + (1-\beta)dw \\<br>V_{db} = \beta V_{db} + (1-\beta)db \\<br>w = w -\alpha V_{dw} \\<br>b = b -\alpha V_{db}<br>$$</p>
-<p><img src="/images/dl/dl_35.png" alt="dl_35.png">  </p>
-<p>上图中红色的线代表<strong>动量梯度下降法</strong>的轨迹，可以看到它在纵轴上的震荡变缓了。但是动量梯度下降法并不是在所有情况下都有效，它只对于碗状的函数有效。</p>
-<h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>RMSprop(root mean square prop)算法亦可以加速梯度下降，让我们来看看它是如何运行的。</p>
-<p><img src="/images/dl/dl_36.png" alt="dl_36.png">  </p>
-<p>同样的，我们希望可以加快在横轴上的学习，而减缓在纵轴上的学习。为了方便起见，将横轴上的参数记为 w ，纵轴上的参数记为 b ，我们将公式更新如下：</p>
-<p>$$<br>\large<br>S_{dw} = \beta S_{dw} + (1-\beta)(dw)^2 \\<br>S_{db} = \beta S_{db} + (1-\beta)(db)^2 \\<br>w = w - \alpha \frac{dw}{\sqrt{S_{dw}}} \\<br>b = b - \alpha \frac{db}{\sqrt{S_{db}}}<br>$$</p>
-<p>由图可知，在纵轴上的斜率较大，横轴上的斜率较小，即 $S_{db} &gt; S_{dw}$ 。从公式中可以看到 dw 除以了一个较小的值，那么 w 的变化将变快。 db 除以一个较大的值 ，则 b 的变化将变小。<br>这就是 RMSprop 算法的思想。  </p>
-<p>需要注意的是，这里的 w 和 b 在实际的应用中可能是高维的向量。<br>为了防止发生除 0 的错误，我们做如下改动($\epsilon$ 是极小的值)：</p>
-<p>$$<br>\large<br>w = w - \alpha \frac{dw}{\sqrt{S_{dw}}+\epsilon} \\<br>b = b - \alpha \frac{db}{\sqrt{S_{db}}+\epsilon}<br>$$</p>
-<h2 id="Adam-优化算法"><a href="#Adam-优化算法" class="headerlink" title="Adam 优化算法"></a>Adam 优化算法</h2><p>Adam（Adaptive Moment Estimation） 算法可以看作是 <strong>动量梯度下降算法</strong> 和 <strong>RMSprop算法</strong> 的结合。<br>这里直接给出公式，这里我们使用了修正偏差：<br>
-$$
-\large
-V_{dw} = \beta_1 V_{dw} + (1-\beta_1)dw ,
-V_{db} = \beta_1 V_{db} + (1-\beta_1)db
-\quad \leftarrow'momentun' \quad  \beta_1
-\\\
-S_{dw} = \beta_2 S_{dw} + (1-\beta_2)(dw)^2 ,
-S_{db} = \beta_2 S_{db} + (1-\beta_2)(db)^2  
-\quad \leftarrow 'RMSprop'\quad  \beta_2 
-\\\
-V_{dw}^{corrected} = V_{dw}/(1-\beta_1^t) ,
-V_{db}^{corrected} = V_{db}/(1-\beta_1^t)
-\\\
-S_{dw}^{corrected} = S_{dw}/(1-\beta_2^t) ,
-S_{db}^{corrected} = S_{db}/(1-\beta_2^t)
-\\\
-w = w - \alpha \frac{V_{dw}^{corrected} }{\sqrt{S_{dw}^{corrected}}+\epsilon} \\\
-b = b - \alpha \frac{V_{db}^{corrected}}{\sqrt{S_{db}^{corrected}}+\epsilon}
-$$
-</p>
-<p>这样就将两个算法结合起来了。</p>
-<h2 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h2><p>加快学习算法的另一个方法就是随时间慢慢减少学习率，我们将它称为学习率衰减。  </p>
-<p>在训练的过程中，第一次遍历数据集我们记作 epoch 1，第二次记作 epoch 2 。。。 以此类推。<br>我们将学习率设为:</p>
-<p>$$<br>\alpha = \frac{1}{1 + decay-rate * epoch-num}\alpha_0<br>$$</p>
-<p>这样学习率就会随着迭代次数的增加而递减。<br>除此之外，还有多种方法进行学习率衰减，此处不一一列举。</p>
-<h2 id="局部最优的问题"><a href="#局部最优的问题" class="headerlink" title="局部最优的问题"></a>局部最优的问题</h2><p>过去研究人员会担心某些算法会陷入局部最优点，无法到达全局最优点。然而随着研究的深入，人们并不把这当作一个问题。  </p>
-<p>对于低维的数据在我们的脑海中往往出现这样一幅图像：</p>
-<p><img src="/images/dl/dl_32.png" alt="dl_32.png"></p>
-<p>可以看到，在这幅图像中存在着许多局部最优点，可能会对算法造成影响。这样的想法影响了我们对高维数据的理解。在高维数据中我们通常不会遇到局部最优点，而是鞍点。</p>
-<p><img src="/images/dl/dl_33.png" alt="dl_33.png"></p>
-<p>可以看到鞍点并不是在所有维度上的梯度都为 0 ，所以算法可以逃离鞍点。事实上，在高维的局部最优点很难遇到，它需要在各个维度上的梯度都为 0 才能满足，而这样点出现的概率非常低。所以说这并不是一个问题。  </p>
-<p>然而在算法达到鞍点时，训练的速度将变的十分缓慢，如何加速训练的速度这才是我们需要关注的问题。</p>
+<h2 id="经典网络"><a href="#经典网络" class="headerlink" title="经典网络"></a>经典网络</h2><h3 id="LeNet"><a href="#LeNet" class="headerlink" title="LeNet"></a>LeNet</h3><p><img src="/images/dl/dl_60.png" alt="dl_60.png"></p>
+<h3 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h3><p><img src="/images/dl/dl_61.png" alt="dl_61.png"></p>
+<h3 id="VGG16"><a href="#VGG16" class="headerlink" title="VGG16"></a>VGG16</h3><p><img src="/images/dl/dl_62.png" alt="dl_62.png"></p>
+<h2 id="残差网络"><a href="#残差网络" class="headerlink" title="残差网络"></a>残差网络</h2><p>非常深的网络是很难训练的，因为存在梯度消失和梯度爆炸的问题。这节课我们学习跳远连接，它可以从网络的某一层获取激活值，然后迅速反馈给另外一层，甚至是神经网络的更深层。使用跳远连接我们可以构建训练深度网络的残差网络。</p>
+<p>残差网络是由残差块构成的，下图是一个残差块的结构。</p>
+<p><img src="/images/dl/dl_63.png" alt="dl_63.png"></p>
+<p>忽略上图中蓝色的箭头线，那么这两层的激活值传递过程如下：</p>
+<p>$$<br>\large<br>z^{[l+1]}=W^{[l+1]} a{[l]} + b^{[l+1]} \\<br>a^{[l+1]}=g(z{[l+1]}) \\<br>z^{[l+2]}=W^{[l+2]} a{[l+1]} + b^{[l+2]} \\</p>
+<p>$$<br>加上蓝色的箭头线后，传递过程变成了下面的样子（只有最后一个公式有变化）：<br>$$<br>\large<br>a^{[l+2]}=g(z{[l+2]} + a^{[l]})<br>$$</p>
+<p>这就相当于激活值$a$走了一个捷径，或者说是进行了跳远连接。</p>
+<p>在下图中将一个普通的网络进行跳远连接，这样就形成了一个残差网络。<br><img src="/images/dl/dl_64.png" alt="dl_64.png"></p>
+<hr>
+<p><strong>残差网络</strong> 为什么有用呢？</p>
+<p><img src="/images/dl/dl_65.png" alt="dl_65.png"></p>
+<p>上面有两个神经网络，我们在其中一个的末尾衔接上一个残差块。再将最后一个激活值的传递公式写出。由于正则化等的使用，$W^{[l+2]}$ 和 $b^{[l+2]}$ 可能会接近于 0 。这样的话 $a^{[l+2]}$ 就等于 $g(a^{[l]})$(这里使用 ReLU 激活函数) ，因为这里$a^{[l]}$ 为非负值，所以就可得到 $a^{[l+2]}=a^{[l]}$。  </p>
+<p>结果表明，残差块学习这个恒等函数残差块并不难，这意味着即使给网络增加了两层，但它的效率也不会降低。虽然多了两层，但所做的也只是将$a^{[l]}$的值赋给$a^{[l+2]}$。<br>但我们的目的并不只是保持网络的效率不变，我们还要提高它的表现。想象一下，如果这两层网络学习到了有用的东西，那么它就可以表现得比恒等函数更好。</p>
+<h2 id="网络中的网络-1x1-卷积"><a href="#网络中的网络-1x1-卷积" class="headerlink" title="网络中的网络/1x1 卷积"></a>网络中的网络/1x1 卷积</h2><p>1x1 卷积的作用简单的说就是给神经网络添加一个非线性的函数，从而减少或保持输入层中的信道数量，当然也可以增加信道的数量。</p>
+<p><img src="/images/dl/dl_66.png" alt="dl_66.png"></p>
+<p>我们用这个 1x1x32 的过滤器处理 6x6x32 的输入，即用过滤器遍历输入的 36 个单元格，与过滤器中对应的数字相乘并求和，在经过一个 ReLu 函数，输出到最后的矩阵中。这样就得到了一个 6x6x1 的输出。以此类推，如果使用两个 1x1x32 的过滤器，就可以得到 6x6x2 的输出。  </p>
+<p>这样就达到了修改信道数量的目的。</p>
+<h2 id="Inception-网络"><a href="#Inception-网络" class="headerlink" title="Inception 网络"></a>Inception 网络</h2><p>在设计神经网络的时候，需要选择过滤器的大小 1x3，3x3 或 5x5，又或是使用 池化层。 Inception 网络的作用就是代替你做出这些选择，虽然网络的结构变复杂了，但是效果却变好了。</p>
+<p><img src="/images/dl/dl_67.png" alt="dl_67.png"></p>
+<p>我们对输入层进行 1x1 ，3x3 ，5x5 卷积 和 最大池化处理，并且将结果堆叠起来得到最后的输出，这样就可以让网络自己学习使用哪个参数。<br>但这样的缺点也是显而易见的，训练网络所需要的计算量大大的增加了。前面讲的 <strong>1x1 卷积</strong> 可以帮助我们减少计算量。</p>
+<p>下图是上面 5x5 过滤器的计算过程，这里一共需要进行 1.2 亿次乘法运算。</p>
+<p><img src="/images/dl/dl_68.png" alt="dl_68.png"></p>
+<p>而在中间加入一个 1x1 的卷积之后，只需要进项 0.12 亿次乘法运算，并且输出的结果尺寸不变。<br>这个 1x1 的卷积层 也被称为瓶颈层。</p>
+<p><img src="/images/dl/dl_69.png" alt="dl_69.png"></p>
+<p>也许有人疑问，这样的作法是否会降低神经网络的性能，事实证明只要瓶颈层设置的合理，性能就不会受到影响。</p>
+<hr>
+<p>有了以上的铺垫，我们就可以搭建 Inception 网络了。  </p>
+<p>下图是一个 Inception 模块，将多个这样的模块拼接起来就得到了 Inception 网络。</p>
+<p><img src="/images/dl/dl_70.png" alt="dl_70.png"></p>
+<p><img src="/images/dl/dl_71.png" alt="dl_71.png"></p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">深度学习专项课程（2）（第二周）</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-2/">深度学习专项课程（4）（第二周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-2-week-2/">http://VerbF.github.io/post/deeplearning-ai-2-week-2/</a></li>
-            <li><strong>发布时间：</strong>2019-06-17</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-2/">http://VerbF.github.io/post/deeplearning-ai-4-week-2/</a></li>
+            <li><strong>发布时间：</strong>2019-07-15</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -270,7 +247,7 @@ $$
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/优化算法/">优化算法</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>,&nbsp;<a class="has-link-grey -link" href="/tags/神经网络/">神经网络</a>
+                    <a class="has-link-grey -link" href="/tags/卷积神经网络/">卷积神经网络</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
                 </div>
             </div>
         </div>
@@ -316,17 +293,10 @@ $$
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-2-week-3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（2）（第三周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-2-week-1/">
-                <span class="level-item">深度学习专项课程（2）（第一周）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-4-week-1/">
+                <span class="level-item">深度学习专项课程（4）（第一周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -422,33 +392,33 @@ $$
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Mini-batch-梯度下降法">
+        <a class="is-flex" href="#经典网络">
         <span class="has-mr-6">1</span>
-        <span>Mini-batch 梯度下降法</span>
+        <span>经典网络</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#LeNet">
+        <span class="has-mr-6">1.1</span>
+        <span>LeNet</span>
         </a></li><li>
-        <a class="is-flex" href="#指数加权平均">
+        <a class="is-flex" href="#AlexNet">
+        <span class="has-mr-6">1.2</span>
+        <span>AlexNet</span>
+        </a></li><li>
+        <a class="is-flex" href="#VGG16">
+        <span class="has-mr-6">1.3</span>
+        <span>VGG16</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#残差网络">
         <span class="has-mr-6">2</span>
-        <span>指数加权平均</span>
+        <span>残差网络</span>
         </a></li><li>
-        <a class="is-flex" href="#动量梯度下降法">
+        <a class="is-flex" href="#网络中的网络-1x1-卷积">
         <span class="has-mr-6">3</span>
-        <span>动量梯度下降法</span>
+        <span>网络中的网络/1x1 卷积</span>
         </a></li><li>
-        <a class="is-flex" href="#RMSprop">
+        <a class="is-flex" href="#Inception-网络">
         <span class="has-mr-6">4</span>
-        <span>RMSprop</span>
-        </a></li><li>
-        <a class="is-flex" href="#Adam-优化算法">
-        <span class="has-mr-6">5</span>
-        <span>Adam 优化算法</span>
-        </a></li><li>
-        <a class="is-flex" href="#学习率衰减">
-        <span class="has-mr-6">6</span>
-        <span>学习率衰减</span>
-        </a></li><li>
-        <a class="is-flex" href="#局部最优的问题">
-        <span class="has-mr-6">7</span>
-        <span>局部最优的问题</span>
+        <span>Inception 网络</span>
         </a></li></ul>
         </div>
     </div>
@@ -473,7 +443,7 @@ $$
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="深度学习专项课程（2）（第二周）" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（4）（第二周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
