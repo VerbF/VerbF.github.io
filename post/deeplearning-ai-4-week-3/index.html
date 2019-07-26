@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>深度学习专项课程（4）（第三周） - xxs&#39;s blog</title>
+<meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
+<meta name="baidu-site-verification" content="kiW8mtzpnZ">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本周介绍了目标检测的相关内容。">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习专项课程（4）（第三周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-4-week-3/index.html">
+<meta property="og:site_name" content="xxs&#39;s blog">
+<meta property="og:description" content="本周介绍了目标检测的相关内容。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
+<meta property="og:updated_time" content="2019-07-26T13:53:23.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习专项课程（4）（第三周）">
+<meta name="twitter:description" content="本周介绍了目标检测的相关内容。">
+<meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github-gist.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="深度学习专项课程（4）（第三周）" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Verb GitHub" href="https://www.github.com/VerbF">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（4）（第三周）">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（4）（第三周）
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-26T00:08:56.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-26</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-26T13:53:23.926Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    19 分钟 读完 (大约 2901 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>本周介绍了目标检测的相关内容。</p>
+<a id="more"></a>
+<h2 id="目标定位"><a href="#目标定位" class="headerlink" title="目标定位"></a>目标定位</h2><p>前面我们了解了图片的分类问题，即判断一张图片包含哪一类物体。目标定位问题不仅仅要对图片进行分类，还要准确指出物体在图片中的具体位置。而检测问题的不同指出是图片中的物体不止一个。</p>
+<p><img src="/images/dl/dl_72.png" alt="dl_72"></p>
+<p>定位问题所使用的神经网络问题与图片分类的问题的网络结构相似，只需对输出层稍作改变即可。<br>图片分类问题中只要在输出层给出图片所属类别的概率，在定位问题中则还要给出 bounding box 的具体位置。位置参数用 $b_x,b_y,b_h,b_w$来表示，其中 x，y表示bounding box 中心的位置，h，w表示bounding box 的宽度和高度。</p>
+<p><img src="/images/dl/dl_73.png" alt="dl_73"></p>
+<p>相应的，我们的标签 y 也要随之改变。<br>这里假设只包括下面三种物体，背景类别说明图片中不存在上面三种物体：</p>
+<ul>
+<li>行人</li>
+<li>汽车</li>
+<li>摩托车</li>
+<li>背景</li>
+</ul>
+<p>标签  y  的形式如下：</p>
+<p>$$<br>\large<br>\begin{bmatrix}<br>pc \\ b_x \\ b_y \\ b_h \\ b_w \\ c_1 \\ c_2 \\ c_3<br>\end{bmatrix}<br>$$</p>
+<p>如果图片中存在上面三种物体则 pc = 1， 否则 pc = 0 。$b_x,b_y,b_h,b_w$ 表示 bounding box 的位置，$c_1,c_2,c_3$ 表示具体属于哪一类。</p>
+<p>$$<br>\large<br>\begin{bmatrix}<br>0 \\ ？ \\ ？ \\ ？ \\ ？ \\ ？ \\ ？ \\ ？<br>\end{bmatrix}<br>$$</p>
+<p>如果是背景的话，其他的参数就不用关心具体是什么了。</p>
+<h2 id="特征点检测"><a href="#特征点检测" class="headerlink" title="特征点检测"></a>特征点检测</h2><p>神经网络可以通过输出图片上特征点的(x,y)坐标来实现对目标特征的检测。</p>
+<p>举例来说，在人脸识别的应用中可以检测人脸的关键点，如眼角，或是下颚的一些关键点。也可以应用在人体姿态关键点检测。</p>
+<p>这些关键点的训练数据往往需要人工来实现标注。</p>
+<p><img src="/images/dl/dl_74.png" alt="dl_74"></p>
+<h2 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h2><p>基于滑动窗口的目标检测算法。</p>
+<p>这里假设我们想实现一个汽车检测的算法。</p>
+<p>首先我们需要准备好数据集，数据集中的图片应该如下图所示，汽车位于图片的中心，且充满了整个图片，标签的值 为 1 ，如果是背景的话标签的值 为 0 。  </p>
+<p>我们使用准备好的数据集训练一个神经网络，该网络可以判断输入的图片是否是汽车。</p>
+<p><img src="/images/dl/dl_76.png" alt="dl_76"></p>
+<p>有了上面的准备后，就可以用它来实现滑动窗口的目标检测。具体步骤如下。</p>
+<p>我们使用不同大小的窗口，以一定的步长在图片上滑动，将每次滑动后得到的图片输入神经网络，判断是否是汽车。  </p>
+<p>像这样不同大小的窗口遍历过整个图像后，我们就可以得出汽车在图片中的位置了。</p>
+<p><img src="/images/dl/dl_75.png" alt="dl_75"></p>
+<p>该算法的缺点也很明显，就是它的计算成本很高。  </p>
+<p>如果选用较大的步长，不能准确得出汽车的位置。如果选用较小的步长，则计算成本很高。</p>
+<h2 id="卷积的滑动窗口实现"><a href="#卷积的滑动窗口实现" class="headerlink" title="卷积的滑动窗口实现"></a>卷积的滑动窗口实现</h2><p>上一节内容讲到的滑动窗口算法计算成本很高，这里给出滑动窗口的卷积实现，可以大大减少计算成本。</p>
+<p>在这之前需要了解如何把卷积神经网络的全连接层转化为卷积层。</p>
+<p>下图的上半部分是一个传统的卷积神经网络结构，其后面两层是全连接层。  </p>
+<p>下半部分使用卷积方式实现了全连接层的一个神经网络。  </p>
+<p>网络的前三层是相同的，从全连接层的部分两个网络有了不同。  </p>
+<p>下面的网络 在原本是全连接层的地方 使用了 400 个 5x5x16 的过滤器，卷积之后得到了 1x1x400 的层，这在数学上是与全连接层相同的结构。接下来又用了 400 个 1x1x400 的卷积核 得到了 1x1x400 层，这与上面第二个全连接层对应。最后在使用 4 个 1x1x400 的过滤器得到了最后一层。  </p>
+<p>这就是使用卷积操作实现全连接层的过程。</p>
+<p><img src="/images/dl/dl_77.png" alt="dl_77"></p>
+<p>接下来看看如何使用卷积的方式实现滑动窗口算法。</p>
+<p>下图中第一个是我们训练用的神经网络。第二个和第三个都是检测用的神经网络。</p>
+<p>在第二个神经网络中输入的图片规格是 16x16x3 ，使用 14x14x3 的窗口，步长为 2 个像素的设定进行滑动，那么需要进行四次卷积操作，也就是将检测的图片分成四个子集进行检测。  </p>
+<p>这四次操作中有许多操作是重复的。</p>
+<p>其实不必将图片分成四个部分进行检测，只要将整张图片进行一次卷积操作即可。如第二个网络所示，最后输出的结果是 2x2x4 的层，其中左上角部分就代表整张图片左上角的子集的检测结果，右上角部分就代表整张<br>图片右上角子集的检测结果。  </p>
+<p>这样的操作就大大减少了计算量。</p>
+<p><img src="/images/dl/dl_78.png" alt="dl_78"></p>
+<h2 id="Bounding-Box-预测"><a href="#Bounding-Box-预测" class="headerlink" title="Bounding Box 预测"></a>Bounding Box 预测</h2><p>上面我们提到了卷积的滑动窗口算法，这个算法虽然大大提升了效率，但无法准确的预测 bounding box的位置。</p>
+<p>其中一个可以得到更精确的边界框的算法是 <strong>YOLO(YOU ONLY LOOK ONCE)</strong> 算法。</p>
+<p>其基本思路是将图片分成 9 个部分，对每一部分实施我们前面提到过的定位算法。对每一个部分都给出一个标签，同前面一样标签是 8 维的。如果图片中包含待检测的物体，我们根据物体的中心位置将其分配到对应的部分中。图片中没有物体的部分则当作背景来处理。</p>
+<p>所以一张图片就对应了 3x3x8 的标签。  </p>
+<p>在检测时，也输出 3x3x8 的预测标签。我们根据输出的预测标签来判断物体所在的具体位置。  </p>
+<p>在实际应用中我们可以将图片分成 19x19 个部分，这样得到的结果会更加精确。  </p>
+<p>根据上面的内容，只需要进行一次卷积操作就可以得到最终的结果，所以该算法的运行速度很快，甚至可以达到实时的效果。</p>
+<p><img src="/images/dl/dl_79.png" alt="dl_79"></p>
+<h2 id="交并比"><a href="#交并比" class="headerlink" title="交并比"></a>交并比</h2><p>如何判断目标检测算法运作良好呢？我们可以使用交并比这一指标来评价目标检测算法。</p>
+<p>图片中实际的边界框是红色的，紫色的是预测的边界框。<strong>IoU(Intersection over  union)</strong> 就是两个边界框的交集和并集之比。  </p>
+<p>按照惯例，如果 IoU &gt; 0.5 的话，就认为检测正确。0.5 只是约定俗成的一个值，如果你更严格的话可以设定为 0.6 或 0.7 。</p>
+<p><img src="/images/dl/dl_80.png" alt="dl_80"></p>
+<h2 id="非极大值抑制"><a href="#非极大值抑制" class="headerlink" title="非极大值抑制"></a>非极大值抑制</h2><p>目前我们所学到的目标检测算法可能对同一个对象做出多次检测，非极大值抑制这个方法可以确保你的算法对每个对象只检测一次。</p>
+<p>将图片分成 19x19 个格子之后，每个格子都运行图片分类和定位算法，那么可能不止一个格子会认为自己这里有目标物体，并给出结果。</p>
+<p><img src="/images/dl/dl_81.png" alt="dl_81"></p>
+<p>在下图中，同一个物体的检测会得到不止一个 bounding box ，非极大值抑制的作用就是：选择一个可能性最高的 bounding box ，并丢弃与其 IoU 过大（即重叠度很高）的 bounding box 这样就可以保证每一个物体只有一个预测结果了。</p>
+<p><img src="/images/dl/dl_82.png" alt="dl_82"></p>
+<h2 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h2><p>现在还有一个问题就是，每一个格子只能检测一个物体。如果想让一个格子检测出多个物体，就要使用 Anchor Boxes 这个方法。</p>
+<p>下图中行人和汽车的中点都位于同一个格子内。可以看出行人和汽车的形状有明显差异，我们设置两个 Anchor Boxes，并对 标签 y 做出修改。  </p>
+<p>标签由原来的 8 变成了 16。 标签的上半部分设置为检测 Anchor Box 1，下半部分设置为 检测 Anchor Box 2 。</p>
+<p><img src="/images/dl/dl_83.png" alt="dl_83"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">不使用 anchor box</th>
+<th style="text-align:center">使用 anchor box</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">图片中的物体分配到中点所在的格子中</td>
+<td style="text-align:center">图片中的物体分配到中点所在的格子中，并分配一个 IoU 最高的 anchor box</td>
+</tr>
+<tr>
+<td style="text-align:center">输出的 y 3x3x8</td>
+<td style="text-align:center">输出的 y 3x3x2x8</td>
+</tr>
+</tbody>
+</table>
+<p>看一个例子：</p>
+<p>如果人和车的中点位于一个格子内，标签就如下图左边所示。如果只有车没有人就如右边的所示。</p>
+<p><img src="/images/dl/dl_84.png" alt="dl_84"></p>
+<p>如果只有两个 anchor box 而有三种物体的话，算法处理的并不好。但这种情况并不常见。</p>
+<h2 id="YOLO-算法"><a href="#YOLO-算法" class="headerlink" title="YOLO 算法"></a>YOLO 算法</h2><p>我们已经学过了所有必要的组件，这一节我们将组件组装起来构成 YOLO 目标检测算法。</p>
+<p><strong>首先我们要构建训练集</strong>。  </p>
+<p>这里我们检测三类物体，anchor box 设置为两个。</p>
+<p><img src="/images/dl/dl_85.png" alt="dl_85"></p>
+<p><strong>训练好神经网络之后，我们再进行预测</strong>。</p>
+<p>对不同的格子都做出预测。</p>
+<p><img src="/images/dl/dl_86.png" alt="dl_86"></p>
+<p><strong>最后要运行一下非极大值抑制</strong>。</p>
+<p>对每一个格子，神经网络会输出两个 bounding box , 我们直接丢弃那些存在物体概率过低的 bounding box 。</p>
+<p><img src="/images/dl/dl_87.png" alt="dl_87"></p>
+<p><img src="/images/dl/dl_88.png" alt="dl_88"></p>
+<p>再对每一物体运行一下非极大值抑制，接得到了最后的结果。  </p>
+<p><img src="/images/dl/dl_89.png" alt="dl_89"></p>
+<h2 id="候选区域"><a href="#候选区域" class="headerlink" title="候选区域"></a>候选区域</h2><p>前面我们提到的滑动窗口算法，因为要遍历整个图片，所以会在明显不存在物体的区域进行计算。而这会浪费时间。  </p>
+<p>R-CNN 的想法是先运行分割算法，将图片分成不同尺寸的色块，再在不同的色块上进行图片的分类，这样做的效率将会提升很多。</p>
+<p><img src="/images/dl/dl_90.png" alt="dl_90"></p>
+<p>然而这样还是太慢了，所以许多研究工作都针对这一问题展开。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">R-CNN</td>
+<td style="text-align:center">感兴趣区域提议，在每个区域上运行分类器，输出标签和边界框</td>
+</tr>
+<tr>
+<td style="text-align:center">Fast R-CNN</td>
+<td style="text-align:center">感兴趣区域提议，使用卷积的方式实现滑动窗口来分类感兴趣区域</td>
+</tr>
+<tr>
+<td style="text-align:center">Faster R-CNN</td>
+<td style="text-align:center">使用卷积的方式产生感兴趣区域</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-3/">深度学习专项课程（4）（第三周）</a></li>
+            <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-3/">http://VerbF.github.io/post/deeplearning-ai-4-week-3/</a></li>
+            <li><strong>发布时间：</strong>2019-07-26</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-4-week-2/">
+                <span class="level-item">深度学习专项课程（4）（第二周）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="Xi XiangShu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Xi XiangShu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        翩若惊鸿，婉若游龙
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hangzhou, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        1
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/VerbF" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#目标定位">
+        <span class="has-mr-6">1</span>
+        <span>目标定位</span>
+        </a></li><li>
+        <a class="is-flex" href="#特征点检测">
+        <span class="has-mr-6">2</span>
+        <span>特征点检测</span>
+        </a></li><li>
+        <a class="is-flex" href="#目标检测">
+        <span class="has-mr-6">3</span>
+        <span>目标检测</span>
+        </a></li><li>
+        <a class="is-flex" href="#卷积的滑动窗口实现">
+        <span class="has-mr-6">4</span>
+        <span>卷积的滑动窗口实现</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bounding-Box-预测">
+        <span class="has-mr-6">5</span>
+        <span>Bounding Box 预测</span>
+        </a></li><li>
+        <a class="is-flex" href="#交并比">
+        <span class="has-mr-6">6</span>
+        <span>交并比</span>
+        </a></li><li>
+        <a class="is-flex" href="#非极大值抑制">
+        <span class="has-mr-6">7</span>
+        <span>非极大值抑制</span>
+        </a></li><li>
+        <a class="is-flex" href="#Anchor-Boxes">
+        <span class="has-mr-6">8</span>
+        <span>Anchor Boxes</span>
+        </a></li><li>
+        <a class="is-flex" href="#YOLO-算法">
+        <span class="has-mr-6">9</span>
+        <span>YOLO 算法</span>
+        </a></li><li>
+        <a class="is-flex" href="#候选区域">
+        <span class="has-mr-6">10</span>
+        <span>候选区域</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="深度学习专项课程（4）（第三周）" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Xi XiangShu&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="VerbF GitHub" href="https://www.github.com/VerbF">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
