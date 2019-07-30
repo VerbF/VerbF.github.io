@@ -2,26 +2,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>深度学习专项课程（4）（第一周） - xxs&#39;s blog</title>
+<title>深度学习专项课程（4）（第四周） - xxs&#39;s blog</title>
 <meta name="google-site-verification" content="z7-ihRCQ3LCNtwJl1Lz8V4miSnlJNNP0sLoBrmp69dQ">
 <meta name="baidu-site-verification" content="kiW8mtzpnZ">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="本周介绍了卷积神经网络的基本概念">
-<meta name="keywords" content="深度学习,卷积神经网络">
+    <meta name="description" content="本周介绍了一些卷积神经网络的应用，如人脸识别，风格转换等。">
+<meta name="keywords" content="深度学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习专项课程（4）（第一周）">
-<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-4-week-1/index.html">
+<meta property="og:title" content="深度学习专项课程（4）（第四周）">
+<meta property="og:url" content="http://VerbF.github.io/post/deeplearning-ai-4-week-4/index.html">
 <meta property="og:site_name" content="xxs&#39;s blog">
-<meta property="og:description" content="本周介绍了卷积神经网络的基本概念">
+<meta property="og:description" content="本周介绍了一些卷积神经网络的应用，如人脸识别，风格转换等。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
-<meta property="og:updated_time" content="2019-07-10T07:00:52.042Z">
+<meta property="og:updated_time" content="2019-07-30T13:20:36.045Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习专项课程（4）（第一周）">
-<meta name="twitter:description" content="本周介绍了卷积神经网络的基本概念">
+<meta name="twitter:title" content="深度学习专项课程（4）（第四周）">
+<meta name="twitter:description" content="本周介绍了一些卷积神经网络的应用，如人脸识别，风格转换等。">
 <meta name="twitter:image" content="http://verbf.github.io/images/dl/thumbnail.jpeg">
 
 
@@ -100,7 +100,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="深度学习专项课程（4）（第一周）" height="28">
+                <img src="/images/logo.png" alt="深度学习专项课程（4）（第四周）" height="28">
             
             </a>
         </div>
@@ -153,22 +153,22 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（4）（第一周）">
+            <img class="thumbnail" src="/images/dl/thumbnail.jpeg" alt="深度学习专项课程（4）（第四周）">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <i class="fas fa-angle-double-right"></i>深度学习专项课程（4）（第一周）
+                <i class="fas fa-angle-double-right"></i>深度学习专项课程（4）（第四周）
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-09T06:14:05.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-09</time>
+                <time class="level-item has-text-grey" datetime="2019-07-30T10:51:28.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-30</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-10T07:00:52.042Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-10</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-07-30T13:20:36.045Z"><i class="far fa-calendar-check">&nbsp;</i>2019-07-30</time>
                 
                 
                 <div class="level-item">
@@ -181,7 +181,7 @@
                     <i class="far fa-clock"></i>&nbsp;
                     
                     
-                    12 分钟 读完 (大约 1788 个字)
+                    7 分钟 读完 (大约 1099 个字)
                 </span>
                 
                 
@@ -194,114 +194,54 @@
         </div>
         
         <div class="content">
-            <p>本周介绍了卷积神经网络的基本概念</p>
+            <p>本周介绍了一些卷积神经网络的应用，如人脸识别，风格转换等。</p>
 <a id="more"></a>
-<h2 id="边缘检测-amp-卷积基本概念"><a href="#边缘检测-amp-卷积基本概念" class="headerlink" title="边缘检测&amp;卷积基本概念"></a>边缘检测&amp;卷积基本概念</h2><p>卷积运算是卷积神经网络最基本的组成部分，接下来通过边缘检测的案例来看看卷积是如何进行计算的。</p>
-<p><img src="/images/dl/dl_49.png" alt="dl_49.png"></p>
-<p>我们想要检测上图中物体的轮廓，为了简单起见我们先从垂直和水平的栅栏边缘开始。</p>
-<p>下图左边是一个 6 x 6 的灰度图像（灰度图像只有两个维度，我们常见的 RGB 图像有三个维度）。中间是一个 3 x 3 的矩阵，称为过滤器或是卷积核，过滤器和左边图像之间的 * 号代表卷积操作。卷积的基本步骤是使用过滤器扫描图像的矩阵，将图像矩阵的值和过滤器上对应位的数字相乘并求和，最后将结果填入矩阵中。<br>可以看到，下图的右边是执行卷积操作之后的结果，成功实现了提取灰度图像垂直边缘的操作。<br>如果想检测水平边缘的话，可以将过滤器的参数旋转90度便可实现。</p>
-<p><img src="/images/dl/dl_50.png" alt="dl_50.png"></p>
-<p>过滤器的参数也需要进行学习，对于它的初始参数我们可以设置为文献中常用的值。</p>
-<p><img src="/images/dl/dl_51.png" alt="dl_51.png"></p>
-<p>卷积的步长也是一个基本的卷积操作。下图中将卷积的步长设为 2 ，这样过滤器在扫描图像矩阵的时候每次将移动两个单位。有时候因会出现过滤器移动到矩阵外面的情况，这是便不进行计算，我们只有在过滤器完全包含在矩阵中时才进行计算。  </p>
-<p>过滤器的尺寸通常是奇数，这可能有两个原因：一是因为奇数的过滤器可以在 padding 操作中进行对称的填充。二是因为奇数的过滤器会有一个中心点，这样就可以准确的指出过滤器的位置。</p>
-<p><img src="/images/dl/dl_52.png" alt="dl_52.png"></p>
-<h2 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h2><p>为了搭建一个卷积神经网络，需要用到的基本的卷积操作还有就是 padding 。  </p>
-<p>在卷积的操作中会出现两个问题，第一个问题是如果我们对图片进行了多次的卷积操作，那么不能避免的是生成的矩阵会越来越小，这是我们不想看到的。第二个问题是图片边缘信息的缺失。比如说矩阵四个顶角的数字在卷积的操作中只被计算了一次，而中间的数字则会被计算多次。  </p>
-<p>为了解决这两个问题就有了 padding 操作。基本思想就是在原图像的边缘填充像素，习惯上我们使用 0 来填充。这样就解决了这两个问题。</p>
-<p><img src="/images/dl/dl_53.png" alt="dl_53.png">  </p>
-<p>至于填充多少个像素通常有两个选择，<strong>valid 卷积</strong> 和 <strong>same 卷积</strong>。<br>valid 卷积是指不进行填充，而same 卷积 是指填充后进行卷积操作得到的矩阵与输入的矩阵尺寸相同。</p>
-<p><strong>对维度的总结</strong></p>
-<p>下图中上面是输入的参数，下面是卷积操作后输出的参数。</p>
-<p><img src="/images/dl/dl_54.png" alt="dl_54.png">  </p>
-<h2 id="三维卷积"><a href="#三维卷积" class="headerlink" title="三维卷积"></a>三维卷积</h2><p>灰度图像只有两个维度，而我们常见的RGB图像有三个维度，这时我们需要进行三维卷积。</p>
-<p>随着图像维度的增加，相应的，过滤器的维度也增加，并且过滤器第三个维度的值应与图像第三个维度的值相等。</p>
-<p>卷积的方法与在二维的情况下类似，我们将过滤器不同的通道与图像不同的通道（第三维称之为通道）对应，再相乘求和得到一个值，再使用过滤器依次扫描整个图像便可得到最终的结果。</p>
-<p>如果只使用一个过滤器，卷积后的结果仍是一个二维的矩阵。如果使用两个过滤器将得到两个二维的矩阵，将其叠加起来就能得到一个三维的结果。使用多个过滤器的目的是为了提取多个不同的特征。</p>
-<p><img src="/images/dl/dl_55.png" alt="dl_55.png">  </p>
-<h2 id="单层卷积网络"><a href="#单层卷积网络" class="headerlink" title="单层卷积网络"></a>单层卷积网络</h2><p>如图所示，这是一个卷积层。这里使用了两个过滤器。我们将过滤器卷积之后的矩阵用类似 python 广播的方式加上偏置值 b ，再将矩阵放入 ReLU 激活函数中，最后输出一个 4 x 4 的矩阵。因为使用了两个滤波器，把这两个滤波器最后输出的矩阵堆叠起来就得到了一个 4 x 4 x 2 的矩阵，这也是这个卷积层输出的最后结果。</p>
-<p><img src="/images/dl/dl_56.png" alt="dl_56.png">  </p>
-<p>这里用到了很多的符号，我们来总结一下这些符号的含义：</p>
-<p><img src="/images/dl/dl_57.png" alt="dl_57.png">  </p>
-<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>除了使用卷积层，卷积网络也经常使用池化层来缩减模型的大小，提高计算速度同时提高所提取特征的鲁棒性。</p>
-<p>如下图，池化的操作是将图像按照给定的矩阵分割成不同的区域，再取每个区域中最大的值填入给定的矩阵。这里执行的是<strong>最大池化</strong>，所以取最大值。相对的，还有<strong>平均池化</strong>，顾名思义，就是取区域内所有值的平均值填入其中。<br>这里的池化参数：过滤器 f 大小是 2 ， 步长 s = 2。这样设置的参数效果相当于将输入的高度和宽度减少一半。</p>
-<p><img src="/images/dl/dl_58.png" alt="dl_58.png">  </p>
-<h2 id="卷积神经网络实例"><a href="#卷积神经网络实例" class="headerlink" title="卷积神经网络实例"></a>卷积神经网络实例</h2><p><img src="/images/dl/dl_59.png" alt="dl_59.png">  </p>
-<p>上图是一个卷积神经网络的实例，其目的是去识别手写数字。  </p>
-<p>网络的输入是 32 x 32 x 3 的 RGB 图像，经过两个卷积层（每一层包括卷积和池化两个操作，因为只有卷积操作才有权重参数，故我们将两个操作合起来称为一层），再经过两个全连接层，一个 softmax 层，最后的输出为 0-9 10个数字。  </p>
-<p>网络中的参数变化：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">activation shape</th>
-<th style="text-align:center">activation size</th>
-<th style="text-align:center"># parameters</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">input</td>
-<td style="text-align:center">(32,32,3)</td>
-<td style="text-align:center">3072</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">CONV1(f=5,s=1)</td>
-<td style="text-align:center">(28,28,8)</td>
-<td style="text-align:center">6272</td>
-<td style="text-align:center">208</td>
-</tr>
-<tr>
-<td style="text-align:center">POOL1</td>
-<td style="text-align:center">(14,14,8)</td>
-<td style="text-align:center">1568</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">CONV2(f=2,s=1)</td>
-<td style="text-align:center">(10,10,16)</td>
-<td style="text-align:center">1600</td>
-<td style="text-align:center">416</td>
-</tr>
-<tr>
-<td style="text-align:center">POOL2</td>
-<td style="text-align:center">(5,5,16)</td>
-<td style="text-align:center">400</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">FC3</td>
-<td style="text-align:center">(120,1)</td>
-<td style="text-align:center">120</td>
-<td style="text-align:center">48001</td>
-</tr>
-<tr>
-<td style="text-align:center">FC4</td>
-<td style="text-align:center">(84,1)</td>
-<td style="text-align:center">84</td>
-<td style="text-align:center">10081</td>
-</tr>
-<tr>
-<td style="text-align:center">Sofmax</td>
-<td style="text-align:center">(10,1)</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">841</td>
-</tr>
-</tbody>
-</table>
-<h2 id="为什么使用卷积"><a href="#为什么使用卷积" class="headerlink" title="为什么使用卷积"></a>为什么使用卷积</h2><ul>
-<li><strong>参数共享</strong> 一个特征检测器（如垂直边缘检测器）如果在图片的一部分区域有用，那么大概率在其他部分也是有用的。</li>
-<li><strong>稀疏连接</strong> 每一层中的输出值的数量只占了输入的一小部分。</li>
+<h2 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h2><p>对于人脸识别问题简单的描述如下：</p>
+<ul>
+<li>数据库中有 k 个人的信息</li>
+<li>输入一张图像</li>
+<li>如果图像属于 k 个人之一，则输出 ID （或“未识别”）</li>
 </ul>
+<h2 id="one-shot-学习"><a href="#one-shot-学习" class="headerlink" title="one-shot 学习"></a>one-shot 学习</h2><p>人脸识别的难点在于解决 一次学习（one-shot）问题。这意味着在在绝大数人脸识别应用中你需要通过单单一张人脸照片或一个人脸样例，就可以识别出这个人。</p>
+<p>想象这样一个场景，假设你的公司有四名员工，你搭建了一个神经网络最后使用了 softmax 层来识别人脸照片，但如果此时公司又来了一名新员工，你不得不重新训练网络。显然这不是一个好的方法。</p>
+<p>事实上我们可以让神经网络学习到这样一个“相似”函数 d ：</p>
+<p>$$<br>\large<br>d(img1,img2) = 图片之间的差异度 \\<br>if \quad d(img1,img2) \le \tau \quad , \quad same \\<br>if \quad d(img1,img2) &gt; \tau \quad , \quad different<br>$$</p>
+<p>如果有了这个函数的话，新员工加入后也只需添加一张照片即可。</p>
+<h2 id="siamese-network"><a href="#siamese-network" class="headerlink" title="siamese network"></a>siamese network</h2><p>siamese 网络可以帮助我们实现上面提到的“相似”函数。  </p>
+<p>我们把两张图像输入到同一个卷积神经网络中，经过卷积池化等操作后，输出一个 128 单元的全连接层。这128个单元中所包含的信息看作是对输入图片的编码,记为 $f(x^i)$,$x^i$是指第 i 个样本。我们比较这两张图片的编码，来判断其相似度。这里使用的是平方范数。</p>
+<p><img src="/images/dl/dl_91.png" alt="dl_91"></p>
+<h2 id="Triplet-损失"><a href="#Triplet-损失" class="headerlink" title="Triplet 损失"></a>Triplet 损失</h2><p>对于 siamese 网络，我们需要一个 loss 函数来进行梯度下降，这里我们使用的是 Triplet（三元组） loss 函数。</p>
+<p>这里的三元组是指 anchor ， positive ， negative，简写为 （A，P，N）。 positive 表示的人脸 与 anchor 相同，negative 是与 anchor 不同的人脸。</p>
+<p><img src="/images/dl/dl_92.png" alt="dl_92"></p>
+<p>我们想要的是 anchor 与 positive 的差别较小，而与 negative 的差异较大。</p>
+<p><img src="/images/dl/dl_93.png" alt="dl_93"></p>
+<p>用公式表示为：</p>
+<p>$$<br>\large<br>||f(A)-f(P)||^2 \le ||f(A)-f(N)||^2<br>$$</p>
+<p>仔细观察这个公式你会发现，如果 $||f(A)-f(P)||^2$ 和 $||f(A)-f(N)||^2$ 都等于 0 的话，这个不等式将恒满足，但这样是毫无意义的。所以我们需要加上一个参数 $\alpha$ 防止这种情况的发生：</p>
+<p>$$<br>\large<br>||f(A)-f(P)||^2  + \alpha \le ||f(A)-f(N)||^2  \le 0<br>$$</p>
+<p>所以完整三元组损失函数定义如下：</p>
+<p>$$<br>\large<br>L(A,P,N) = max( ||f(A)-f(P)||^2  - ||f(A)-f(N)||^2  + \alpha , 0)<br>$$</p>
+<p>max 函数的目的在于 只要能使 max 函数内左边的部分小于 0 ，我们就认为这个例子的损失为 0 。  </p>
+<p>整个网络的代价函数就是单个三元组目标函数的总和。  </p>
+<p>最后需要注意的是，如果我们随机组合三元组的训练数据时， $||f(A)-f(N)||^2$ 的值总是大于 $||f(A)-f(P)||^2$  ，这样的话梯度下降算法很难起作用。所以我们在选择三元组的时候要保证它“很难”去训练。</p>
+<p>即：</p>
+<p>$$<br>\large<br>||f(A)-f(P)||^2  \approx ||f(A)-f(N)||^2<br>$$</p>
+<h2 id="面部验证与二分类"><a href="#面部验证与二分类" class="headerlink" title="面部验证与二分类"></a>面部验证与二分类</h2><p>除了使用上面的三元组损失函数之外，还可以将人脸识别问题转换为二分类的问题。</p>
+<p>我们同样使用 siamese 网络，我们在网络的最后加入一个逻辑回归单元，对输入的图片编码做一个二分类。<br>如果输入的两张图片是相同的人，则输出 1 ， 否则输出 0 。</p>
+<p>可以使用反向传播算法来训练这个网络。</p>
+<p><img src="/images/dl/dl_94.png" alt="dl_94"></p>
+<p>逻辑单元具体作用如下：</p>
+<p>划线部分也可替换成其它的函数。</p>
+<p>$$<br>\large<br>\hat{y}=sigmoid(\sum_{k=1}^{128} w_i \underline{ |f(x^{(i)})-f(x^{(j)})|} + b)<br>$$</p>
+<p>需要注意的是，这个网络的训练数据是两个图片组成的图片对。</p>
 
         </div>
         
             <ul class="post-copyright">
-            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-1/">深度学习专项课程（4）（第一周）</a></li>
+            <li><strong>本文标题：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-4/">深度学习专项课程（4）（第四周）</a></li>
             <li><strong>本文作者：</strong><a href="http://VerbF.github.io">Xi XiangShu</a></li>
-            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-1/">http://VerbF.github.io/post/deeplearning-ai-4-week-1/</a></li>
-            <li><strong>发布时间：</strong>2019-07-09</li>
+            <li><strong>本文链接：</strong><a href="http://VerbF.github.io/post/deeplearning-ai-4-week-4/">http://VerbF.github.io/post/deeplearning-ai-4-week-4/</a></li>
+            <li><strong>发布时间：</strong>2019-07-30</li>
             <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
             </li>
             </ul>
@@ -312,7 +252,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/卷积神经网络/">卷积神经网络</a>,&nbsp;<a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
+                    <a class="has-link-grey -link" href="/tags/深度学习/">深度学习</a>
                 </div>
             </div>
         </div>
@@ -358,17 +298,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/post/deeplearning-ai-4-week-2/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">深度学习专项课程（4）（第二周）</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-3-week-2/">
-                <span class="level-item">深度学习专项课程（3）（第二周）</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/post/deeplearning-ai-4-week-3/">
+                <span class="level-item">深度学习专项课程（4）（第三周）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -464,33 +397,25 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#边缘检测-amp-卷积基本概念">
+        <a class="is-flex" href="#人脸识别">
         <span class="has-mr-6">1</span>
-        <span>边缘检测&amp;卷积基本概念</span>
+        <span>人脸识别</span>
         </a></li><li>
-        <a class="is-flex" href="#Padding">
+        <a class="is-flex" href="#one-shot-学习">
         <span class="has-mr-6">2</span>
-        <span>Padding</span>
+        <span>one-shot 学习</span>
         </a></li><li>
-        <a class="is-flex" href="#三维卷积">
+        <a class="is-flex" href="#siamese-network">
         <span class="has-mr-6">3</span>
-        <span>三维卷积</span>
+        <span>siamese network</span>
         </a></li><li>
-        <a class="is-flex" href="#单层卷积网络">
+        <a class="is-flex" href="#Triplet-损失">
         <span class="has-mr-6">4</span>
-        <span>单层卷积网络</span>
+        <span>Triplet 损失</span>
         </a></li><li>
-        <a class="is-flex" href="#池化层">
+        <a class="is-flex" href="#面部验证与二分类">
         <span class="has-mr-6">5</span>
-        <span>池化层</span>
-        </a></li><li>
-        <a class="is-flex" href="#卷积神经网络实例">
-        <span class="has-mr-6">6</span>
-        <span>卷积神经网络实例</span>
-        </a></li><li>
-        <a class="is-flex" href="#为什么使用卷积">
-        <span class="has-mr-6">7</span>
-        <span>为什么使用卷积</span>
+        <span>面部验证与二分类</span>
         </a></li></ul>
         </div>
     </div>
@@ -515,7 +440,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="深度学习专项课程（4）（第一周）" height="28">
+                    <img src="/images/logo.png" alt="深度学习专项课程（4）（第四周）" height="28">
                 
                 </a>
                 <p class="is-size-7">
